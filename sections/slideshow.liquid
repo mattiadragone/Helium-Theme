@@ -54,8 +54,8 @@
 
       {%- if section.settings.auto_rotate -%}
         <button type="button" class="slideshow__autoplay slider-button no-js-hidden{% if section.settings.auto_rotate == false %} slideshow__autoplay--paused{% endif %}" aria-label="{{ 'sections.slideshow.pause_slideshow' | t }}">
-          {%- render 'icon-pause' -%}
-          {%- render 'icon-play' -%}
+          {%- render 'icons-library', icons: 'pause' -%}
+          {%- render 'icons-library', icons: 'play' -%}
         </button>
       {%- endif -%}
     </div>
@@ -161,8 +161,8 @@
 
       {%- if section.settings.auto_rotate -%}
         <button type="button" class="slideshow__autoplay slider-button no-js-hidden{% if section.settings.auto_rotate == false %} slideshow__autoplay--paused{% endif %}" aria-label="{{ 'sections.slideshow.pause_slideshow' | t }}">
-          {%- render 'icon-pause' -%}
-          {%- render 'icon-play' -%}
+          {%- render 'icons-library', icons: 'pause' -%}
+          {%- render 'icons-library', icons: 'play' -%}
         </button>
       {%- endif -%}
     </div>
@@ -180,7 +180,7 @@
   {%- endif -%}
 </slideshow-component>
 {% else %}
-non c'e' un banner in {{localization.country.iso_code}}
+non c'e' un banner in {{ localization.country.iso_code }}
 {% endif %}
 {% endif %}
 
@@ -198,7 +198,7 @@ non c'e' un banner in {{localization.country.iso_code}}
       "type": "text",
       "id": "available_countries",
       "label": "Add the ISO code of the country that should see this banner."
-      },
+    },
     {
       "type": "select",
       "id": "layout",

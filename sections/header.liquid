@@ -202,7 +202,7 @@
                 <div class="menu-drawer__utility-links">
                   {%- if shop.customer_accounts_enabled -%}
                     <a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}" class="menu-drawer__account link focus-inset h5">
-                      {% render 'icon-account' %}
+                      {% render 'icons-library', icons: 'account' %}
                       {%- liquid
                         if customer
                           echo 'customer.account_fallback' | t
@@ -216,7 +216,7 @@
                     {%- if settings.social_twitter_link != blank -%}
                       <li class="list-social__item">
                         <a href="{{ settings.social_twitter_link }}" class="list-social__link link">
-                          {%- render 'icon-twitter' -%}
+                          {%- render 'icons-library', icons: 'twitter' -%}
                           <span class="visually-hidden">{{ 'general.social.links.twitter' | t }}</span>
                         </a>
                       </li>
@@ -224,7 +224,7 @@
                     {%- if settings.social_facebook_link != blank -%}
                       <li class="list-social__item">
                         <a href="{{ settings.social_facebook_link }}" class="list-social__link link">
-                          {%- render 'icon-facebook' -%}
+                          {%- render 'icons-library', icons: 'facebook' -%}
                           <span class="visually-hidden">{{ 'general.social.links.facebook' | t }}</span>
                         </a>
                       </li>
@@ -232,7 +232,7 @@
                     {%- if settings.social_pinterest_link != blank -%}
                       <li class="list-social__item">
                         <a href="{{ settings.social_pinterest_link }}" class="list-social__link link">
-                          {%- render 'icon-pinterest' -%}
+                          {%- render 'icons-library', icons: 'pinterest' -%}
                           <span class="visually-hidden">{{ 'general.social.links.pinterest' | t }}</span>
                         </a>
                       </li>
@@ -240,7 +240,7 @@
                     {%- if settings.social_instagram_link != blank -%}
                       <li class="list-social__item">
                         <a href="{{ settings.social_instagram_link }}" class="list-social__link link">
-                          {%- render 'icon-instagram' -%}
+                          {%- render 'icons-library', icons: 'instagram' -%}
                           <span class="visually-hidden">{{ 'general.social.links.instagram' | t }}</span>
                         </a>
                       </li>
@@ -248,7 +248,7 @@
                     {%- if settings.social_tiktok_link != blank -%}
                       <li class="list-social__item">
                         <a href="{{ settings.social_tiktok_link }}" class="list-social__link link">
-                          {%- render 'icon-tiktok' -%}
+                          {%- render 'icons-library', icons: 'tiktok' -%}
                           <span class="visually-hidden">{{ 'general.social.links.tiktok' | t }}</span>
                         </a>
                       </li>
@@ -256,7 +256,7 @@
                     {%- if settings.social_tumblr_link != blank -%}
                       <li class="list-social__item">
                         <a href="{{ settings.social_tumblr_link }}" class="list-social__link link">
-                          {%- render 'icon-tumblr' -%}
+                          {%- render 'icons-library', icons: 'tumblr' -%}
                           <span class="visually-hidden">{{ 'general.social.links.tumblr' | t }}</span>
                         </a>
                       </li>
@@ -264,7 +264,7 @@
                     {%- if settings.social_snapchat_link != blank -%}
                       <li class="list-social__item">
                         <a href="{{ settings.social_snapchat_link }}" class="list-social__link link">
-                          {%- render 'icon-snapchat' -%}
+                          {%- render 'icons-library', icons: 'snapchat' -%}
                           <span class="visually-hidden">{{ 'general.social.links.snapchat' | t }}</span>
                         </a>
                       </li>
@@ -272,7 +272,7 @@
                     {%- if settings.social_youtube_link != blank -%}
                       <li class="list-social__item">
                         <a href="{{ settings.social_youtube_link }}" class="list-social__link link">
-                          {%- render 'icon-youtube' -%}
+                          {%- render 'icons-library', icons: 'youtube' -%}
                           <span class="visually-hidden">{{ 'general.social.links.youtube' | t }}</span>
                         </a>
                       </li>
@@ -280,7 +280,7 @@
                     {%- if settings.social_vimeo_link != blank -%}
                       <li class="list-social__item">
                         <a href="{{ settings.social_vimeo_link }}" class="list-social__link link">
-                          {%- render 'icon-vimeo' -%}
+                          {%- render 'icons-library', icons: 'vimeo' -%}
                           <span class="visually-hidden">{{ 'general.social.links.vimeo' | t }}</span>
                         </a>
                       </li>
@@ -566,7 +566,7 @@
 
       {%- if shop.customer_accounts_enabled -%}
         <a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}" class="header__icon header__icon--account link focus-inset{% if section.settings.menu != blank %} small-hide{% endif %}">
-          {% render 'icon-account' %}
+          {% render 'icons-library', icons: 'account' %}
           <span class="visually-hidden">
             {%- liquid
               if customer
