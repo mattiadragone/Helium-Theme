@@ -91,7 +91,7 @@
                   <summary class="facets__summary caption-large focus-offset" aria-label="{{ filter.label }} ({{ 'products.facets.filters_selected.one' | t: count: filter.active_values.size }})">
                     <div>
                       <span>{{ filter.label | escape }}{%- if filter_type == 'vertical' -%}<span class="facets__selected no-js-hidden{% if filter.active_values.size == 0 %} hidden{% endif %}"> ({{ filter.active_values.size }})</span>{% endif %}</span>
-                      {% render 'icon-caret' %}
+                      {% render 'icons-library', icons: 'caret' %}
                     </div>
                   </summary>
                   <div id="Facet-{{ forloop.index }}-{{ section.id }}" class="parent-display {% if filter_type == 'horizontal' %}facets__display{% else %}facets__display-vertical{% endif %}">
@@ -203,7 +203,7 @@
                   <summary class="facets__summary caption-large focus-offset">
                     <div>
                       <span>{{ filter.label | escape }}</span>
-                      {% render 'icon-caret' %}
+                      {% render 'icons-library', icons: 'caret' %}
                     </div>
                   </summary>
                   <div id="Facet-{{ forloop.index }}-{{ section.id }}" class="{% if filter_type == 'horizontal' %}facets__display{% else %}facets__display-vertical{% endif %}">
@@ -321,7 +321,7 @@
                       <option value="{{ option.value | escape }}"{% if option.value == sort_by %} selected="selected"{% endif %}>{{ option.name | escape }}</option>
                     {%- endfor -%}
                   </select>
-                  {% render 'icon-caret' %}
+                  {% render 'icons-library', icons: 'caret' %}
                 </div>
               </div>
 
@@ -367,7 +367,7 @@
                     <option value="{{ option.value | escape }}"{% if option.value == sort_by %} selected="selected"{% endif %}>{{ option.name | escape }}</option>
                   {%- endfor -%}
                 </select>
-                {% render 'icon-caret' %}
+                {% render 'icons-library', icons: 'caret' %}
               </div>
             </div>
 
@@ -409,7 +409,7 @@
             {%- endif -%}
           </span>
         </span>
-        <span tabindex="0" class="mobile-facets__close mobile-facets__close--no-js">{%- render 'icon-close' -%}</span>
+        <span tabindex="0" class="mobile-facets__close mobile-facets__close--no-js">{%- render 'icons-library', icons: 'close' -%}</span>
       </summary>
       <facet-filters-form>
         <form id="FacetFiltersFormMobile" class="mobile-facets">
@@ -450,13 +450,13 @@
                       <summary class="mobile-facets__summary focus-inset">
                         <div>
                           <span>{{ filter.label | escape }}</span>
-                          <span class="mobile-facets__arrow no-js-hidden">{% render 'icon-arrow' %}</span>
-                          <noscript>{% render 'icon-caret' %}</noscript>
+                          <span class="mobile-facets__arrow no-js-hidden">{% render 'icons-library', icons: 'arrow' %}</span>
+                          <noscript>{% render 'icons-library', icons: 'caret' %}</noscript>
                         </div>
                       </summary>
                       <div id="FacetMobile-{{ forloop.index }}-{{ section.id }}" class="mobile-facets__submenu gradient">
                         <button class="mobile-facets__close-button link link--text focus-inset" aria-expanded="true" type="button">
-                          {% render 'icon-arrow' %}
+                          {% render 'icons-library', icons: 'arrow' %}
                           {{ filter.label | escape }}
                         </button>
                         <ul class="mobile-facets__list list-unstyled" role="list">
@@ -500,13 +500,13 @@
                       <summary class="mobile-facets__summary focus-inset">
                         <div>
                           <span>{{ filter.label | escape }}</span>
-                          <span class="mobile-facets__arrow no-js-hidden">{% render 'icon-arrow' %}</span>
-                          <noscript>{% render 'icon-caret' %}</noscript>
+                          <span class="mobile-facets__arrow no-js-hidden">{% render 'icons-library', icons: 'arrow' %}</span>
+                          <noscript>{% render 'icons-library', icons: 'caret' %}</noscript>
                         </div>
                       </summary>
                       <div id="FacetMobile-{{ forloop.index }}-{{ section.id }}" class="mobile-facets__submenu gradient">
                         <button class="mobile-facets__close-button link link--text focus-inset" aria-expanded="true" type="button">
-                          {% render 'icon-arrow' %}
+                          {% render 'icons-library', icons: 'arrow' %}
                           {{ filter.label | escape }}
                         </button>
 
@@ -577,7 +577,7 @@
                             <option value="{{ option.value | escape }}"{% if option.value == sort_by %} selected="selected"{% endif %}>{{ option.name | escape }}</option>
                           {%- endfor -%}
                         </select>
-                        {% render 'icon-caret' %}
+                        {% render 'icons-library', icons: 'caret' %}
                       </div>
                     </div>
                   </div>
@@ -657,7 +657,7 @@
                   <option value="{{ option.value | escape }}"{% if option.value == sort_by %} selected="selected"{% endif %}>{{ option.name | escape }}</option>
                 {%- endfor -%}
               </select>
-              {% render 'icon-caret' %}
+              {% render 'icons-library', icons: 'caret' %}
             </div>
           </div>
 

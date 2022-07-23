@@ -158,7 +158,7 @@
                       <label class="field__label" for="url">{{ 'general.share.share_url' | t }}</label>
                     </div>
                     <button class="share-button__close hidden no-js-hidden">
-                      {% render 'icon-close' %}
+                      {% render 'icons-library', icons: 'close' %}
                       <span class="visually-hidden">{{ 'general.share.close' | t }}</span>
                     </button>
                     <button class="share-button__copy no-js-hidden">
@@ -211,7 +211,7 @@
                               </option>
                             {%- endfor -%}
                           </select>
-                          {% render 'icon-caret' %}
+                          {% render 'icons-library', icons: 'caret' %}
                         </div>
                       </div>
                     {%- endfor -%}
@@ -240,7 +240,7 @@
                         </option>
                       {%- endfor -%}
                     </select>
-                    {% render 'icon-caret' %}
+                    {% render 'icons-library', icons: 'caret' %}
                   </div>
                 </div>
               </noscript>
@@ -329,14 +329,14 @@
           {%- endfor -%}
         <a{% if product == blank %} role="link" aria-disabled="true"{% else %} href="{{ product.url }}"{% endif %} class="link product__view-details animate-arrow">
           {{ 'products.product.view_full_details' | t }}
-          {% render 'icon-arrow' %}
+          {% render 'icons-library', icons: 'arrow' %}
         </a>
         </div>
       </div>
     </div>
     <product-modal id="ProductModal-{{ section.id }}" class="product-media-modal media-modal">
       <div class="product-media-modal__dialog" role="dialog" aria-label="{{ 'products.modal.label' | t }}" aria-modal="true" tabindex="-1">
-        <button id="ModalClose-{{ section.id }}" type="button" class="product-media-modal__toggle" aria-label="{{ 'accessibility.close' | t }}">{% render 'icon-close' %}</button>
+        <button id="ModalClose-{{ section.id }}" type="button" class="product-media-modal__toggle" aria-label="{{ 'accessibility.close' | t }}">{% render 'icons-library', icons: 'close' %}</button>
 
         <div class="product-media-modal__content color-background-1 gradient" role="document" aria-label="{{ 'products.modal.label' | t }}" tabindex="0">
           {%- liquid
