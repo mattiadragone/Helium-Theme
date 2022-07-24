@@ -2,6 +2,10 @@
 {{ 'component-loading-overlay.css' | asset_url | stylesheet_tag }}
 {{ 'component-card.css' | asset_url | stylesheet_tag }}
 {{ 'component-price.css' | asset_url | stylesheet_tag }}
+{% if section.settings.show_swatch %}
+  {{ 'component-swatch.css' | asset_url | stylesheet_tag }}
+{% endif %}
+
 
 <link rel="preload" href="{{ 'component-rte.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
 
@@ -104,9 +108,13 @@
                     show_vendor: section.settings.show_vendor,
                     show_rating: section.settings.show_rating,
                     lazy_load: lazy_load,
+                    show_swatch: section.settings.show_swatch,
+                    vrnt: section.settings.variant_swatch,
+                    aut: 'automatic',
+                    txt: 'text',
+                    img: 'image',
                     show_quick_add: section.settings.enable_quick_add,
                     section_id: section.id
-
                   %}
                 </li>
               {%- endfor -%}
@@ -195,6 +203,38 @@
       "default": false,
       "label": "t:sections.main-collection-product-grid.settings.enable_quick_buy.label"
     },
+    {
+      "type": "header",
+      "content":"t:sections.main-collection-product-grid.settings.show_swatch.title"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_swatch",
+      "default": true,
+      "label": "t:sections.main-collection-product-grid.settings.show_swatch.label"
+    },
+    {
+      "type": "select",
+      "id": "variant_swatch",
+      "options": [
+        {
+          "value": "image",
+          "label": "image"
+        },
+        {
+          "value": "text",
+          "label": "text"
+        }
+      ],
+      "default": "image",
+      "label": "t:sections.main-collection-product-grid.settings.show_swatch.type"
+    },
+   {
+    "type": "text",
+    "id": "variant_name",
+    "label": "t:sections.main-collection-product-grid.settings.show_swatch.name",
+    "default": "color"
+   },
     {
       "type": "header",
       "content": "t:sections.main-collection-product-grid.settings.header__1.content"

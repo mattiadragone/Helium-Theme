@@ -338,10 +338,25 @@
                                 {% if option.selected_value == value %}checked{% endif %}
                           >
                           <label for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}">
+                            {% for variant in product.variants %}
+                              {%if variant.title contains value and variant.image != blank %}
+                                <img src="{{ variant.image | img_url: '360x' }}" width="60">
+                                <style>
+                                  .product-form__input input[type=radio]:checked+label {
+                                    display: flex;
+                                    flex-direction: column;
+                                    max-width: 11rem;
+                                  }
+                                .product-form__input {display:flex}
+                                .product-form__input input[type=radio]+label { padding:0}
+                                </style>
+                              {% endif %}
+                            {% endfor %}
                             {{ value }}
                           </label>
                         {%- endfor -%}
                       </fieldset>
+                     
                   {%- endfor -%}
                   <script type="application/json">
                     {{ product.variants | json }}

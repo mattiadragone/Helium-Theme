@@ -4,6 +4,28 @@
   margin: 0 0 1rem;
   z-index: 1;
 }
+@media screen and (min-width: 750px) {
+  .quick-add { 
+    position: absolute;
+    z-index: 11;
+    bottom: 0;
+    right: 0;
+    margin: 1rem;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all .2s ease-in-out;
+  }
+  .quick-add .icon {
+    width: 1rem;
+    height: 1rems;
+  }
+  .grid__item:hover .quick-add {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+}
 
 .card--card .quick-add {
   margin: 0 1.3rem 1rem;
