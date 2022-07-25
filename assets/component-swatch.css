@@ -55,6 +55,21 @@
   .variant-pillow__image {
     display: flex;
   }
+
+  .variant-pillow__wrapper.sold-out {
+    opacity: 0.4;
+    position: relative;
+  }
+  .variant-pillow__wrapper.sold-out::after {
+    content: '/';
+    position: absolute;
+  }
+
+  .variant-pillow__wrapper.sold-out:hover {
+    opacity: 0.4;
+    border: 0.1rem solid rgba(var(--color-foreground), 0.2);
+    cursor: not-allowed;
+  }
   
   .list-variant a:hover .variant-pillow__wrapper {
     border: 1px solid rgb(var(--color-foreground));
