@@ -4,9 +4,6 @@
 
 
 
-{% if section.settings.available_countries != blank %}
-  {% if localization.country.iso_code == section.settings.available_countries %}
-    questo banner c'e' solo in italia
 {%- if section.settings.slide_height == 'adapt_image' and section.blocks.first.settings.image != blank -%}
   {%- style -%}
   @media screen and (max-width: 749px) {
@@ -179,10 +176,7 @@
     </noscript>
   {%- endif -%}
 </slideshow-component>
-{% else %}
-non c'e' un banner in {{ localization.country.iso_code }}
-{% endif %}
-{% endif %}
+
 
 {%- if request.design_mode -%}
   <script src="{{ 'theme-editor.js' | asset_url }}" defer="defer"></script>

@@ -106,11 +106,11 @@
   }
 {%- endstyle -%}
 
-<script src="{{ 'details-disclosure.js' | asset_url }}" defer="defer"></script>
-<script src="{{ 'details-modal.js' | asset_url }}" defer="defer"></script>
-<script src="{{ 'cart-notification.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'component-details-disclosure.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'component-details-modal.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'component-cart-notification.js' | asset_url }}" defer="defer"></script>
 {%- if settings.cart_type == "drawer" -%}
-  <script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'component-cart-drawer.js' | asset_url }}" defer="defer"></script>
 {%- endif -%}
 
 <svg xmlns="http://www.w3.org/2000/svg" class="hidden">

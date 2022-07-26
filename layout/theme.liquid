@@ -28,8 +28,8 @@
     {% endif %}
 
     {% render 'meta-tags' %}
-
-    <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'vendor.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'base.js' | asset_url }}" defer="defer"></script>
     {{ content_for_header }}
 
     
@@ -81,7 +81,7 @@
 
 
     {%- if settings.predictive_search_enabled -%}
-      <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
+      <script src="{{ 'component-predictive-search.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
   </body>
 </html>

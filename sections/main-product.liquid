@@ -339,8 +339,13 @@
                           >
                           <label for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}">
                             {% for variant in product.variants %}
-                              {%if variant.title contains value and variant.image != blank %}
-                                <img src="{{ variant.image | img_url: '360x' }}" width="60">
+                              {% if variant.title contains value and variant.image != blank %}
+                                <img 
+                                src="{{ variant.image | image_url: width: 360 }}" 
+                                width="60" 
+                                height"60" 
+                                loading="lazy"
+                                >
                                 <style>
                                   .product-form__input input[type=radio]:checked+label {
                                     display: flex;

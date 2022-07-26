@@ -10,9 +10,9 @@
 <link rel="preload" href="{{ 'component-rte.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
 
 {%- if section.settings.enable_quick_add -%}
-  <link rel="stylesheet" href="{{ 'quick-add.css' | asset_url }}" media="print" onload="this.media='all'">
-  <script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
-  <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+  <link rel="stylesheet" href="{{ 'component-quick-add.css' | asset_url }}" media="print" onload="this.media='all'">
+  <script src="{{ 'component-quick-add.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'component-product-form.js' | asset_url }}" defer="defer"></script>
 {%- endif -%}
 <noscript>{{ 'component-rte.css' | asset_url | stylesheet_tag }}</noscript>
 
@@ -69,7 +69,7 @@
 
   <div class="{% if section.settings.filter_type == 'vertical' %} facets-vertical page-width{% endif %}">
     {{ 'component-facets.css' | asset_url | stylesheet_tag }}
-    <script src="{{ 'facets.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'component-facets.js' | asset_url }}" defer="defer"></script>
     {%- if section.settings.enable_filtering or section.settings.enable_sorting -%}
       <aside aria-labelledby="verticalTitle" class="facets-wrapper{% unless section.settings.enable_filtering %} facets-wrapper--no-filters{% endunless %}{% if section.settings.filter_type != 'vertical' %} page-width{% endif %}" id="main-collection-filters" data-id="{{ section.id }}">
         {% render 'facets', results: collection, enable_filtering: section.settings.enable_filtering, enable_sorting: section.settings.enable_sorting, filter_type: section.settings.filter_type %}
@@ -91,45 +91,66 @@
         {%- else -%}
           <div class="collection{% if section.settings.filter_type != 'vertical' %} page-width{% endif %}">
             <div class="loading-overlay gradient"></div>
-    
-            <ul id="product-grid" data-id="{{ section.id }}" class="
-              grid product-grid grid--{{ section.settings.columns_mobile }}-col-tablet-down
-              grid--{{ section.settings.columns_desktop }}-col-desktop">
-              {%- for product in collection.products -%}
-                {% assign lazy_load = false %}
-                {%- if forloop.index > 2 -%}
-                  {%- assign lazy_load = true -%}
-                {%- endif -%}
-                <li class="grid__item">
-                  {% render 'card-product',
-                    card_product: product,
-                    media_aspect_ratio: section.settings.image_ratio,
-                    show_secondary_image: section.settings.show_secondary_image,
-                    show_vendor: section.settings.show_vendor,
-                    show_rating: section.settings.show_rating,
-                    lazy_load: lazy_load,
-                    show_swatch: section.settings.show_swatch,
-                    vrnt: section.settings.variant_swatch,
-                    aut: 'automatic',
-                    txt: 'text',
-                    img: 'image',
-                    option_name: section.settings.variant_name,
-                    show_quick_add: section.settings.enable_quick_add,
-                    section_id: section.id
-                  %}
-                </li>
-              {%- endfor -%}
-            </ul>
-    
+            {% if section.settings.infinite_scroll %}
+              <div id="endlessLoop" >
+            {% endif %}
+              <ul id="product-grid" data-id="{{ section.id }}" class="
+                grid product-grid grid--{{ section.settings.columns_mobile }}-col-tablet-down
+                grid--{{ section.settings.columns_desktop }}-col-desktop">
+                {%- for product in collection.products -%}
+                  {% assign lazy_load = false %}
+                  {%- if forloop.index > 2 -%}
+                    {%- assign lazy_load = true -%}
+                  {%- endif -%}
+                  <li class="grid__item">
+                    {% render 'card-product',
+                      card_product: product,
+                      media_aspect_ratio: section.settings.image_ratio,
+                      show_secondary_image: section.settings.show_secondary_image,
+                      show_vendor: section.settings.show_vendor,
+                      show_rating: section.settings.show_rating,
+                      lazy_load: lazy_load,
+                      show_swatch: section.settings.show_swatch,
+                      vrnt: section.settings.variant_swatch,
+                      aut: 'automatic',
+                      txt: 'text',
+                      img: 'image',
+                      option_name: section.settings.variant_name,
+                      show_quick_add: section.settings.enable_quick_add,
+                      section_id: section.id
+                    %}
+                  </li>
+                {%- endfor -%}
+              </ul>
+            {% if section.settings.infinite_scroll %}
+              </div>
+            {% endif %}
+            {% if section.settings.infinite_scroll %}
+              <div id="endlessPagination"
+                class="endlessPagination">
+                {% if paginate.next %}
+                  <a href="{{ paginate.next.url }}""
+                    class="button button--primary"
+                    >
+                    Loading More
+                  </a>
+                {% endif %}
+              </div>
+            {% else %}
             {%- if paginate.pages > 1 -%}
               {% render 'pagination', paginate: paginate, anchor: '' %}
             {%- endif -%}
+            {% endif %}
           </div>
         {%- endif -%}
       {%- endpaginate -%}
     </div>
   </div>
 </div>
+
+{% if section.settings.infinite_scroll %} 
+ {% render 'infinite-scroll' %}
+{% endif %}
 
 
 {% schema %}
@@ -140,10 +161,10 @@
     {
       "type": "range",
       "id": "products_per_page",
-      "min": 8,
+      "min": 3,
       "max": 48,
-      "step": 8,
-      "default": 40,
+      "step": 3,
+      "default": 3,
       "label": "t:sections.main-collection-product-grid.settings.products_per_page.label"
     },
     {
@@ -154,6 +175,12 @@
       "step": 1,
       "default": 4,
       "label": "t:sections.main-collection-product-grid.settings.columns_desktop.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "infinite_scroll",
+      "label": "Infinite Scroll",
+      "default": true
     },
     {
       "type": "header",
@@ -206,7 +233,7 @@
     },
     {
       "type": "header",
-      "content":"t:sections.main-collection-product-grid.settings.show_swatch.title"
+      "content": "t:sections.main-collection-product-grid.settings.show_swatch.title"
     },
     {
       "type": "checkbox",
@@ -230,12 +257,12 @@
       "default": "image",
       "label": "t:sections.main-collection-product-grid.settings.show_swatch.type"
     },
-   {
-    "type": "text",
-    "id": "variant_name",
-    "label": "t:sections.main-collection-product-grid.settings.show_swatch.name",
-    "default": "colour"
-   },
+    {
+      "type": "text",
+      "id": "variant_name",
+      "label": "t:sections.main-collection-product-grid.settings.show_swatch.name",
+      "default": "colour"
+    },
     {
       "type": "header",
       "content": "t:sections.main-collection-product-grid.settings.header__1.content"

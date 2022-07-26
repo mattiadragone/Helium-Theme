@@ -1,0 +1,104 @@
+.list-variant {
+    display: flex;
+    position: relative;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    transition: all 300ms ease-in-out;
+    width: 100%;
+    z-index: 1;
+
+  }
+  .list-variant.text {
+    overflow-x: scroll;
+  }
+  
+  .list-variant:hover li {
+      opacity: 0.4;
+  }
+
+  .list-variant li a {
+    text-decoration: none;
+  }
+  
+  .list-variant li:hover {
+    opacity: 1;
+  }
+  
+  .variant-pillow__wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: flex-start;
+    align-items: center;
+    border: 0.1rem solid rgba(var(--color-foreground), 0.2);
+    padding: 0.3rem;
+    border-radius: 100px;
+    margin: 0 1rem 1rem 0;
+    transition: all var(--duration-long) ease;
+  }
+  
+  .variant-pillow__wrapper label {
+    text-decoration: none;
+    padding: 0.3rem 0.7rem;
+    white-space: nowrap;
+  }
+  .variant-pillow__wrapper a label  {
+    cursor: auto;
+    text-decoration: none;
+  }
+  .list-variant .link {
+    text-decoration: none;
+  }
+  
+  .variant-pillow__image {
+    display: flex;
+  }
+
+  .variant-pillow__wrapper.sold-out {
+    opacity: 0.4;
+    position: relative;
+  }
+  .variant-pillow__wrapper.sold-out::after {
+    content: '/';
+    position: absolute;
+  }
+
+  .variant-pillow__wrapper.sold-out:hover {
+    opacity: 0.4;
+    border: 0.1rem solid rgba(var(--color-foreground), 0.2);
+    cursor: not-allowed;
+  }
+  
+  .list-variant a:hover .variant-pillow__wrapper {
+    border: 1px solid rgb(var(--color-foreground));
+  }
+  
+  .variant-pillow__image img {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 100px;
+  }
+  .variant-pillow__toltip .badge {
+    font-size: 0.9rem;
+    padding: 0.2rem 0.3rem;
+  }
+  
+  .variant-pillow__toltip {
+    position: absolute;
+    background-color: rgb(var(--color-foreground));
+    color: rgb(var(--color-background));
+    padding: 0.5rem 1rem;
+    border-radius: 100px;
+    font-size: 0.8rem;
+    text-transform:uppercase;
+    transform: translateY(-15px);
+    opacity: 0;
+    transition: all var(--duration-long) ease;
+  }
+  
+  .list-variant a:hover .variant-pillow__toltip {
+    opacity: 1;
+    transform: translateY(-30px);
+  }
