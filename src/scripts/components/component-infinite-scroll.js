@@ -1,0 +1,1 @@
+import '../../styles/components/component-infinite-scroll.css'

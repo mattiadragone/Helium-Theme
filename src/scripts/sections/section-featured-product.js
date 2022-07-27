@@ -1,0 +1,1 @@
+import '../../styles/sections/section-featured-product.css'

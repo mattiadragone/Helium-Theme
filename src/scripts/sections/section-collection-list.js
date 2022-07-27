@@ -1,0 +1,1 @@
+import '../../styles/sections/section-collection-list.css'

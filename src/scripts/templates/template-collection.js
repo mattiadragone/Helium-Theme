@@ -1,0 +1,1 @@
+import '../../styles/templates/template-collection.css'

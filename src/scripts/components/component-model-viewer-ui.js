@@ -1,0 +1,1 @@
+import '../../styles/components/component-model-viewer-ui.css'
