@@ -2,4 +2,5 @@ package.json
 package-look.json
 .*
 node_modules/**/*
-src/ß
+src/
+_*

@@ -7,11 +7,11 @@ const { VueLoaderPlugin } = require('vue-loader')
 const CopyPlugin = require('copy-webpack-plugin')
 const sass = require('node-sass')
 const glob = require('glob')
-const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin")
 
 
 module.exports = {
-  stats: 'minimal',
+  stats: 'normal',
   entry: glob.sync('./src/scripts/**/*.js').reduce((acc, path) => {
     const entry = path.replace(/^.*[\\\/]/, '').replace('.js','');
     acc[entry] = path;
@@ -20,6 +20,7 @@ module.exports = {
   output: {
     filename: './[name].js',
     path: path.resolve(__dirname, '../../assets/'),
+    clean: true,
   },
   resolve: {
     extensions: ['*', '.js', '.vue', '.json'],
@@ -79,7 +80,7 @@ module.exports = {
     ]
   },
   optimization: {
-    removeEmptyChunks: true,
+    removeEmptyChunks: true
   },
   plugins: [
     /*
@@ -99,9 +100,12 @@ module.exports = {
      * don't clean files with the 'static' keyword in their filename
      * docs: https://github.com/johnagan/clean-webpack-plugin
      */
+     
+
     new CleanWebpackPlugin({
-      cleanOnceBeforeBuildPatterns: ['**/*', '!*static*']
+      cleanOnceBeforeBuildPatterns: ['@assets/'],
     }),
+
     /**
      * docs: https://webpack.js.org/plugins/mini-css-extract-plugin
      */
