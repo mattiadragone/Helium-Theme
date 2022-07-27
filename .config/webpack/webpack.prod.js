@@ -2,6 +2,8 @@ const { merge } = require('webpack-merge')
 const TerserPlugin = require('terser-webpack-plugin') // included in webpack 5, no need to add to package.json
 const common = require('./webpack.common.js')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
 
 
 
@@ -59,6 +61,14 @@ module.exports = merge(common, {
       new CssMinimizerPlugin({
         parallel: true,
         minify: CssMinimizerPlugin.cssoMinify,
+      }),
+      new BundleAnalyzerPlugin({
+        analyzerMode: 'static',
+        generateStatsFile: true,
+        statsFilename: '../stats/report.json',
+        reportFilename: '../stats/report.html',
+        analyzerPort: 4000,
+        openAnalyzer: true
       })
     ]
   }
