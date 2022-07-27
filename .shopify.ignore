@@ -4,3 +4,4 @@ package-look.json
 node_modules/**/*
 src/
 _*
+stats/
