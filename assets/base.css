@@ -677,6 +677,9 @@ hr {
 details > * {
   box-sizing: border-box;
 }
+details[open] > div {
+  animation: animateMenuOpen var(--duration-default) ease;
+}
 
 .break {
   word-break: break-word;
@@ -1473,7 +1476,7 @@ button.shopify-payment-button__button--unbranded {
 }
 
 details[open] > .share-button__fallback {
-  animation: animateMenuOpen var(--duration-default) ease;
+  animation: animateMenuOpen var(--duration-long) ease;
 }
 
 .share-button__button:hover {
