@@ -108,6 +108,10 @@
       "description": "Description",
       "on_sale": "Sale",
       "product_variants": "Product variants",
+      "swatch_color": {
+        "title": "Swatch Color",
+        "more": "More Colors"
+      },
       "media": {
         "gallery_viewer": "Gallery Viewer",
         "load_image": "Load image {{ index }} in gallery view",

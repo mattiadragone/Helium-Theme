@@ -219,12 +219,12 @@
             endfor
           %}
           <span class="list-variant__text large-up-hide">
-            More {{ option_name }}s
+            {{ 'products.product.swatch_color.more' | t }}
           </span>
           <ul class="list-variant{% if vrnt == txt %} text{% endif %} small-hide {% for variant in card_product.variants limit: 1 %}{% if variant.metafields.my_fields.swatch_color != blank %}metafield{% endif %}{% endfor %}">
             {% for variant in card_product.variants limit: 4 %}
               {% if  variant.title != 'Default Title' and variantsColor == true %}
-                {% if variant.image and vrnt != txt %}
+                {% if variant.image and vrnt != txt and variant.metafields.my_fields.swatch_color != blank %}
                   <li>
                     <a href="{{ variant.url }}" class="link">
                       {% if vrnt == img or vrnt == metafield and variant.image and variant.metafields.my_fields.swatch_color != blank %}
@@ -234,7 +234,7 @@
                           </span> 
                         </div>
                       {% endif %}
-                       <div class="variant-pillow__wrapper{% unless variant.available %} sold-out{% endunless %}">
+                       <div class="variant-pillow__wrapper{% unless variant.available %} sold-out{% endunless %}{% unless variant.image and variant.metafields.my_fields.swatch_color != blank %} text{% endunless %}">
                           {% if vrnt == img and variant.image %}
                             <div class="variant-pillow__image">
                               <img src="{{ variant.image | image_url: width: 100, height: 100 }}" 
@@ -246,11 +246,7 @@
                             </div>
                           {% elsif vrnt == metafield and variant.metafields.my_fields.swatch_color != blank %}
                             <span style="background: {{ variant.metafields.my_fields.swatch_color }}"></span>
-                            {% if variant.metafields.my_fields.swatch_color == blank and variant.image == blank %}
-                              <label class="caption-with-letter-spacing light small">
-                                {{ variant.title }}
-                              </label>    
-                            {% endif %}
+                          {% elsif vrnt == metafield and variant.metafields.my_fields.swatch_color == blank %}
                           {% else %}
                             <label class="caption-with-letter-spacing light small">
                               {{ variant.title }}
@@ -261,7 +257,17 @@
                   </li>             
                 {% endif %}
               {% endif %}
+              {% liquid
+                if variant.metafields.my_fields.swatch_color == blank
+                  assign more_colors = true 
+                endif
+                  %}
             {% endfor %}
+            {% if vrnt == metafield and more_colors == true %}
+                <span class="list-variant__text">
+                  {{ 'products.product.swatch_color.more' | t }}
+                </span>
+            {% endif %}
           </ul>
         {%- endif -%}
         <div class="card__badge {{ settings.badge_position }}">
