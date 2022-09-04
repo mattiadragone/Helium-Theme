@@ -94,12 +94,12 @@
     "social_vimeo_link": "",
     "predictive_search_enabled": true,
     "predictive_search_show_vendor": false,
-    "predictive_search_show_price": false,
+    "predictive_search_show_price": true,
     "currency_code_enabled": true,
     "cart_type": "drawer",
     "show_vendor": true,
     "show_cart_note": true,
-    "cart_drawer_collection": "sale",
+    "cart_drawer_collection": "candles",
     "sections": {
       "announcement-bar": {
         "type": "announcement-bar",
@@ -108,6 +108,7 @@
             "type": "announcement",
             "settings": {
               "text": "Welcome to our store",
+              "text_alignment": "center",
               "color_scheme": "inverse",
               "link": ""
             }
@@ -123,7 +124,6 @@
         "type": "header",
         "settings": {
           "color_scheme": "background-2",
-          "logo": "shopify:\/\/shop_images\/alessi.png",
           "logo_width": 110,
           "logo_position": "middle-left",
           "menu": "main-menu",
@@ -142,21 +142,21 @@
             "type": "link_list",
             "settings": {
               "heading": "",
-              "menu": "the-dream-factory"
+              "menu": ""
             }
           },
           "footer-0": {
             "type": "link_list",
             "settings": {
               "heading": "",
-              "menu": "legal-area"
+              "menu": ""
             }
           },
           "bca28290-a7ec-4d10-8d67-854a08513bc8": {
             "type": "link_list",
             "settings": {
               "heading": "",
-              "menu": "customer-care"
+              "menu": ""
             }
           }
         },
@@ -194,15 +194,7 @@
     },
     "content_for_index": [
 
-    ],
-    "blocks": {
-      "5240453401355084846": {
-        "type": "shopify:\/\/apps\/subsecond-prefetch-checkout\/blocks\/app-embed\/6d4e6112-20fa-44c2-a527-bc68aa6e3c1b",
-        "disabled": false,
-        "settings": {
-        }
-      }
-    }
+    ]
   },
   "presets": {
     "Default": {

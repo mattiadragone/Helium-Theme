@@ -123,37 +123,69 @@
   {%- else -%}
     <deferred-media class="deferred-media gradient global-media-settings media no-js-hidden" style="padding-top: {{ 1 | divided_by: media.aspect_ratio | times: 100 }}%" data-media-id="{{ media.id }}">
   {%- endif -%}
-  <button id="Deferred-Poster-Modal-{{ media.id }}" class="deferred-media__poster" type="button">
-    <span class="deferred-media__poster-button motion-reduce">
-      {%- if media.media_type == 'model' -%}
-        <span class="visually-hidden">{{ 'products.product.media.play_model' | t }}</span>
-        {%- render 'icons-library', icons: '3d-model' -%}
-      {%- else -%}
-        <span class="visually-hidden">{{ 'products.product.media.play_video' | t }}</span>
-        {%- render 'icons-library', icons: 'play' -%}
-      {%- endif -%}
-    </span>
-    <img
-      srcset="{% if media.preview_image.width >= 493 %}{{ media.preview_image | image_url: width: 493 }} 493w,{% endif %}
-        {% if media.preview_image.width >= 600 %}{{ media.preview_image | image_url: width: 600 }} 600w,{% endif %}
-        {% if media.preview_image.width >= 713 %}{{ media.preview_image | image_url: width: 713 }} 713w,{% endif %}
-        {% if media.preview_image.width >= 823 %}{{ media.preview_image | image_url: width: 823 }} 823w,{% endif %}
-        {% if media.preview_image.width >= 990 %}{{ media.preview_image | image_url: width: 990 }} 990w,{% endif %}
-        {% if media.preview_image.width >= 1100 %}{{ media.preview_image | image_url: width: 1100 }} 1100w,{% endif %}
-        {% if media.preview_image.width >= 1206 %}{{ media.preview_image | image_url: width: 1206 }} 1206w,{% endif %}
-        {% if media.preview_image.width >= 1346 %}{{ media.preview_image | image_url: width: 1346 }} 1346w,{% endif %}
-        {% if media.preview_image.width >= 1426 %}{{ media.preview_image | image_url: width: 1426 }} 1426w,{% endif %}
-        {% if media.preview_image.width >= 1646 %}{{ media.preview_image | image_url: width: 1646 }} 1646w,{% endif %}
-        {% if media.preview_image.width >= 1946 %}{{ media.preview_image | image_url: width: 1946 }} 1946w,{% endif %}
-        {{ media.preview_image | image_url }} {{ media.preview_image.width }}w"
-      src="{{ media | image_url: width: 1946 }}"
-      sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | times: media_width | round }}px, (min-width: 990px) calc({{ media_width | times: 100 }}vw - 10rem), (min-width: 750px) calc((100vw - 11.5rem) / 2), calc(100vw - 4rem)"
-      {% unless lazy_load == false %}loading="lazy"{% endunless %}
-      width="973"
-      height="{{ 973 | divided_by: media.preview_image.aspect_ratio | ceil }}"
-      alt="{{ media.preview_image.alt | escape }}"
-    >
-  </button>
+  
+  {% unless video_autoplay == true %}
+    <button id="Deferred-Poster-Modal-{{ media.id }}" class="deferred-media__poster" type="button">
+      <span class="deferred-media__poster-button motion-reduce">
+        {%- if media.media_type == 'model' -%}
+          <span class="visually-hidden">{{ 'products.product.media.play_model' | t }}</span>
+          {%- render 'icons-library', icons: '3d-model' -%}
+        {%- else -%}
+          <span class="visually-hidden">{{ 'products.product.media.play_video' | t }}</span>
+          {%- render 'icons-library', icons: 'play' -%}
+        {%- endif -%}
+      </span>
+      <img
+        srcset="{% if media.preview_image.width >= 493 %}{{ media.preview_image | image_url: width: 493 }} 493w,{% endif %}
+          {% if media.preview_image.width >= 600 %}{{ media.preview_image | image_url: width: 600 }} 600w,{% endif %}
+          {% if media.preview_image.width >= 713 %}{{ media.preview_image | image_url: width: 713 }} 713w,{% endif %}
+          {% if media.preview_image.width >= 823 %}{{ media.preview_image | image_url: width: 823 }} 823w,{% endif %}
+          {% if media.preview_image.width >= 990 %}{{ media.preview_image | image_url: width: 990 }} 990w,{% endif %}
+          {% if media.preview_image.width >= 1100 %}{{ media.preview_image | image_url: width: 1100 }} 1100w,{% endif %}
+          {% if media.preview_image.width >= 1206 %}{{ media.preview_image | image_url: width: 1206 }} 1206w,{% endif %}
+          {% if media.preview_image.width >= 1346 %}{{ media.preview_image | image_url: width: 1346 }} 1346w,{% endif %}
+          {% if media.preview_image.width >= 1426 %}{{ media.preview_image | image_url: width: 1426 }} 1426w,{% endif %}
+          {% if media.preview_image.width >= 1646 %}{{ media.preview_image | image_url: width: 1646 }} 1646w,{% endif %}
+          {% if media.preview_image.width >= 1946 %}{{ media.preview_image | image_url: width: 1946 }} 1946w,{% endif %}
+          {{ media.preview_image | image_url }} {{ media.preview_image.width }}w"
+        src="{{ media | image_url: width: 1946 }}"
+        sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | times: media_width | round }}px, (min-width: 990px) calc({{ media_width | times: 100 }}vw - 10rem), (min-width: 750px) calc((100vw - 11.5rem) / 2), calc(100vw - 4rem)"
+        {% unless lazy_load == false %}loading="lazy"{% endunless %}
+        width="973"
+        height="{{ 973 | divided_by: media.preview_image.aspect_ratio | ceil }}"
+        alt="{{ media.preview_image.alt | escape }}"
+      >
+    </button>
+  {% endunless %}
+{% if video_autoplay == true %}
+  {% if media.media_type != 'video' %}    
+    <template>
+  {%- endif -%}
+  
+  {%- liquid
+    case media.media_type
+    when 'external_video'
+      assign video_class = 'js-' | append: media.host
+      if media.host == 'youtube'
+        echo media | external_video_url: autoplay: true, loop: loop, playlist: media.external_id | external_video_tag: class: video_class, loading: "lazy"
+      else
+        echo media | external_video_url: autoplay: true, loop: loop | external_video_tag: class: video_class, loading: "lazy"
+      endif
+    when 'video'
+      assign videos = product.media | where: "media_type", "video" 
+      assign video_url = videos[0].sources[1].url 
+      echo '<video autoplay loop muted playsinline width="100%"><source src="' 
+      echo video_url
+      echo '" type="video/mp4"> </video>'
+    when 'model'
+      echo media | media_tag: image_size: "2048x", toggleable: true
+    endcase
+  -%}
+  
+  {% if media.media_type != 'video' %} 
+    </template>
+  {%- endif -%}
+{% else %}
   <template>
     {%- liquid
       case media.media_type
@@ -171,6 +203,7 @@
       endcase
     -%}
   </template>
+{% endif %}
 
   {%- if media.media_type == 'model' -%}
     </product-model>

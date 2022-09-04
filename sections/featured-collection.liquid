@@ -1,5 +1,8 @@
 {{ 'component-card.css' | asset_url | stylesheet_tag }}
 {{ 'component-price.css' | asset_url | stylesheet_tag }}
+{% if section.settings.show_swatch %}
+  {{ 'component-swatch.css' | asset_url | stylesheet_tag }}
+{% endif %}
 
 <link rel="stylesheet" href="{{ 'component-slider.css' | asset_url }}" media="print" onload="this.media='all'">
 <link rel="stylesheet" href="{{ 'template-collection.css' | asset_url }}" media="print" onload="this.media='all'">
@@ -56,6 +59,12 @@
               show_secondary_image: section.settings.show_secondary_image,
               show_vendor: section.settings.show_vendor,
               show_rating: section.settings.show_rating,
+              show_swatch: section.settings.show_swatch,
+              vrnt: section.settings.variant_swatch,
+              aut: 'automatic',
+              txt: 'text',
+              img: 'image',
+              option_name: section.settings.variant_name,
               show_quick_add: section.settings.enable_quick_add,
               section_id: section.id
             %}
@@ -297,6 +306,38 @@
       "default": false,
       "label": "t:sections.featured-collection.settings.enable_quick_buy.label"
     },
+    {
+      "type": "header",
+      "content":"t:sections.main-collection-product-grid.settings.show_swatch.title"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_swatch",
+      "default": true,
+      "label": "t:sections.main-collection-product-grid.settings.show_swatch.label"
+    },
+    {
+      "type": "select",
+      "id": "variant_swatch",
+      "options": [
+        {
+          "value": "image",
+          "label": "image"
+        },
+        {
+          "value": "text",
+          "label": "text"
+        }
+      ],
+      "default": "image",
+      "label": "t:sections.main-collection-product-grid.settings.show_swatch.type"
+    },
+   {
+    "type": "text",
+    "id": "variant_name",
+    "label": "t:sections.main-collection-product-grid.settings.show_swatch.name",
+    "default": "colour"
+   },
     {
       "type": "header",
       "content": "t:sections.featured-collection.settings.header_mobile.content"

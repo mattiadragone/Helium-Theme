@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="{{ 'component-header.css' | asset_url }}" media="print" onload="this.media='all'">
 <link rel="stylesheet" href="{{ 'component-list-menu.css' | asset_url }}" media="print" onload="this.media='all'">
 <link rel="stylesheet" href="{{ 'component-search.css' | asset_url }}" media="print" onload="this.media='all'">
 <link rel="stylesheet" href="{{ 'component-menu-drawer.css' | asset_url }}" media="print" onload="this.media='all'">
@@ -20,6 +21,7 @@
   {{ 'component-loading-overlay.css' | asset_url | stylesheet_tag }}
 {%- endif -%}
 
+<noscript>{{ 'component-header.css' | asset_url | stylesheet_tag }}</noscript>
 <noscript>{{ 'component-list-menu.css' | asset_url | stylesheet_tag }}</noscript>
 <noscript>{{ 'component-search.css' | asset_url | stylesheet_tag }}</noscript>
 <noscript>{{ 'component-menu-drawer.css' | asset_url | stylesheet_tag }}</noscript>
@@ -454,7 +456,7 @@
                         <span {%- if link.child_active %} class="header__active-menu-item"{% endif %}>{{ link.title | escape }}</span>
                         {% render 'icons-library', icons: 'caret' %}
                       </summary>
-                      <div id="MegaMenu-Content-{{ forloop.index }}" class="mega-menu__content gradient motion-reduce global-settings-popup" tabindex="-1">
+                      <div id="MegaMenu-Content-{{ forloop.index }}" class="mega-menu__content gradient motion-reduce global-settings-popup" tabindex="-1" onmouseover="jackMousein(this)" onmouseleave="jackMouseout(this)">
                         <ul class="mega-menu__list page-width{% if link.levels == 1 %} mega-menu__list--condensed{% endif %}" role="list">
                           {%- for childlink in link.links -%}
                             <li>
@@ -489,6 +491,7 @@
         </nav>
       {%- endif -%}
     {%- endif -%}
+    
 
     <div class="header__icons">
       <details-modal class="header__search">
@@ -736,6 +739,48 @@
     }
   </script>
 {%- endif -%}
+
+<script>
+  function jackMousein(x){
+      let nodd = x.parentElement;
+      nodd.setAttribute('megaopen', true)
+  }
+  function jackMouseout(x){
+      let  nodd = x.parentElement;
+      nodd.removeAttribute('megaopen')
+  }
+  let items = document.querySelector(".header__inline-menu").querySelectorAll("details");
+  items.forEach(item => {
+      
+      item.addEventListener("mouseover", () => {
+          item.setAttribute("open", true);
+          item.querySelector("ul").addEventListener("mouseleave", () => {
+              setTimeout(function(){
+                  if(item.hasAttribute('megaopen')){
+                      item.setAttribute("open", true);
+                      document.querySelector(".slideshow__controls--inner").style.zIndex = "0";
+                  }
+                  else{
+                      item.removeAttribute("open");
+                      document.querySelector(".slideshow__controls--inner").style.zIndex = "3";
+
+                  }
+              }, 1000);
+          });
+          item.addEventListener("mouseleave", () => {
+              
+              setTimeout(function(){
+                  if(item.hasAttribute('megaopen')){
+                      item.setAttribute("open", true);
+                  }
+                  else{
+                      item.removeAttribute("open");
+                  }
+              }, 1000);
+          });
+      }); 
+  });
+</script>
 
 {% schema %}
 {

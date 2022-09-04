@@ -10,7 +10,7 @@
     z-index: 11;
     bottom: 0;
     right: 0;
-    margin: 1rem;
+    width: 100%;
     opacity: 0;
     visibility: hidden;
     transform: translateY(20px);
@@ -23,7 +23,7 @@
   .grid__item:hover .quick-add {
     opacity: 1;
     visibility: visible;
-    transform: translateY(0);
+    transform: translateY(10px);
   }
 }
 

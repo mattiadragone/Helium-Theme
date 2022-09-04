@@ -594,12 +594,10 @@ a.product__text {
 }
 
 @media screen and (min-width: 990px) {
-  .product--stacked .product__media-item {
-    max-width: calc(50% - var(--grid-desktop-horizontal-spacing) / 2);
-  }
-
-  .product__media-list .product__media-item:first-child,
-  .product__media-list .product__media-item--full {
+  .grid--1-col-mix .product__media-list .product__media-item:first-child,
+  .grid--1-col-mix .product__media-list .product__media-item--full,
+  .grid--1-col .product__media-list .product__media-item:first-child,
+  .grid--1-colv .product__media-list .product__media-item--full {
     width: 100%;
     max-width: 100%;
   }
