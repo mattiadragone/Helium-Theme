@@ -1,0 +1,79 @@
+/* Utils */
+
+.no-js:not(html) {
+    display: none !important;
+  }
+  
+  html.no-js .no-js:not(html) {
+    display: block !important;
+  }
+  
+  .no-js-inline {
+    display: none !important;
+  }
+  
+  html.no-js .no-js-inline {
+    display: inline-block !important;
+  }
+  
+  html.no-js .no-js-hidden {
+    display: none !important;
+  }
+
+@media screen and (max-width: 749px) {
+    .small-hide {
+      display: none !important;
+    }
+  }
+  
+  @media screen and (min-width: 750px) and (max-width: 989px) {
+    .medium-hide {
+      display: none !important;
+    }
+  }
+  
+  @media screen and (min-width: 990px) {
+    .large-up-hide {
+      display: none !important;
+    }
+  }
+  a:empty,
+  ul:empty,
+  dl:empty,
+  div:empty,
+  section:empty,
+  article:empty,
+  p:empty,
+  h1:empty,
+  h2:empty,
+  h3:empty,
+  h4:empty,
+  h5:empty,
+  h6:empty {
+    display: none;
+  }
+
+  .hidden {
+    display: none !important;
+  }
+  
+  .visually-hidden {
+    position: absolute !important;
+    overflow: hidden;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+    clip: rect(0 0 0 0);
+    word-wrap: normal !important;
+  }
+  
+  .visually-hidden--inline {
+    margin: 0;
+    height: 1em;
+  }
+  
+  .overflow-hidden {
+    overflow: hidden;
+  }

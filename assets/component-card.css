@@ -96,6 +96,7 @@
   padding: 1rem;
   width: 100%;
   flex-grow: 1;
+  overflow: hidden;
 }
 
 .card__content--auto-margins {
@@ -224,11 +225,6 @@
     opacity: 1;
     transition: transform var(--duration-long) ease;
     transform: scale(1.03);
-  }
-
-  .underline-links-hover:hover a {
-    text-decoration: underline;
-    text-underline-offset: 0.3rem;
   }
 }
 

@@ -216,9 +216,23 @@ fieldset.product-form__input .form__label {
   border-color: rgb(var(--color-foreground));
 }
 
-.product-form__input input[type='radio']:checked + label {
-  background-color: rgb(var(--color-foreground));
-  color: rgb(var(--color-background));
+.product-form__input input[type=radio]:checked + label {
+  opacity: 1;
+}
+
+.product-form__input input[type=radio] + label {
+  opacity: .5;
+}
+
+.product-form__input input[type=radio] + label:hover {
+  opacity: 1;
+}
+
+.product-form__input:hover input[type=radio]:checked + label {
+  opacity: .5;
+}
+.product-form__input:hover input[type=radio]:checked + label:hover {
+  opacity: 1;
 }
 
 @media screen and (forced-colors: active) {

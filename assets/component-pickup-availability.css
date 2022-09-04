@@ -30,6 +30,7 @@ pickup-availability[available] {
   padding: 0 0 0.2rem;
   text-align: left;
   text-decoration: underline;
+  border: 0;
 }
 
 .pickup-availability-button:hover {

@@ -1,13 +1,6 @@
 <section id="MainProduct-{{ section.id }}" class="page-width section-{{ section.id }}-padding" data-section="{{ section.id }}">
   {{ 'section-main-product.css' | asset_url | stylesheet_tag }}
-  {{ 'component-accordion.css' | asset_url | stylesheet_tag }}
-  {{ 'component-price.css' | asset_url | stylesheet_tag }}
-  {{ 'component-rte.css' | asset_url | stylesheet_tag }}
-  {{ 'component-slider.css' | asset_url | stylesheet_tag }}
-  {{ 'component-rating.css' | asset_url | stylesheet_tag }}
-  {{ 'component-loading-overlay.css' | asset_url | stylesheet_tag }}
-  {{ 'component-deferred-media.css' | asset_url | stylesheet_tag }}
-
+  
   {%- if section.settings.padding_top or section.settings.padding_bottom -%}
     {% render 'section-spacing' %}
   {%- endif -%}
@@ -20,6 +13,9 @@
     <link id="ModelViewerStyle" rel="stylesheet" href="https://cdn.shopify.com/shopifycloud/model-viewer-ui/assets/v1.0/model-viewer-ui.css" media="print" onload="this.media='all'">
     <link id="ModelViewerOverride" rel="stylesheet" href="{{ 'component-model-viewer-ui.css' | asset_url }}" media="print" onload="this.media='all'">
   {%- endif -%}
+  {{ 'component-slider.css' | asset_url | stylesheet_tag }}
+  {{ 'component-loading-overlay.css' | asset_url | stylesheet_tag }}
+  {{ 'component-deferred-media.css' | asset_url | stylesheet_tag }}
 
   <div class="product product--{{ section.settings.media_size }} product--{{ section.settings.gallery_layout }} grid {{ section.settings.col }} {% if product.media.size > 0 %}{{ section.settings.col }}-tablet{% else %}product--no-media{% endif %}">
     <div class="grid__item product__media-wrapper">
@@ -197,19 +193,21 @@
           {%- when '@app' -%}
             {% render block %}
           {%- when 'text' -%}
+          {{ 'component-rte.css' | asset_url | stylesheet_tag }}
             <p class="product__text{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}" {{ block.shopify_attributes }}>
               {{- block.settings.text -}}
             </p>
           {%- when 'title' -%}
             <div class="product__title" {{ block.shopify_attributes }}>
-              <h1>{{ product.title | escape }}</h1>
+              <h1 class="h2">{{ product.title | escape }}</h1>
               <a href="{{ product.url }}" class="product__title">
-                <h2 class="h1">
+                <h2 class="h2">
                   {{ product.title | escape }}
                 </h2>
               </a>
             </div>
           {%- when 'price' -%}
+          {{ 'component-price.css' | asset_url | stylesheet_tag }}
             <div class="no-js-hidden" id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
               {%- render 'price', product: product, use_variant: true, show_badges: true, price_class: 'price--large' -%}
             </div>
@@ -239,6 +237,7 @@
           {%- when 'custom_liquid' -%}
             {{ block.settings.custom_liquid }}
           {%- when 'collapsible_tab' -%}
+          {{ 'component-accordion.css' | asset_url | stylesheet_tag }}
             {% if block.settings.content != blank or block.settings.page.content != blank %}
               <div class="product__accordion accordion quick-add-hidden" {{ block.shopify_attributes }}>
                 <details id="Details-{{ block.id }}-{{ section.id }}">
@@ -327,29 +326,6 @@
             <script src="{{ 'share.js' | asset_url }}" defer="defer"></script>
           {%- when 'variant_picker' -%}
             {%- unless product.has_only_default_variant -%}
-              <style>
-                .product-form__input input[type=radio]:checked+label {
-                  display: flex;
-                  flex-direction: column;
-                }
-                .product-form__input {
-                  display:flex
-                }
-                .product-form__input input[type=radio]+label { 
-                  padding:0;
-                  display: flex;
-                  flex-direction: column;
-                  align-content: stretch;
-                  align-items: stretch;
-                  max-width: 6em;
-                }
-                .product-form__input input[type=radio]+label img {
-                  width: 100%;
-                }
-                .product-form__input input[type=radio]+label img:nth-child(2) {
-                  display: none;
-                }
-              </style>
               {%- if block.settings.picker_type == 'button' -%}
                 <variant-radios class="no-js-hidden" data-section="{{ section.id }}" data-url="{{ product.url }}" {{ block.shopify_attributes }}>
                   {%- for option in product.options_with_values -%}
@@ -365,14 +341,54 @@
                           <label for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}">
                             {% for variant in product.variants %}
                               {%if variant.title contains value and variant.image != blank %}
-                                <img src="{{ variant.image | img_url: '360x' }}" width="60">
+                                <img 
+                                src="{{ variant.image | img_url: '360x' }}"
+                                width="60"
+                                height="90"
+                                loading="lazy"
+                                >
+                                {% assign have_VariantImage = true %}
                               {% endif %}
                             {% endfor %}
-                            {{ value }}
+                            <span class="subtitle--small value">
+                              {{ value }}
+                            </span>
                           </label>
                         {%- endfor -%}
                       </fieldset>
-                     
+                      {% if have_VariantImage %}
+                        <style>
+                          .product-form__input input[type=radio]:checked+label {
+                            display: flex;
+                            flex-direction: column;
+                          }
+                          .product-form__input {
+                            display:flex
+                          }
+                          .product-form__input input[type=radio]+label { 
+                            padding:0;
+                            display: flex;
+                            flex-direction: column;
+                            align-content: stretch;
+                            align-items: stretch;
+                            max-width: 6em;
+                          }
+                          .product-form__input input[type=radio]+label img {
+                            width: 100%;
+                          }
+                          .product-form__input input[type=radio]+label img:nth-child(2) {
+                            display: none;
+                          }
+                          .product-form__input .value {
+                            padding: 1rem 0;
+                            text-align: left;
+                            white-space: nowrap;
+                          }
+                          .product-form__input input[type='radio'] + label {
+                            border: none
+                          }
+                        </style>
+                      {% endif %}
                   {%- endfor -%}
                   <script type="application/json">
                     {{ product.variants | json }}
@@ -518,6 +534,7 @@
 
             <script src="{{ 'pickup-availability.js' | asset_url }}" defer="defer"></script>
           {%- when 'rating' -%}
+          {{ 'component-rating.css' | asset_url | stylesheet_tag }}
             {%- if product.metafields.reviews.rating.value != blank -%}
               {% liquid
                assign rating_decimal = 0

@@ -94,7 +94,7 @@
                         id="{{ product_form_id }}-submit"
                         type="submit"
                         name="add"
-                        class="quick-add__submit button button--full-width button--secondary"
+                        class="quick-add__submit button button--full-width button--primary"
                         aria-haspopup="dialog"
                         aria-labelledby="{{ product_form_id }}-submit title-{{ section_id }}-{{ card_product.id }}"
                         aria-live="polite"
@@ -126,12 +126,12 @@
                       id="{{ product_form_id }}-submit"
                       type="submit"
                       name="add"
-                      class="quick-add__submit button button--full-width button--secondary"
+                      class="quick-add__submit button button--full-width button--primary"
                       aria-haspopup="dialog"
                       aria-labelledby="{{ product_form_id }}-submit title-{{ section_id }}-{{ card_product.id }}"
                       data-product-url="{{ card_product.url }}"
                     >
-                      {{ 'products.product.choose_options' | t }}{% render 'icons-library', icons: 'plus' %}
+                      <span>{{ 'products.product.choose_options' | t }}{% render 'icons-library', icons: 'plus' %}</span>
                       <div class="loading-overlay__spinner hidden">
                         <svg aria-hidden="true" focusable="false" role="presentation" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
                           <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
@@ -221,13 +221,13 @@
           <span class="list-variant__text large-up-hide">
             More {{ option_name }}s
           </span>
-          <ul class="list-variant{% if vrnt == txt %} text{% endif %} small-hide">
+          <ul class="list-variant{% if vrnt == txt %} text{% endif %} small-hide {% for variant in card_product.variants limit: 1 %}{% if variant.metafields.my_fields.swatch_color != blank %}metafield{% endif %}{% endfor %}">
             {% for variant in card_product.variants limit: 4 %}
               {% if  variant.title != 'Default Title' and variantsColor == true %}
                 {% if variant.image and vrnt != txt %}
                   <li>
                     <a href="{{ variant.url }}" class="link">
-                      {% if vrnt == img and  variant.image %}
+                      {% if vrnt == img or vrnt == metafield and variant.image and variant.metafields.my_fields.swatch_color != blank %}
                         <div class="variant-pillow__toltip">
                           <span class="badge badge--bottom-left color-accent-1">
                             {{ variant.title }}
@@ -235,7 +235,7 @@
                         </div>
                       {% endif %}
                        <div class="variant-pillow__wrapper{% unless variant.available %} sold-out{% endunless %}">
-                          {% if vrnt == img and  variant.image %}
+                          {% if vrnt == img and variant.image %}
                             <div class="variant-pillow__image">
                               <img src="{{ variant.image | image_url: width: 100, height: 100 }}" 
                                 alt="{{ variant.title }}"
@@ -244,6 +244,13 @@
                                 height="100"
                               />
                             </div>
+                          {% elsif vrnt == metafield and variant.metafields.my_fields.swatch_color != blank %}
+                            <span style="background: {{ variant.metafields.my_fields.swatch_color }}"></span>
+                            {% if variant.metafields.my_fields.swatch_color == blank and variant.image == blank %}
+                              <label class="caption-with-letter-spacing light small">
+                                {{ variant.title }}
+                              </label>    
+                            {% endif %}
                           {% else %}
                             <label class="caption-with-letter-spacing light small">
                               {{ variant.title }}
@@ -251,7 +258,7 @@
                           {% endif %}
                         </div>
                     </a>
-                  </li>
+                  </li>             
                 {% endif %}
               {% endif %}
             {% endfor %}
@@ -307,3 +314,12 @@
     </div>
   </div>
 {%- endif -%}
+{% if variant.metafields.my_fields.swatch_color == blank %}
+  <style>
+    .variant-pillow__wrapper > span {
+      height: 1rem;
+      width: 1rem;
+      border-radius: 100%;
+    }
+  </style>
+{% endif %}
