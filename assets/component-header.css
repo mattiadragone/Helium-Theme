@@ -162,6 +162,7 @@
     display: flex;
     grid-area: icons;
     justify-self: end;
+    column-gap: 1em;
   }
   
   .header__icon:not(.header__icon--summary),
@@ -189,16 +190,22 @@
   }
   
   .header__icon .icon {
-    height: 2rem;
-    width: 2rem;
+    height: 1.8rem;
+    width: 1.8rem;
     fill: none;
     vertical-align: middle;
   }
   
   .header__icon,
   .header__icon--cart .icon {
-    height: 4.4rem;
-    width: 4.4rem;
+    height: 2.2rem;
+    width: 2.2rem;
+    padding: 0;
+  }
+
+  .header__icon--account .icon {
+    height: 2.2rem;
+    width: 2.2rem;
     padding: 0;
   }
   
