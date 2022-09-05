@@ -10,9 +10,6 @@
   flex: 1;
 }
 
-.accordion .summary__title + .icon-caret {
-  height: calc(var(--font-heading-scale) * 0.6rem);
-}
 
 .accordion + .accordion {
   margin-top: 0;
@@ -50,7 +47,6 @@
   margin-bottom: 1.5rem;
   word-break: break-word;
   overflow-x: auto;
-  padding: 0 0.6rem;
 }
 
 .accordion__content img {

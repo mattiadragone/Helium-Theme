@@ -325,6 +325,7 @@ h3 .icon-arrow,
   border-color: rgba(var(--color-badge-border), var(--alpha-badge-border));
   color: rgb(var(--color-foreground));
   word-break: break-word;
+  vertical-align: top;
 }
 
 .gradient {

@@ -230,7 +230,7 @@
                       {% if vrnt == img or vrnt == metafield and variant.image and variant.metafields.my_fields.swatch_color != blank %}
                         <div class="variant-pillow__toltip">
                           <span class="badge badge--bottom-left color-accent-1">
-                            {{ variant.title }}
+                            {{ variant.title | split: '/' | last }}
                           </span> 
                         </div>
                       {% endif %}
@@ -258,7 +258,7 @@
                 {% endif %}
               {% endif %}
               {% liquid
-                if variant.metafields.my_fields.swatch_color == blank
+                if variant.metafields.my_fields.swatch_color == blank and variant.size > 1
                   assign more_colors = true 
                 endif
                   %}
