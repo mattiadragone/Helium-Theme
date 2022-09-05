@@ -7,7 +7,7 @@
     transition: all 300ms ease-in-out;
     width: 100%;
     z-index: 1;
-    overflow-x: scroll;
+    overflow-x: auto;
     overflow-y: visible;
   }
   .list-variant.text {
