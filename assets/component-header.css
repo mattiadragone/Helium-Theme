@@ -127,6 +127,35 @@
       text-align: center;
     }
   }
+
+.header--is-transparent {
+  background-color: transparent;
+  width: 100%;
+  transition: all ease-in-out var(--duration-default);
+}
+.header--is-transparent.header-wrapper--border-bottom {
+  border-color: rgba(255, 255, 255, 0.34);
+}
+.section-header:not(.shopify-section-header-sticky) .header--is-transparent:not(:hover) .header__menu-item {
+  color: rgb(var(--color-background));
+}
+.section-header:not(.shopify-section-header-sticky) .header--is-transparent:not(:hover) .header__icon {
+  color: rgb(var(--color-background));
+}
+.header--is-transparent.color-background-1:hover {
+  background-color: rgb(var(--color-background));
+}
+.header--is-transparent.color-background-2:hover {
+  background-color: rgb(var(--color-background));
+}
+.shopify-section-header-sticky .color-background-2 {
+  background-color: rgb(var(--color-background));
+}
+
+.shopify-section-header-sticky .color-background-1 {
+  background-color: rgb(var(--color-background));
+}
+
   
   /* Header icons */
   .header__icons {

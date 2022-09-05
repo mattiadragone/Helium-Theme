@@ -237,6 +237,7 @@ slider-component.slider-component-full-width {
   display: flex;
   justify-content: center;
   min-width: 4.4rem;
+  column-gap: 0.5rem;
 }
 
 @media screen and (min-width: 750px) {
@@ -307,6 +308,7 @@ slider-component.slider-component-full-width {
   display: flex;
   align-items: center;
   justify-content: center;
+
 }
 
 @media screen and (min-width: 990px) {
@@ -337,6 +339,7 @@ slider-component.slider-component-full-width {
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 3;
 }
 
 .slider-button:not([disabled]):hover {

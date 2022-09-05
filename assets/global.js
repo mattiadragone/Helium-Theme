@@ -693,13 +693,11 @@ class SlideshowComponent extends SliderComponent {
     this.slider.setAttribute('aria-live', 'off');
     clearInterval(this.autoplay);
     this.autoplay = setInterval(this.autoRotateSlides.bind(this), this.autoplaySpeed);
-    document.querySelector(".slideshow__controls--top").style.zIndex = "1";
   }
 
   pause() {
     this.slider.setAttribute('aria-live', 'polite');
     clearInterval(this.autoplay);
-    document.querySelector(".slideshow__controls--top").style.zIndex = null;
   }
 
   togglePlayButtonState(pauseAutoplay) {

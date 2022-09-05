@@ -1,3 +1,15 @@
+{% if section.settings.enable_transparent_header %}
+  <script>
+    var fixTopPanel = function(){
+    var header = document.querySelector(".header--is-transparent");
+    var main = document.querySelector(".content-for-layout");
+    main.style.marginTop = "-" + header.offsetHeight + "px";
+  }
+
+  window.addEventListener("DOMContentLoaded", fixTopPanel);
+  window.addEventListener("resize", fixTopPanel)
+  </script>
+{% endif %}
 <link rel="stylesheet" href="{{ 'component-header.css' | asset_url }}" media="print" onload="this.media='all'">
 <link rel="stylesheet" href="{{ 'component-list-menu.css' | asset_url }}" media="print" onload="this.media='all'">
 <link rel="stylesheet" href="{{ 'component-search.css' | asset_url }}" media="print" onload="this.media='all'">
@@ -27,6 +39,7 @@
 <noscript>{{ 'component-menu-drawer.css' | asset_url | stylesheet_tag }}</noscript>
 <noscript>{{ 'component-cart-notification.css' | asset_url | stylesheet_tag }}</noscript>
 <noscript>{{ 'component-cart-items.css' | asset_url | stylesheet_tag }}</noscript>
+
 
 <style>
   header-drawer {
@@ -59,9 +72,6 @@
     flex-wrap: wrap;
   }
 
-  summary.list-menu__item {
-    padding-right: 2.7rem;
-  }
 
   .list-menu__item {
     display: flex;
@@ -124,7 +134,7 @@
     <path d="M.865 15.978a.5.5 0 00.707.707l7.433-7.431 7.579 7.282a.501.501 0 00.846-.37.5.5 0 00-.153-.351L9.712 8.546l7.417-7.416a.5.5 0 10-.707-.708L8.991 7.853 1.413.573a.5.5 0 10-.693.72l7.563 7.268-7.418 7.417z" fill="currentColor">
   </symbol>
 </svg>
-<{% if section.settings.enable_sticky_header %}sticky-header{% else %}div{% endif %} class="header-wrapper color-{{ section.settings.color_scheme }} gradient{% if section.settings.show_line_separator %} header-wrapper--border-bottom{% endif %}">
+<{% if section.settings.enable_sticky_header %}sticky-header{% else %}div{% endif %} class="header-wrapper color-{{ section.settings.color_scheme }} gradient{% if section.settings.show_line_separator %} header-wrapper--border-bottom{% endif %}{% if section.settings.enable_transparent_header %} {%- render 'transparent-header' -%}{% endif %}">
   <header class="header header--{{ section.settings.logo_position }} page-width{% if section.settings.menu != blank %} header--has-menu{% endif %}">
     {%- if section.settings.menu != blank -%}
       <header-drawer data-breakpoint="tablet">
@@ -454,7 +464,7 @@
                     <details id="Details-HeaderMenu-{{ forloop.index }}" class="mega-menu">
                       <summary class="header__menu-item list-menu__item link focus-inset">
                         <span {%- if link.child_active %} class="header__active-menu-item"{% endif %}>{{ link.title | escape }}</span>
-                        {% render 'icons-library', icons: 'caret' %}
+
                       </summary>
                       <div id="MegaMenu-Content-{{ forloop.index }}" class="mega-menu__content gradient motion-reduce global-settings-popup" tabindex="-1" onmouseover="jackMousein(this)" onmouseleave="jackMouseout(this)">
                         <ul class="mega-menu__list page-width{% if link.levels == 1 %} mega-menu__list--condensed{% endif %}" role="list">
@@ -779,6 +789,8 @@
   });
 </script>
 
+
+
 {% schema %}
 {
   "name": "t:sections.header.name",
@@ -888,6 +900,12 @@
       "default": true,
       "label": "t:sections.header.settings.enable_sticky_header.label",
       "info": "t:sections.header.settings.enable_sticky_header.info"
+    },{
+      "type": "checkbox",
+      "id": "enable_transparent_header",
+      "default": true,
+      "label": "Enable transparent header",
+      "info": "Transparent header in index"
     },
     {
       "type": "header",
