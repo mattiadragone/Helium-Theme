@@ -10,6 +10,7 @@
     },
     "165849866007719c98": {
       "type": "collection-list",
+      "disabled": true,
       "blocks": {
         "1658498660371eedd2-0": {
           "type": "featured_collection",
@@ -58,6 +59,9 @@
         "show_vendor": false,
         "show_rating": false,
         "enable_quick_add": true,
+        "show_swatch": true,
+        "variant_swatch": "image",
+        "variant_name": "colour",
         "enable_filtering": true,
         "filter_type": "horizontal",
         "enable_sorting": true,
