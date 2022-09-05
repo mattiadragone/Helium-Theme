@@ -1,4 +1,5 @@
 import '../../styles/components/component-predictive-search.css'
+import { debounce } from '../helpers/debounce';
 
 class PredictiveSearch extends HTMLElement {
   constructor() {

@@ -1,3 +1,5 @@
+import { DetailsDisclosure } from "./component-details-disclosure";
+
 if (!customElements.get('share-button')) {
   customElements.define('share-button', class ShareButton extends DetailsDisclosure {
     constructor() {

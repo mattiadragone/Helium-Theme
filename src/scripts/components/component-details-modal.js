@@ -1,4 +1,6 @@
-class DetailsModal extends HTMLElement {
+import { trapFocus, removeTrapFocus } from "../helpers/trapFocus";
+
+export class DetailsModal extends HTMLElement {
   constructor() {
     super();
     this.detailsContainer = this.querySelector('details');

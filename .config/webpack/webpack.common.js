@@ -7,7 +7,6 @@ const { VueLoaderPlugin } = require('vue-loader')
 const CopyPlugin = require('copy-webpack-plugin')
 const sass = require('node-sass')
 const glob = require('glob')
-const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin")
 
 
 module.exports = {
@@ -27,7 +26,7 @@ module.exports = {
     alias: {
       'vue$': 'vue/dist/vue.esm-bundler.js',
       '@': path.resolve(__dirname, '../../src/'),
-    }
+    },
   },
   module: {
     rules: [
@@ -120,8 +119,6 @@ module.exports = {
       // For webpack@5 you can use the `...` syntax to extend existing minimizers (i.e. `terser-webpack-plugin`), uncomment the next line
       // `...`,
       new CssMinimizerPlugin(),
-      new OptimizeCSSAssetsPlugin({
-      })
       
   ]
 }

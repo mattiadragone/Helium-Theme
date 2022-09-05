@@ -1,4 +1,7 @@
-import '../../styles/components/component-cart.css'
+import '../../styles/components/component-cart.css';
+import { debounce } from "../helpers/debounce";
+import { trapFocus } from '../helpers/trapFocus';
+import { fetchConfig } from '../base/base';
 
 class CartRemoveButton extends HTMLElement {
   constructor() {
@@ -13,7 +16,7 @@ class CartRemoveButton extends HTMLElement {
 
 customElements.define('cart-remove-button', CartRemoveButton);
 
-class CartItems extends HTMLElement {
+export class CartItems extends HTMLElement {
   constructor() {
     super();
 

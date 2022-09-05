@@ -1,3 +1,5 @@
+import { DetailsModal } from "../components/component-details-modal";
+
 class PasswordModal extends DetailsModal {
   constructor() {
     super();

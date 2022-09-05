@@ -1,4 +1,8 @@
 import '../../styles/components/component-cart-drawer.css'
+import { trapFocus, removeTrapFocus } from '../helpers/trapFocus';
+import { onKeyUpEscape } from '../base/base';
+import { CartItems } from './component-cart';
+
 
 class CartDrawer extends HTMLElement {
   constructor() {

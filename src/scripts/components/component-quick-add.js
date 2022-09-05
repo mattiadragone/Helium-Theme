@@ -1,4 +1,5 @@
 import '../../styles/components/component-quick-add.css'
+import { ModalDialog } from '../base/base';
 
 if (!customElements.get('quick-add-modal')) {
   customElements.define('quick-add-modal', class QuickAddModal extends ModalDialog {

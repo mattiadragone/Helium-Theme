@@ -1,4 +1,5 @@
 import '../../styles/components/component-cart-notification.css'
+import { trapFocus, removeTrapFocus } from '../helpers/trapFocus';
 
 class CartNotification extends HTMLElement {
   constructor() {

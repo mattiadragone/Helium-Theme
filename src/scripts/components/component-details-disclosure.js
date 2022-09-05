@@ -1,4 +1,4 @@
-class DetailsDisclosure extends HTMLElement {
+export class DetailsDisclosure extends HTMLElement {
   constructor() {
     super();
     this.mainDetailsToggle = this.querySelector('details');

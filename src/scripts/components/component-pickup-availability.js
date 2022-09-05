@@ -1,4 +1,5 @@
 import '../../styles/components/component-pickup-availability.css'
+import { trapFocus, removeTrapFocus } from '../helpers/trapFocus';
 
 if (!customElements.get('pickup-availability')) {
   customElements.define('pickup-availability', class PickupAvailability extends HTMLElement {

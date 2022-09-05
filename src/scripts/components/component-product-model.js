@@ -1,4 +1,5 @@
 import '../../styles/components/component-product-model.css'
+import { DeferredMedia } from '../base/base';
 
 if (!customElements.get('product-model')) {
   customElements.define('product-model', class ProductModel extends DeferredMedia {

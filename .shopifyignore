@@ -1,0 +1,11 @@
+package.json
+package-look.json
+.gitignore
+.config
+.vscode
+node_modules/
+src/
+
+stats/
+
+*.md
