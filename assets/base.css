@@ -201,6 +201,7 @@ html.no-js .no-js:not(html) {
   display: block !important;
 }
 
+<<<<<<< Updated upstream
 .no-js-inline {
   display: none !important;
 }
@@ -212,6 +213,11 @@ html.no-js .no-js-inline {
 html.no-js .no-js-hidden {
   display: none !important;
 }
+=======
+@import "quick-add.css";
+
+@import "component-header.css";
+>>>>>>> Stashed changes
 
 .page-width {
   max-width: var(--page-width);

@@ -21,6 +21,9 @@
 .price .price-item {
   margin: 0 1rem 0 0;
 }
+.price span.price-item {
+  font-size: 1.3rem;
+}
 
 .price__regular .price-item--regular {
   margin-right: 0;

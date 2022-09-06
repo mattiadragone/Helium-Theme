@@ -383,6 +383,17 @@
               width: section.settings.logo_width,
               alt: logo_alt
             }}
+<<<<<<< Updated upstream
+=======
+          {%- elsif section.settings.logo_svg != blank -%}
+            <style>
+              .header__heading svg,
+              .header__heading-link svg {
+                width: {{ section.settings.logo_width}}px
+              }
+            </style>
+            {{ section.settings.logo_svg }}
+>>>>>>> Stashed changes
           {%- else -%}
             <span class="h2">{{ shop.name }}</span>
           {%- endif -%}
