@@ -133,6 +133,11 @@
   width: 100%;
   transition: all ease-in-out var(--duration-default);
 }
+
+.section-header:not(.shopify-section-header-sticky) .header--is-transparent:not(:hover) .header__heading svg {
+  fill: white;
+}
+
 .header--is-transparent.header-wrapper--border-bottom {
   border-color: rgba(255, 255, 255, 0.34);
 }
@@ -383,4 +388,11 @@ details[open] > .header__menu-item .icon-caret {
 header-menu > details,
 details-disclosure > details {
   position: relative;
+}
+
+.header .search__input {
+
+}
+.header .search__input.field__input:focus ~ .field__label {
+  opacity: 0;
 }
