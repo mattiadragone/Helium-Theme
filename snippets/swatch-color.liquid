@@ -1,0 +1,95 @@
+{% liquid
+    assign show_swatch = show_swatch
+    assign vrnt = vrnt
+    assign metafield = 'metafield'
+    assign txt = 'text'
+    assign img = 'image'
+    assign option_name = option_name 
+%}
+
+{% liquid
+    for variant in card_product.variants limit: 4
+        for product_option in card_product.options_with_values 
+            if product_option.name == option_name
+                for value in product_option.values
+                    if value.size > 1
+                        assign variantsColor = true
+                    endif
+                endfor
+            endif
+        endfor
+        if vrnt == metafield
+            if variant.metafields.my_fields.swatch_color
+                assign has_content = true
+            endif
+        elsif vrnt == img
+            if variant.image 
+                assign has_content = true
+            endif
+        elsif vrnt == txt 
+            if variant.title 
+                assign has_content = true
+            endif
+        endif
+    endfor
+%}
+
+
+{%- if show_swatch and has_content -%}
+    <span class="list-variant__text large-up-hide">
+        {{ 'products.product.swatch_color.more' | t }}
+    </span>
+    <ul class="list-variant{% if vrnt == txt %} text{% endif %} small-hide {% for variant in card_product.variants limit: 1 %}{% if variant.metafields.my_fields.swatch_color != blank and vrnt == metafield %}metafield{% endif %}{% endfor %}">
+        {% for variant in card_product.variants limit: 4 %}
+            {% assign col_metafield = variant.metafields.my_fields.swatch_color %}
+            {% if variant.title != 'Default Title' and variantsColor and variant.image %}
+                {% capture toltip %}
+                    {{ variant.title | split: '/' | first }}{% unless variant.available %} | {{ 'products.product.sold_out' | t }}{% endunless %}
+                {% endcapture %}
+                <li>
+                    <a href="{{ variant.url }}" class="link">
+                        {% case vrnt %}
+                            {% when img %}
+                                {% if variant.image and variantsColor %}
+                                    <div class="variant-pillow__toltip">
+                                        <span class="badge badge--bottom-left color-accent-1">
+                                            {{ toltip }}
+                                        </span> 
+                                    </div>
+                                {% endif %}
+                                <div class="variant-pillow__wrapper{% unless variant.available %} sold-out{% endunless %}">
+                                    {% if variant.image and variantsColor %}
+                                        <div class="variant-pillow__image">
+                                            <img src="{{ variant.image | image_url: width: 100, height: 100 }}" 
+                                                alt="{{ variant.title }}"
+                                                loading='lazy'
+                                                width="100"
+                                                height="100"
+                                            />
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            {% when metafield %}
+                                {% if col_metafield %}
+                                    <div class="variant-pillow__toltip">
+                                        <span class="badge badge--bottom-left color-accent-1">
+                                            {{ toltip }}
+                                        </span> 
+                                    </div>
+                                    <div class="variant-pillow__wrapper{% unless variant.available %} sold-out{% endunless %} metafield">
+                                        <span style="background: {{ col_metafield }}"></span>
+                                    </div>
+                                {% endif %}
+                            {% else %}
+                                <div class="variant-pillow__wrapper{% unless variant.available %} sold-out{% endunless %}">
+                                    <label class="caption-with-letter-spacing light small">
+                                        {{ toltip }}
+                                    </label>  
+                                </div>
+                        {% endcase %}
+                    </a>
+                </li>     
+            {% endif %}
+        {% endfor %}
+    </ul>
+{%- endif -%}

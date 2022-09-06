@@ -34,7 +34,6 @@
   margin: 3.2rem auto 0;
   width: 100%;
   background-color: rgb(var(--color-background));
-  overflow: hidden;
   width: 100%;
   transform: translateY(100%);
   transition: all ease-in-out var(--duration-short);
