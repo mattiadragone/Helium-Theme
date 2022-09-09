@@ -1,6 +1,7 @@
 <section id="MainProduct-{{ section.id }}" class="page-width section-{{ section.id }}-padding" data-section="{{ section.id }}">
   {{ 'section-main-product.css' | asset_url | stylesheet_tag }}
   {{ 'component-accordion.css' | asset_url | stylesheet_tag }}
+
   
   {%- if section.settings.padding_top or section.settings.padding_bottom -%}
     {% render 'section-spacing' %}
@@ -213,7 +214,7 @@
               {%- render 'price', product: product, use_variant: true, show_badges: true, price_class: 'price--large' -%}
             </div>
             {%- if shop.taxes_included or shop.shipping_policy.body != blank -%}
-              <div class="product__tax caption rte">
+              <div class="product__tax rte">
                 {%- if shop.taxes_included -%}
                   {{ 'products.product.include_taxes' | t }}
                 {%- endif -%}
@@ -236,11 +237,9 @@
                   <details id="Details-description">
                     <summary>
                       <div class="summary__title">
-                        {% assign icon = section.settings.icon_desc %}
-                        {% render 'icons-library', accordion: icon %}
-                        <h2 class="h4 accordion__title">
+                        <label class="accordion__title">
                           {{ 'products.product.description' | t }}
-                        </h2>
+                        </label>
                       </div>
                       {% render 'icons-library', icons: 'caret' %}
                     </summary>
@@ -264,9 +263,9 @@
                   <summary>
                     <div class="summary__title">
                       {% render 'icons-library', accordion: block.settings.icon %}
-                      <h2 class="h4 accordion__title">
+                      <label class="accordion__title">
                         {{ block.settings.heading | default: block.settings.page.title }}
-                      </h2>
+                      </label>
                     </div>
                     {% render 'icons-library', icons: 'caret' %}
                   </summary>
@@ -344,113 +343,66 @@
               </details>
             </share-button>
             <script src="{{ 'share.js' | asset_url }}" defer="defer"></script>
-          {%- when 'variant_picker' -%}
-            {%- unless product.has_only_default_variant -%}
-              {%- if block.settings.picker_type == 'button' -%}
-                <variant-radios class="no-js-hidden" data-section="{{ section.id }}" data-url="{{ product.url }}" {{ block.shopify_attributes }}>
-                  {%- for option in product.options_with_values -%}
-                      <fieldset class="js product-form__input">
-                        <legend class="form__label">{{ option.name }}</legend>
-                        {%- for value in option.values -%}
-                          <input type="radio" id="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
-                                name="{{ option.name }}"
-                                value="{{ value | escape }}"
-                                form="{{ product_form_id }}"
-                                {% if option.selected_value == value %}checked{% endif %}
-                          >
-                          <label for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}">
-                            {% for variant in product.variants %}
-                              {% liquid
-                                if option.name == 'color' or option.name == 'Color' or option.name == 'colour' or option.name == 'Colour'
-                                    assign swatch_color = true
-                                endif
-                              %}
-                              {% if variant.title contains value and swatch_color == true and variant.image != blank %}
-                                <img 
-                                src="{{ variant.image | image_url: width: 360 }}"
-                                width="60"
-                                height="90"
-                                loading="lazy"
-                                >
-                                {% assign have_VariantImage = true %}
-                                
-                                <span class="subtitle--small value">
-                                  {{ value }}
-                                </span>
-                            {% endif %}
-                          {% endfor %}
-                          
-                          </label>
-                        {%- endfor -%}
-                      </fieldset>
-                      {% if have_VariantImage %}
-                        <style>
-                          .product-form__input input[type=radio]:checked+label {
-                            display: flex;
-                            flex-direction: column;
-                          }
-                          .product-form__input {
-                            display:flex
-                          }
-                          .product-form__input input[type=radio]+label { 
-                            padding:0;
-                            display: flex;
-                            flex-direction: column;
-                            align-content: stretch;
-                            align-items: stretch;
-                            max-width: 6em;
-                          }
-                          .product-form__input input[type=radio]+label img {
-                            width: 100%;
-                          }
-                          .product-form__input input[type=radio]+label img:nth-child(2) {
-                            display: none;
-                          }
-                          .product-form__input .value {
-                            padding: 1rem 0;
-                            text-align: left;
-                            white-space: nowrap;
-                          }
-                          .product-form__input input[type='radio'] + label {
-                            border: none
-                          }
-                        </style>
-                      {% endif %}
-                  {%- endfor -%}
-                  <script type="application/json">
-                    {{ product.variants | json }}
-                  </script>
-                </variant-radios>
-              {%- else -%}
-                <variant-selects class="no-js-hidden" data-section="{{ section.id }}" data-url="{{ product.url }}" {{ block.shopify_attributes }}>
-                  {%- for option in product.options_with_values -%}
-                    <div class="product-form__input product-form__input--dropdown">
-                      <label class="form__label" for="Option-{{ section.id }}-{{ forloop.index0 }}">
-                        {{ option.name }}
-                      </label>
-                      <div class="select">
-                        <select id="Option-{{ section.id }}-{{ forloop.index0 }}"
-                          class="select__select"
-                          name="options[{{ option.name | escape }}]"
-                          form="{{ product_form_id }}"
-                        >
+            {%- when 'variant_picker' -%}
+              {%- unless product.has_only_default_variant and product.variant -%}
+                {%- if block.settings.picker_type == 'button' -%}
+                  <variant-radios class="no-js-hidden" data-section="{{ section.id }}" data-url="{{ product.url }}" {{ block.shopify_attributes }}>
+                    {%- for option in product.options_with_values -%}
+                        <fieldset class="js product-form__input">
+                          <legend class="form__label">{{ option.name }}</legend>
                           {%- for value in option.values -%}
-                            <option value="{{ value | escape }}" {% if option.selected_value == value %}selected="selected"{% endif %}>
-                              {{ value }}
-                            </option>
+                            <input type="radio" id="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
+                                  name="{{ option.name }}"
+                                  value="{{ value | escape }}"
+                                  form="{{ product_form_id }}"
+                                  {% if option.selected_value == value %}checked{% endif %}
+                            >
+                            {% if product.variants[forloop.index0].metafields.my_fields.swatch_color and option.name == 'colour' %}
+                              <label for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}" style="background-color: {{ product.variants[forloop.index0].metafields.my_fields.swatch_color }}"> 
+                              </label>
+                            {% else %}
+                              <label for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}">
+                                {{ value }}
+                              </label>
+                            {% endif %}
                           {%- endfor -%}
-                        </select>
-                        {% render 'icons-library', icons: 'caret' %}
+                        </fieldset>
+                    {%- endfor -%}
+                    <script type="application/json">
+                      {{ product.variants | json }}
+                    </script>
+                  </variant-radios>
+                  
+                {%- else -%}
+                  <variant-selects class="no-js-hidden" data-section="{{ section.id }}" data-url="{{ product.url }}" {{ block.shopify_attributes }}>
+                    {%- for option in product.options_with_values -%}
+                      <div class="product-form__input product-form__input--dropdown">
+                        <label class="form__label" for="Option-{{ section.id }}-{{ forloop.index0 }}">
+                          {{ option.name }}
+                        </label>
+                        <div class="select">
+                          <select id="Option-{{ section.id }}-{{ forloop.index0 }}"
+                            class="select__select"
+                            name="options[{{ option.name | escape }}]"
+                            form="{{ product_form_id }}"
+                          >
+                            {%- for value in option.values -%}
+                              <option value="{{ value | escape }}" {% if option.selected_value == value %}selected="selected"{% endif %}>
+                                {{ value }}
+                              </option>
+                            {%- endfor -%}
+                          </select>
+                          {% render 'icons-library', icons: 'icon-caret' %}
+                        </div>
                       </div>
-                    </div>
-                  {%- endfor -%}
+                    {%- endfor -%}
 
-                  <script type="application/json">
-                    {{ product.variants | json }}
-                  </script>
-                </variant-selects>
-              {%- endif -%}
-            {%- endunless -%}
+                    <script type="application/json">
+                      {{ product.variants | json }}
+                    </script>
+                  </variant-selects>
+                {%- endif -%}
+              {%- endunless -%}
 
             <noscript class="product-form__noscript-wrapper-{{ section.id }}">
               <div class="product-form__input{% if product.has_only_default_variant %} hidden{% endif %}">
@@ -469,7 +421,7 @@
                       </option>
                     {%- endfor -%}
                   </select>
-                  {% render 'icons-library', icons: 'caret' %}
+                  {% render 'icon-caret' %}
                 </div>
               </div>
             </noscript>
@@ -500,9 +452,9 @@
                             <style>
                               .product-form__submit > span {
                                 display: flex;
-                                align-content: center;
                                 justify-content: space-between;
                                 width: 100%;
+                                align-items: center;
                               }
                               .product-form__submit > span .price {
                                 color: white;
@@ -802,7 +754,13 @@
           ],
           "default": "button",
           "label": "t:sections.main-product.blocks.variant_picker.settings.picker_type.label"
-        }
+        },
+       {
+        "type": "checkbox",
+        "id": "show_swatch",
+        "label": "Enable swatch",
+        "default": true
+       }
       ]
     },
     {

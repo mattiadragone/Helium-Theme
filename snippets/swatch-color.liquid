@@ -36,6 +36,7 @@
 
 
 {%- if show_swatch and has_content -%}
+    {{ 'component-swatch.css' | asset_url | stylesheet_tag }}
     <span class="list-variant__text large-up-hide">
         {{ 'products.product.swatch_color.more' | t }}
     </span>
@@ -51,7 +52,7 @@
                         {% case vrnt %}
                             {% when img %}
                                 {% if variant.image and variantsColor %}
-                                    <div class="variant-pillow__toltip">
+                                    <div class="variant-pillow__toltip toltip">
                                         <span class="badge badge--bottom-left color-accent-1">
                                             {{ toltip }}
                                         </span> 
@@ -70,13 +71,14 @@
                                     {% endif %}
                                 </div>
                             {% when metafield %}
+
                                 {% if col_metafield %}
-                                    <div class="variant-pillow__toltip">
+                                    <div class="variant-pillow__toltip toltip">
                                         <span class="badge badge--bottom-left color-accent-1">
                                             {{ toltip }}
                                         </span> 
                                     </div>
-                                    <div class="variant-pillow__wrapper{% unless variant.available %} sold-out{% endunless %} metafield">
+                                    <div class="variant-pillow__wrapper{% unless variant.available %} sold-out{% endunless %} icon metafield">
                                         <span style="background: {{ col_metafield }}"></span>
                                     </div>
                                 {% endif %}

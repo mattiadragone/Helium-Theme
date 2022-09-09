@@ -189,3 +189,11 @@ quick-add-modal .product-form__buttons {
   min-width: 100%;
   box-sizing: border-box;
 }
+
+.quick-add__submit > span {
+  width: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+}

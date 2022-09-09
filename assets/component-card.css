@@ -68,6 +68,16 @@
   top: 0;
 }
 
+.card .media.media--bg-mod,
+.card__media .media.media--bg-mod {
+  background: var(--card-bg-color);
+}
+
+.card .media.media--bg-mod:not(:hover) img:first-child,
+.card__media .media.media--bg-mod:not(:hover) img:first-child {
+  mix-blend-mode: multiply;
+}
+
 .card .media {
   width: 100%;
 }
@@ -149,7 +159,7 @@
   height: 100%;
 }
 
-.card__heading {
+.card__heading > * {
   margin-top: 0;
   margin-bottom: 0;
 }

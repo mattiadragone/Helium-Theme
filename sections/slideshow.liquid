@@ -48,7 +48,7 @@
         .slideshow__controls--inner .slider-button {
           color: var(--gradient-base-background-2);
         }
-        .slideshow__controls--inner .slider-button {
+        .slideshow__controls--inner .slider-button:not(.slideshow__autoplay) {
           position: absolute;
           top: 50%;
           transform: translateY(-50%);
@@ -71,6 +71,9 @@
         .slideshow__controls--inner .slider-counter {
           position: absolute;
           bottom: 0;
+        }
+        .slideshow__controls--inner .slider-button .icon path {
+          fill: white;
         }
       }
     </style>

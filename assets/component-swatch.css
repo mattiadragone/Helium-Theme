@@ -38,6 +38,9 @@
     margin: 0.5rem;
     transition: all var(--duration-long) ease;
   }
+  .list-variant li:first-of-type .variant-pillow__wrapper {
+    margin-left: 0;
+  }
   
   .variant-pillow__wrapper label {
     text-decoration: none;
@@ -85,7 +88,7 @@
   }
   
   .list-variant a:hover .variant-pillow__wrapper:not(.sold-out) {
-    border: 1px solid rgb(var(--color-foreground));
+    border: 0.1rem solid rgb(var(--color-foreground));
   }
   
   .variant-pillow__image img {
@@ -94,7 +97,6 @@
     border-radius: 100px;
   }
   .variant-pillow__toltip .badge {
-    font-size: 0.9rem;
     padding: 0.2rem 0.3rem;
   }
   
@@ -104,7 +106,6 @@
     color: rgb(var(--color-background));
     padding: 0.5rem 1rem;
     border-radius: 100px;
-    font-size: 0.8rem;
     text-transform:uppercase;
     transform: translateY(-15px);
     opacity: 0;
@@ -126,7 +127,9 @@
     overflow: visible;
 
   }
-  li.list-variant.metafield {
-    width: 2rem;
-    height: 2rem;
-  }
+
+  .variant-pillow__wrapper.icon > span {
+    height: var(--icon-size-s);
+    width: var(--icon-size-s);
+    border-radius: 100%;
+    }

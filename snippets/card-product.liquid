@@ -42,7 +42,8 @@
       <div class="card__inner {% if settings.card_style == 'standard' %}color-{{ settings.card_color_scheme }} gradient{% endif %}{% if card_product.featured_media or settings.card_style == 'standard' %} ratio{% endif %}" style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;">
         {%- if card_product.featured_media -%}
           <div class="card__media">
-            <div class="media media--transparent media--hover-effect">
+            <div class="media {% if settings.enable_bgMod %}media--bg-mod color-background-1{% else %} media--transparent{% endif %}  media--hover-effect"
+            {% if settings.enable_bgMod %}style="--card-bg-color: {{ settings.card_bg_color }}"{% endif %}>
               {% comment %}theme-check-disable ImgLazyLoading{% endcomment %}
               <img
                 srcset="{%- if card_product.featured_media.width >= 165 -%}{{ card_product.featured_media | image_url: width: 165 }} 165w,{%- endif -%}
@@ -168,11 +169,17 @@
       </div>
       <div class="card__content">
         <div class="card__information">
-          <h3 class="card__heading{% if card_product.featured_media or settings.card_style == 'standard' %} h5{% endif %}"{% if card_product.featured_media or settings.card_style == 'card' %} id="title-{{ section_id }}-{{ card_product.id }}"{% endif %}>
-            <a href="{{ card_product.url }}" id="CardLink-{{ section_id }}-{{ card_product.id }}" class="full-unstyled-link" aria-labelledby="CardLink-{{ section_id }}-{{ card_product.id }} Badge-{{ section_id }}-{{ card_product.id }}">
-              {{ card_product.title | escape }}
-            </a>
-          </h3>
+          <div class="card__heading">
+            <h5 class="text-body">
+              {{ card_product.metafields.descriptors.type | upcase | escape }}
+            </h5>
+            <h3 class="card__heading{% if card_product.featured_media or settings.card_style == 'standard' %} h5{% endif %}"{% if card_product.featured_media or settings.card_style == 'card' %} id="title-{{ section_id }}-{{ card_product.id }}"{% endif %}>
+              <a href="{{ card_product.url }}" id="CardLink-{{ section_id }}-{{ card_product.id }}" class="full-unstyled-link" aria-labelledby="CardLink-{{ section_id }}-{{ card_product.id }} Badge-{{ section_id }}-{{ card_product.id }}">
+                {{ card_product.title | escape }}
+              </a>
+            </h3>
+          </div>
+          
           <div class="card-information">
             {%- if show_vendor -%}
               <span class="visually-hidden">{{ 'accessibility.vendor' | t }}</span>
@@ -205,7 +212,7 @@
                 <span class="visually-hidden">{{ card_product.metafields.reviews.rating_count }} {{ "accessibility.total_reviews" | t }}</span>
               </p>
             {%- endif -%}
-            
+           
             {% render 'swatch-color', 
               card_product: card_product,
               show_swatch: show_swatch,
@@ -270,12 +277,4 @@
     </div>
   </div>
 {%- endif -%}
-{% if variant.metafields.my_fields.swatch_color == blank %}
-  <style>
-    .variant-pillow__wrapper > span {
-      height: 1rem;
-      width: 1rem;
-      border-radius: 100%;
-    }
-  </style>
-{% endif %}
+

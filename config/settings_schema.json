@@ -130,6 +130,13 @@
         "unit": "%",
         "label": "t:settings_schema.typography.settings.body_scale.label",
         "default": 80
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_custom_font",
+        "label": "Enable transparent bg for image",
+        "info": "Lorem ipsum",
+        "default": true
       }
     ]
   },
@@ -457,6 +464,24 @@
         ],
         "default": "standard",
         "label": "t:settings_schema.cards.settings.style.label"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_bgMod",
+        "label": "Enable transparent bg for image",
+        "info": "Lorem ipsum",
+        "default": true
+      },
+      {
+        "type": "color",
+        "id": "card_bg_color",
+        "label": "Set color of bg card",
+        "default": "#fbfbfb"
+      },
+      {
+        "type": "textarea",
+        "id": "swatch_variant",
+        "label": "Use Color: #0000"
       },
       {
         "type": "range",

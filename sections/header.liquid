@@ -1,15 +1,3 @@
-{% if section.settings.enable_transparent_header %}
-  <script>
-    var fixTopPanel = function(){
-    var header = document.querySelector(".header--is-transparent");
-    var main = document.querySelector(".content-for-layout");
-    main.style.marginTop = "-" + header.offsetHeight + "px";
-  }
-
-  window.addEventListener("DOMContentLoaded", fixTopPanel);
-  window.addEventListener("resize", fixTopPanel)
-  </script>
-{% endif %}
 <link rel="stylesheet" href="{{ 'component-list-menu.css' | asset_url }}" media="print" onload="this.media='all'">
 <link rel="stylesheet" href="{{ 'component-search.css' | asset_url }}" media="print" onload="this.media='all'">
 <link rel="stylesheet" href="{{ 'component-menu-drawer.css' | asset_url }}" media="print" onload="this.media='all'">
@@ -115,6 +103,19 @@
     }
   }
 {%- endstyle -%}
+
+{% if section.settings.enable_transparent_header %}
+  <script>
+    var fixTopPanel = function(){
+    var header = document.querySelector(".header--is-transparent");
+    var main = document.querySelector(".content-for-layout");
+    main.style.marginTop = "-" + header.offsetHeight + "px";
+  }
+
+  window.addEventListener("DOMContentLoaded", fixTopPanel);
+  window.addEventListener("resize", fixTopPanel)
+  </script>
+{% endif %}
 
 <script src="{{ 'details-disclosure.js' | asset_url }}" defer="defer"></script>
 <script src="{{ 'details-modal.js' | asset_url }}" defer="defer"></script>
@@ -395,7 +396,8 @@
             }}
           {%- elsif section.settings.logo_svg != blank -%}
             <style>
-              .header__heading svg {
+              .header__heading svg,
+              .header__heading-link svg {
                 width: {{ section.settings.logo_width}}px
               }
             </style>
