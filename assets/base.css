@@ -1,6 +1,8 @@
 @import "_utils.css";
 @import "_animations.css";
 @import "_typography.css";
+@import "_icons.css";
+
 @import "_grid.css";
 @import "_button.css";
 
@@ -8,6 +10,7 @@
 @import "component-quantity.css";
 @import "component-details-summary.css";
 @import "component-media.css";
+@import "quick-add.css";
 
 @import "component-header.css";
 
@@ -318,7 +321,6 @@ h3 .icon-arrow,
   border: 1px solid transparent;
   border-radius: var(--badge-corner-radius);
   display: inline-block;
-  font-size: 1.2rem;
   letter-spacing: 0.1rem;
   line-height: 1;
   padding: 0.5rem 1.3rem 0.6rem 1.3rem;
