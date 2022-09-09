@@ -1,34 +1,130 @@
 /* Typography */
 
+:root {
+  --baseFontSize: 13px;
+
+  --minorSecond: 1.067;
+  --majorSecond: 1.125;
+  --minorThird: 1.2;
+  --majorThird: 1.25;
+  --perfectFourth: 1.333;
+  --augmentedFourth: 1.414;
+  --perfectFifth: 1.5;
+  --goldenRatio: 1.618;
+  --scale: var(--minorThird);
+
+  --size-body: var(--baseFontSize);
+  --size-l1: calc(var(--baseFontSize) * var(--scale));
+  --size-l2: calc(var(--size-l1) * var(--scale));
+  --size-l3: calc(var(--size-l2) * var(--scale));
+  --size-l4: calc(var(--size-l3) * var(--scale));
+  --size-l5: calc(var(--size-l4) * var(--scale));
+  --size-l6: calc(var(--size-l5) * var(--scale));
+  --size-l7: calc(var(--size-l6) * var(--scale));
+
+  --size-s1: calc(var(--size-l1) * var(--scale) - .1em);
+  --size-s2: calc(var(--size-l1) * var(--scale) - .2em);
+  --size-s3: calc(var(--size-l1) * var(--scale) - 1em);
+}
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h0,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 { 
+  font-family: 'Gt-America';
+  font-weight: var(--headingFontWeight);
+  margin-bottom: 1%;
+  margin-block-start:0;
+  margin-block-end: .67em;
+  margin: 0;
+  padding: 0;
+  line-height: calc(4px + 2ex + 4px);
+  margin-bottom: calc(.3rem + .6ex + .3rem);
+
+}
+
+h1,
+.h1 {
+  font-size: var(--size-l7);
+}
+h2,
+.h2 {
+  font-size: var(--size-l6);
+}
+h3,
+.h3 {
+  font-size: var(--size-l5);
+}
+h4,
+.h4 {
+  font-size: var(--size-l4);
+}
+h5,
+.h5 {
+  font-size: var(--size-l3);
+}
+h6,
+.h6 {
+  font-size: var(--size-l2);
+}
+
+body,
+p,
+span,
+label,
+.rte,
+button,
+input,
+a
+{
+  font-size: var(--size-body);
+  letter-spacing: .05em;
+}
+.large,
+strong {
+font-size: var(--size-l1)
+}
+.larger {
+font-size: var(--size-l2)
+}
+.largest {
+font-size: var(--size-l3)
+}
+small, 
+.small {
+font-size: var(--size-s1)
+}
+.smaller {
+font-size: var(--size-s2)
+}
+.smallest {
+font-size: var(--size-s3)
+}
+
+
+
 .text-body {
-    font-size: 1.5rem;
-    letter-spacing: 0.06rem;
-    line-height: calc(1 + 0.8 / var(--font-body-scale));
-    font-family: var(--font-body-family);
-    font-style: var(--font-body-style);
-    font-weight: var(--font-body-weight);
-  }
+  font-size: var(--size-body);
+  letter-spacing: 0.06rem;
+  line-height: calc(1 + 0.8 / var(--font-body-scale));
+  font-family: var(--font-body-family);
+  font-style: var(--font-body-style);
+  font-weight: var(--font-body-weight);
+}
   
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  .h0,
-  .h1,
-  .h2,
-  .h3,
-  .h4,
-  .h5 {
-    font-family: var(--font-heading-family);
-    font-style: var(--font-heading-style);
-    font-weight: var(--font-heading-weight);
-    letter-spacing: calc(var(--font-heading-scale) * 0.06rem);
-    color: rgb(var(--color-foreground));
-    line-height: calc(1 + 0.3 / max(1, var(--font-heading-scale)));
-    word-break: break-word;
-  }
-  
+
+
+/* CREARE SETTINGS CON H1-H2 ECC. */
   .hxl {
     font-size: calc(var(--font-heading-scale) * 5rem);
   }
@@ -49,67 +145,6 @@
     }
   }
   
-  h1,
-  .h1 {
-    font-size: calc(var(--font-heading-scale) * 3rem);
-  }
-  
-  @media only screen and (min-width: 750px) {
-    h1,
-    .h1 {
-      font-size: calc(var(--font-heading-scale) * 4rem);
-    }
-  }
-  
-  h2,
-  .h2 {
-    font-size: calc(var(--font-heading-scale) * 2rem);
-  }
-  
-  @media only screen and (min-width: 750px) {
-    h2,
-    .h2 {
-      font-size: calc(var(--font-heading-scale) * 2.4rem);
-    }
-  }
-  
-  h3,
-  .h3 {
-    font-size: calc(var(--font-heading-scale) * 1.7rem);
-  }
-  
-  @media only screen and (min-width: 750px) {
-    h3,
-    .h3 {
-      font-size: calc(var(--font-heading-scale) * 1.8rem);
-    }
-  }
-  
-  h4,
-  .h4 {
-    font-family: var(--font-heading-family);
-    font-style: var(--font-heading-style);
-    font-size: calc(var(--font-heading-scale) * 1.5rem);
-  }
-  
-  h5,
-  .h5 {
-    font-size: calc(var(--font-heading-scale) * 1.2rem);
-  }
-  
-  @media only screen and (min-width: 750px) {
-    h5,
-    .h5 {
-      font-size: calc(var(--font-heading-scale) * 1.3rem);
-    }
-  }
-  
-  h6,
-  .h6 {
-    color: rgba(var(--color-foreground), 0.75);
-    margin-block-start: 1.67em;
-    margin-block-end: 1.67em;
-  }
   
   blockquote {
     font-style: italic;
@@ -125,9 +160,13 @@
   }
   
   .caption {
-    font-size: 1rem;
+    font-size: var(--size-s1);
     letter-spacing: 0.07rem;
     line-height: calc(1 + 0.7 / var(--font-body-scale));
+  }
+
+  span {
+    letter-spacing: .01em;
   }
   
   @media screen and (min-width: 750px) {
@@ -137,14 +176,14 @@
   }
   
   .caption-with-letter-spacing {
-    font-size: 1rem;
+    font-size: var(--size-s1);
     letter-spacing: 0.13rem;
     line-height: calc(1 + 0.2 / var(--font-body-scale));
     text-transform: uppercase;
   }
   
   .caption-with-letter-spacing--medium {
-    font-size: 1.2rem;
+    font-size: var(--size-l7);
     letter-spacing: .16rem;
   }
   
@@ -159,8 +198,6 @@
   .field__input,
   .form__label,
   .select__select {
-    font-size: 1.3rem;
-    line-height: calc(1 + 0.5 / var(--font-body-scale));
     letter-spacing: 0.04rem;
   }
   
@@ -171,7 +208,6 @@
   table:not([class]) {
     table-layout: fixed;
     border-collapse: collapse;
-    font-size: 1.4rem;
     border-style: hidden;
     box-shadow: 0 0 0 0.1rem rgba(var(--color-foreground), 0.2);
     /* draws the table border  */
@@ -213,7 +249,6 @@
     text-underline-offset: 0.3rem;
     color: rgb(var(--color-link));
     background-color: transparent;
-    font-size: 1.4rem;
     font-family: inherit;
   }
   
@@ -227,7 +262,6 @@
   
   .link-with-icon {
     display: inline-flex;
-    font-size: 1.4rem;
     font-weight: 600;
     letter-spacing: 0.1rem;
     text-decoration: none;
@@ -351,7 +385,6 @@
 }
 
 .subtitle {
-  font-size: 1.6rem;
   line-height: calc(1 + 0.8 / var(--font-body-scale));
   letter-spacing: 0.06rem;
   color: rgba(var(--color-foreground), 0.7);
@@ -362,7 +395,7 @@
   letter-spacing: 0.1rem;
 }
 
-.subtitle--medium {
-  font-size: 1.4rem;
-  letter-spacing: 0.08rem;
+.toltip,
+.badge {
+  font-size: var(--size-s3);
 }

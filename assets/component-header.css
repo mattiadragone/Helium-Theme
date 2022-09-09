@@ -194,28 +194,18 @@
     content: none;
   }
   
-  .header__icon:hover .icon,
-  .modal__close-button:hover .icon {
-    transform: scale(1.07);
-  }
   
   .header__icon .icon {
-    height: 1.8rem;
-    width: 1.8rem;
     fill: none;
     vertical-align: middle;
   }
   
   .header__icon,
   .header__icon--cart .icon {
-    height: 2.2rem;
-    width: 2.2rem;
     padding: 0;
   }
 
   .header__icon--account .icon {
-    height: 2.2rem;
-    width: 2.2rem;
     padding: 0;
   }
   
@@ -246,7 +236,6 @@
   display: block;
   position: absolute;
   opacity: 1;
-  transform: scale(1);
   transition: transform 150ms ease, opacity 150ms ease;
 }
 
@@ -254,7 +243,6 @@ details:not([open]) > .header__icon--menu .icon-close,
 details[open] > .header__icon--menu .icon-hamburger {
   visibility: hidden;
   opacity: 0;
-  transform: scale(0.8);
 }
 
 .js details[open]:not(.menu-opening) > .header__icon--menu .icon-close {
@@ -264,7 +252,6 @@ details[open] > .header__icon--menu .icon-hamburger {
 .js details[open]:not(.menu-opening) > .header__icon--menu .icon-hamburger {
   visibility: visible;
   opacity: 1;
-  transform: scale(1.07);
 }
 
 .js details > .header__submenu {

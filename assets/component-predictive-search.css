@@ -128,17 +128,12 @@ predictive-search[loading] .predictive-search__results-list:first-child {
   justify-content: center;
 }
 
-.predictive-search__item-vendor {
-  font-size: 0.9rem;
-}
-
 .predictive-search__item-heading {
   margin: 0;
 }
 
 .predictive-search__item .price {
   color: rgba(var(--color-foreground), 0.7);
-  font-size: 1.2rem;
 }
 
 .predictive-search__item-vendor + .predictive-search__item-heading,

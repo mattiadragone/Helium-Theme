@@ -4,12 +4,7 @@ summary {
     list-style: none;
     position: relative;
   }
-  
-  summary .icon-caret {
-    position: absolute;
-    height: 1.8rem;
-    right: 1.5rem;
-  }
+
   
   summary::-webkit-details-marker {
     display: none;
