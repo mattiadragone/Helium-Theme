@@ -27,22 +27,20 @@
       <meta name="description" content="{{ page_description | escape }}">
     {% endif %}
 
-    {% render 'meta-tags' %}
-
     <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
-    {{ content_for_header }}
 
-    
-    {% render 'style-root' %}
-
-    {{ 'app-tailwind.css' | asset_url | stylesheet_tag }}
-    {{ 'base.css' | asset_url | stylesheet_tag }}
-    {% render 'style-var' %}
-    {% if settings.enable_custom_font %}
-      {% render 'font-custom' %}
-    {% endif %}
-
-    {{ 'component-modal.css' | asset_url | stylesheet_tag }}
+    {% liquid 
+      render 'meta-tags'
+      echo content_for_header
+      render 'style-root'
+      echo 'app-tailwind.css' | asset_url | stylesheet_tag
+      echo 'base.css' | asset_url | stylesheet_tag
+      render 'style-var'
+      if settings.enable_custom_font
+        render 'font-custom'
+      endif
+      echo 'component-modal.css' | asset_url | stylesheet_tag
+    %}
 
     {%- unless settings.type_body_font.system? -%}
       <link rel="preload" as="font" href="{{ settings.type_body_font | font_url }}" type="font/woff2" crossorigin>
@@ -63,7 +61,7 @@
   </script>
   </head>
 
-  <body class="gradient">
+  <body cla ss="gradient">
     <a class="skip-to-content-link button visually-hidden" href="#MainContent">
       {{ "accessibility.skip_to_text" | t }}
     </a>
@@ -85,7 +83,7 @@
       <li id="a11y-new-window-message">{{ 'accessibility.link_messages.new_window' | t }}</li>
     </ul>
 
-{% render 'script-data' %}
+    {% render 'script-data' %}
 
 
     {%- if settings.predictive_search_enabled -%}

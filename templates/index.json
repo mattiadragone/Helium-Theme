@@ -6,12 +6,12 @@
         "1659015090b3c3c085-0": {
           "type": "slide",
           "settings": {
-            "image": "shopify:\/\/shop_images\/2880x1536_9093_new.jpg",
+            "image": "shopify://shop_images/2880x1536_9093_new.jpg",
             "heading": "Image slide",
             "heading_size": "h1",
             "subheading": "Tell your brand's story through images",
             "button_label": "Button label",
-            "link": "shopify:\/\/products\/101-coffee-pot",
+            "link": "shopify://products/101-coffee-pot",
             "button_style_secondary": false,
             "box_align": "bottom-left",
             "show_text_box": false,
@@ -24,12 +24,12 @@
         "1659015090b3c3c085-1": {
           "type": "slide",
           "settings": {
-            "image": "shopify:\/\/shop_images\/02_ESA03-1_1512x_a086dbb0-55b0-4f03-a1db-e78922aa3ce6.jpg",
+            "image": "shopify://shop_images/02_ESA03-1_1512x_a086dbb0-55b0-4f03-a1db-e78922aa3ce6.jpg",
             "heading": "Image slide",
             "heading_size": "h1",
             "subheading": "Tell your brand's story through images",
             "button_label": "Button label",
-            "link": "shopify:\/\/collections\/venusia",
+            "link": "shopify://collections/venusia",
             "button_style_secondary": false,
             "box_align": "bottom-left",
             "show_text_box": false,
@@ -133,7 +133,7 @@
           "type": "column",
           "settings": {
             "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
             "link_label": "",
             "link": ""
           }
@@ -142,7 +142,7 @@
           "type": "column",
           "settings": {
             "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
             "link_label": "",
             "link": ""
           }
@@ -151,7 +151,7 @@
           "type": "column",
           "settings": {
             "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
             "link_label": "",
             "link": ""
           }

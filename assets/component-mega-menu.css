@@ -26,14 +26,11 @@
 }
 
 .js .mega-menu__content {
-  opacity: 0;
-  transform: translateY(-9.5rem);
-  transition: transform ease-in-out var(--duration-default), opacity ease-in-out var(--duration-short);
+
 }
 
 .mega-menu[open] .mega-menu__content {
-  opacity: 1;
-  transform: translateY(0);
+
 }
 
 .mega-menu__list {

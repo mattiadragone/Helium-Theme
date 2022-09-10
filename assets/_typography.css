@@ -22,9 +22,9 @@
   --size-l6: calc(var(--size-l5) * var(--scale));
   --size-l7: calc(var(--size-l6) * var(--scale));
 
-  --size-s1: calc(var(--size-l1) * var(--scale) - .1em);
-  --size-s2: calc(var(--size-l1) * var(--scale) - .2em);
-  --size-s3: calc(var(--size-l1) * var(--scale) - 1em);
+  --size-s1: calc(var(--size-l1) * var(--scale) - .01em);
+  --size-s2: calc(var(--size-l1) * var(--scale) - .02em);
+  --size-s3: calc(var(--size-l1) * var(--scale) - .1em);
 }
 
 

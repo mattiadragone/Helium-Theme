@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "[![Build status](https://github.com/shopify/dawn/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/Shopify/dawn/actions/workflows/ci.yml?query=branch%3Amain) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?color=informational)](/.github/CONTRIBUTING.md)",
   "main": "index.js",
-  "dependencies": {},
+  "dependencies": {
+  },
   "devDependencies": {
     "autoprefixer": "^10.4.8",
     "postcss": "^8.4.16",
@@ -12,14 +13,18 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start:tw": "npx tailwindcss -i _src/css/app-tailwind.css -o assets/app-tailwind.css --watch",
-    "start:s": "shopify theme serve --port=4343",
-    "build": "npx tailwindcss -i _src/css/app-tailwind.css -o assets/app-tailwind.css --minify"
+    "start:s": "shopify theme serve --port=3223 --theme-editor-sync --live-reload=full-page --poll",
+    "build": "npx tailwindcss -i _src/css/app-tailwind.css -o assets/app-tailwind.css --minify",
+    "lint:s": "shopify theme check",
+    "fix:s": "shopify theme check -a -o text"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Alessi-development/Alessi-dawn.git"
   },
-  "keywords": [],
+  "keywords": [
+
+  ],
   "author": "",
   "license": "ISC",
   "bugs": {

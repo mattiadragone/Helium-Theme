@@ -398,7 +398,7 @@
             <style>
               .header__heading svg,
               .header__heading-link svg {
-                width: {{ section.settings.logo_width}}px
+                width: {{ section.settings.logo_width }}px
               }
             </style>
             {{ section.settings.logo_svg }}
@@ -663,6 +663,7 @@
         <span class="visually-hidden">{{ 'templates.cart.cart' | t }}</span>
         {%- if cart != empty -%}
           <div class="cart-count-bubble">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-black opacity-30 z-0"></span>
             {%- if cart.item_count < 100 -%}
               <span aria-hidden="true">{{ cart.item_count }}</span>
             {%- endif -%}
@@ -960,7 +961,8 @@
       "default": true,
       "label": "t:sections.header.settings.enable_sticky_header.label",
       "info": "t:sections.header.settings.enable_sticky_header.info"
-    },{
+    },
+    {
       "type": "checkbox",
       "id": "enable_transparent_header",
       "default": true,
