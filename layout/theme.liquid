@@ -35,6 +35,7 @@
     
     {% render 'style-root' %}
 
+    {{ 'app-tailwind.css' | asset_url | stylesheet_tag }}
     {{ 'base.css' | asset_url | stylesheet_tag }}
     {% render 'style-var' %}
     {% if settings.enable_custom_font %}
