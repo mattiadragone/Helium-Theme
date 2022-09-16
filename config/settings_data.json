@@ -225,7 +225,7 @@
       },
       "10603822535667782919": {
         "type": "shopify:\/\/apps\/wishlist\/blocks\/app-embed\/7f9269b0-1b45-4d0c-8479-faf04f05d8ac",
-        "disabled": false,
+        "disabled": true,
         "settings": {
           "hide_float_icon": false,
           "is_show_vendor": false,
@@ -255,7 +255,7 @@
       },
       "855628211100114053": {
         "type": "shopify:\/\/apps\/klaviyo-email-marketing-sms\/blocks\/klaviyo-onsite-embed\/2632fe16-c075-4321-a88b-50b567f42507",
-        "disabled": false,
+        "disabled": true,
         "settings": {
         }
       }
