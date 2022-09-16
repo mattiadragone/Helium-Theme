@@ -103,22 +103,11 @@
             "link_label": "Acquista ora",
             "link": "#"
           }
-        },
-        "16633214207da599fb-2": {
-          "type": "column",
-          "disabled": true,
-          "settings": {
-            "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
-            "link_label": "",
-            "link": ""
-          }
         }
       },
       "block_order": [
         "16633214207da599fb-0",
-        "16633214207da599fb-1",
-        "16633214207da599fb-2"
+        "16633214207da599fb-1"
       ],
       "settings": {
         "title": "",
