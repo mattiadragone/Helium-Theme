@@ -14,7 +14,7 @@
   width: 100%;
   background: rgba(var(--color-foreground), 0.2);
   height: 100%;
-  transition:all var(--duration-short) ease-in-out;
+  transition: opacity var(--duration-short) ease-in-out;
 }
 
 .quick-add-modal[open] {
@@ -36,7 +36,6 @@
   background-color: rgb(var(--color-background));
   width: 100%;
   transform: translateY(100%);
-  transition: all ease-in-out var(--duration-short);
 }
 
 @media screen and (min-width: 750px) {
