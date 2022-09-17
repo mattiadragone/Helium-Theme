@@ -101,11 +101,21 @@
             "link_label": "Acquista ora",
             "link": "#"
           }
+        },
+        "d05d7785-2da2-49b9-b1b1-947eb9e8f44e": {
+          "type": "column",
+          "settings": {
+            "title": "Column",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+            "link_label": "",
+            "link": ""
+          }
         }
       },
       "block_order": [
         "16633214207da599fb-0",
-        "16633214207da599fb-1"
+        "16633214207da599fb-1",
+        "d05d7785-2da2-49b9-b1b1-947eb9e8f44e"
       ],
       "settings": {
         "title": "",
@@ -123,11 +133,56 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "1663443321b98e2d86": {
+      "type": "image-with-text",
+      "blocks": {
+        "16634433212188e641-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "Image with text",
+            "heading_size": "h1"
+          }
+        },
+        "16634433212188e641-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+            "text_style": "body"
+          }
+        },
+        "16634433212188e641-2": {
+          "type": "button",
+          "settings": {
+            "button_label": "Button label",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "16634433212188e641-0",
+        "16634433212188e641-1",
+        "16634433212188e641-2"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/EF9E3007-3AAE-4350-B9C9-A145D0EF4F75.jpg",
+        "height": "large",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "content_layout": "overlap",
+        "color_scheme": "background-1",
+        "mobile_content_alignment": "left",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
     "166332120001514ae3",
     "featured_collection",
-    "1663321420af078e75"
+    "1663321420af078e75",
+    "1663443321b98e2d86"
   ]
 }
