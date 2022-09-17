@@ -28,12 +28,26 @@
           "settings": {
             "collection": "candles"
           }
+        },
+        "c13cd2c5-ae34-48e4-907f-d8eac5d276b6": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "candles"
+          }
+        },
+        "b11bd6cb-9aa0-4454-ac68-1c4850de0bb4": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "candles"
+          }
         }
       },
       "block_order": [
         "166343629093c619cd-0",
         "166343629093c619cd-1",
-        "166343629093c619cd-2"
+        "166343629093c619cd-2",
+        "c13cd2c5-ae34-48e4-907f-d8eac5d276b6",
+        "b11bd6cb-9aa0-4454-ac68-1c4850de0bb4"
       ],
       "settings": {
         "title": "",
