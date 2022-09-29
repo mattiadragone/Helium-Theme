@@ -22,7 +22,7 @@
           <div class="cart-drawer__warnings center{% if settings.cart_drawer_collection != blank %} cart-drawer__warnings--has-collection{% endif %}">
             <div class="cart-drawer__empty-content">
               <h2 class="cart__empty-text">{{ 'sections.cart.empty' | t }}</h2>
-              <button class="drawer__close" type="button" onclick="this.closest('cart-drawer').close()" aria-label="{{ 'accessibility.close' | t }}">{% render 'icons-library', icons: 'close' %}</button>
+              <button class="drawer__close" type="button" onclick="this.closest('cart-drawer').close()" aria-label="{{ 'accessibility.close' | t }}">{% render 'icon-close' %}</button>
               <a href="{{ routes.all_products_collection_url }}" class="button">
                 {{ 'general.continue_shopping' | t }}
               </a>
@@ -47,7 +47,7 @@
       {%- endif -%}
       <div class="drawer__header">
         <h2 class="drawer__heading">{{ 'sections.cart.title' | t }}</h2>
-        <button class="drawer__close" type="button" onclick="this.closest('cart-drawer').close()" aria-label="{{ 'accessibility.close' | t }}">{% render 'icons-library', icons: 'close' %}</button>
+        <button class="drawer__close" type="button" onclick="this.closest('cart-drawer').close()" aria-label="{{ 'accessibility.close' | t }}">{% render 'icon-close' %}</button>
       </div>
       <cart-drawer-items {% if cart == empty %}class=" is-empty"{% endif %}>
         <form action="{{ routes.cart_url }}" id="CartDrawer-Form" class="cart__contents cart-drawer__form" method="post">
@@ -145,7 +145,7 @@
                           <ul class="discounts list-unstyled" role="list" aria-label="{{ 'customer.order.discount' | t }}">
                             {%- for discount in item.discounts -%}
                               <li class="discounts__discount">
-                                {%- render 'icons-library', icons: 'discount' -%}
+                                {%- render 'icon-discount' -%}
                                 {{ discount.title }}
                               </li>
                             {%- endfor -%}
@@ -203,7 +203,7 @@
                             <quantity-input class="quantity">
                               <button class="quantity__button no-js-hidden" name="minus" type="button">
                                 <span class="visually-hidden">{{ 'products.product.quantity.decrease' | t: product: item.product.title | escape }}</span>
-                                {% render 'icons-library', icons: 'minus' %}
+                                {% render 'icon-minus' %}
                               </button>
                               <input class="quantity__input"
                                 type="number"
@@ -216,13 +216,13 @@
                               >
                               <button class="quantity__button no-js-hidden" name="plus" type="button">
                                 <span class="visually-hidden">{{ 'products.product.quantity.increase' | t: product: item.product.title | escape }}</span>
-                                {% render 'icons-library', icons: 'plus' %}
+                                {% render 'icon-plus' %}
                               </button>
                             </quantity-input>
 
                             <cart-remove-button id="CartDrawer-Remove-{{ item.index | plus: 1 }}" data-index="{{ item.index | plus: 1 }}">
-                              <button class="button button--tertiary" aria-label="{{ 'sections.cart.remove_title' | t: title: item.title }}">
-                                {% render 'icons-library', icons: 'remove' %}
+                              <button type="button" class="button button--tertiary" aria-label="{{ 'sections.cart.remove_title' | t: title: item.title }}">
+                                {% render 'icon-remove' %}
                               </button>
                             </cart-remove-button>
                           </div>
@@ -255,7 +255,7 @@
             <summary>
               <span class="summary__title">
                 {{ 'sections.cart.note' | t }}
-                {% render 'icons-library', icons: 'caret' %}
+                {% render 'icon-caret' %}
               </span>
             </summary>
             <cart-note class="cart__note field">
@@ -279,7 +279,7 @@
               <ul class="discounts list-unstyled" role="list" aria-label="{{ 'customer.order.discount' | t }}">
                 {%- for discount in cart.cart_level_discount_applications -%}
                   <li class="discounts__discount discounts__discount--end">
-                    {%- render 'icons-library', icons: 'discount' -%}
+                    {%- render 'icon-discount' -%}
                     {{ discount.title }}
                     (-{{ discount.total_allocated_amount | money }})
                   </li>

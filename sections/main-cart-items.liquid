@@ -5,9 +5,19 @@
 {{ 'component-discounts.css' | asset_url | stylesheet_tag }}
 {{ 'component-loading-overlay.css' | asset_url | stylesheet_tag }}
 
-{%- if section.settings.padding_top or section.settings.padding_bottom -%}
-  {% render 'section-spacing' %}
-{%- endif -%}
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
 
 {%- unless settings.cart_type == 'drawer' -%}
   <script src="{{ 'cart.js' | asset_url }}" defer="defer"></script>
@@ -131,7 +141,7 @@
                     <ul class="discounts list-unstyled" role="list" aria-label="{{ 'customer.order.discount' | t }}">
                       {%- for discount in item.discounts -%}
                         <li class="discounts__discount">
-                          {%- render 'icons-library', icons: 'discount' -%}
+                          {%- render 'icon-discount' -%}
                           {{ discount.title }}
                         </li>
                       {%- endfor -%}
@@ -193,7 +203,7 @@
                       <quantity-input class="quantity">
                         <button class="quantity__button no-js-hidden" name="minus" type="button">
                           <span class="visually-hidden">{{ 'products.product.quantity.decrease' | t: product: item.product.title | escape }}</span>
-                          {% render 'icons-library', icons: 'minus' %}
+                          {% render 'icon-minus' %}
                         </button>
                         <input class="quantity__input"
                           type="number"
@@ -206,13 +216,13 @@
                         >
                         <button class="quantity__button no-js-hidden" name="plus" type="button">
                           <span class="visually-hidden">{{ 'products.product.quantity.increase' | t: product: item.product.title | escape }}</span>
-                          {% render 'icons-library', icons: 'plus' %}
+                          {% render 'icon-plus' %}
                         </button>
                       </quantity-input>
 
                       <cart-remove-button id="Remove-{{ item.index | plus: 1 }}" data-index="{{ item.index | plus: 1 }}">
                         <a href="{{ item.url_to_remove }}" class="button button--tertiary" aria-label="{{ 'sections.cart.remove_title' | t: title: item.title }}">
-                          {% render 'icons-library', icons: 'remove' %}
+                          {% render 'icon-remove' %}
                         </a>
                       </cart-remove-button>
                     </div>
