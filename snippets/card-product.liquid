@@ -129,6 +129,10 @@
                 class="badge badge--bottom-left color-{{ settings.sale_badge_color_scheme }}"
               >
                 {{- 'products.product.on_sale' | t -}}
+                {% liquid 
+                  assign discount = card_product.compare_at_price_max | minus:card_product.price | times:100 | divided_by:card_product.compare_at_price_max
+                  echo discount | append: '%' | prepend: ' '
+                %}
               </span>
             {%- endif -%}
           </div>
