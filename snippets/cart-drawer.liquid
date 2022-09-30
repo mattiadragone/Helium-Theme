@@ -49,6 +49,45 @@
         <h2 class="drawer__heading">{{ 'sections.cart.title' | t }}</h2>
         <button class="drawer__close" type="button" onclick="this.closest('cart-drawer').close()" aria-label="{{ 'accessibility.close' | t }}">{% render 'icon-close' %}</button>
       </div>
+
+      {% for shipping_zone in shop.shipping_zones %}
+      {{shipping_zone}}
+      {% endfor %}
+      {% unless cart == empty %} 
+        <div class="freeShipping__wrapper">
+          {% liquid 
+            assign shipping_value = 5000
+            assign cart_total = cart.total_price
+            assign shipping_value_left = shipping_value | minus: cart_total
+            assign percentage_value = cart_total | times: 100 | divided_by: shipping_value
+            %}
+            <div class="freeShipping__icon">
+              {% render 'icon-accordion' icon: 'truck' %}
+            </div>
+          <div class="freeShipping__progress">
+            <span class="freeShipping__message">
+              {{store_availability.pick_up_time}}
+              {{pick_up_time}}
+              {% if shipping_value_left < 0 %}
+                Complimenti spedizione gratuita.
+                {% else %}
+                Ti mancano ancora <b>{{ shipping_value_left | money }}</b> per la spedizione gratuita.
+              {% endif %}
+            </span>
+            <progress 
+              {% if shipping_value_left < 0 %}
+                value="100"
+              {% else %}
+                value="{{ percentage_value }}"
+              {% endif %}
+              max="100"
+              >
+              {{ percentage_value }}%
+            </progress>
+          </div>
+        </div>
+      {% endunless %}
+      
       <cart-drawer-items {% if cart == empty %}class=" is-empty"{% endif %}>
         <form action="{{ routes.cart_url }}" id="CartDrawer-Form" class="cart__contents cart-drawer__form" method="post">
           <div id="CartDrawer-CartItems" class="drawer__contents js-contents">
@@ -86,7 +125,7 @@
                             <p class="caption-with-letter-spacing light">{{ item.product.vendor }}</p>
                           {%- endif -%}
 
-                          <a href="{{ item.url }}" class="cart-item__name h4 break">{{ item.product.title | escape }}</a>
+                          <a href="{{ item.url }}" class="cart-item__name h5 break">{{ item.product.title | escape }}</a>
 
                           {%- if item.original_price != item.final_price -%}
                             <div class="cart-item__discounted-prices">
@@ -253,7 +292,7 @@
         {%- if settings.show_cart_note -%}
           <details id="Details-CartDrawer">
             <summary>
-              <span class="summary__title">
+              <span class="summary__title caption-with-letter-spacing font-body-bold">
                 {{ 'sections.cart.note' | t }}
                 {% render 'icon-caret' %}
               </span>
