@@ -12,6 +12,7 @@
   - show_quick_add: {Boolean} Show the quick add button.
   - section_id: {String} The ID of the section that contains this card.
   - horizontal_class: {Boolean} Add a card--horizontal class if set to true. Default: false
+  - show_sale_percentage: {Boolean} Show the sale percentage of discoutn. Default: true
 
   Usage:
   {% render 'card-product', show_vendor: section.settings.show_vendor %}
@@ -129,6 +130,12 @@
                 class="badge badge--bottom-left color-{{ settings.sale_badge_color_scheme }}"
               >
                 {{- 'products.product.on_sale' | t -}}
+                {% if show_sale_percentage %}
+                  {% liquid 
+                    assign discount = card_product.compare_at_price_max | minus: card_product.price | times: 100 | divided_by: card_product.compare_at_price_max
+                    echo discount | append: '%' | prepend: ' '
+                  %}
+                {% endif %}
               </span>
             {%- endif -%}
           </div>

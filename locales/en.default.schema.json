@@ -88,6 +88,9 @@
     "badges": {
       "name": "Badges",
       "settings": {
+        "show_sale_percentage": {
+          "label": "Enable Sale percentage"
+        },
         "position": {
           "options__1": {
             "label": "Bottom left"
