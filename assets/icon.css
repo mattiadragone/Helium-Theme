@@ -1,0 +1,20 @@
+:root {
+    --icon-xs: .7rem;
+    --icon-s: 1.3rem;
+    --icon-m: 2rem;
+    --icon-l: 3rem;
+}
+.icon {
+    width: var(--icon-m);
+    height: var(--icon-m);
+}
+.icon--small {
+    width: var(--icon-s);
+    height: var(--icon-s);
+}
+
+.icon--boxed {
+    background: var(--gradient-background);
+    border-radius: 100%;
+    padding: .5em
+}
