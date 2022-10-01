@@ -6,6 +6,7 @@
     - use_variant: {Boolean} Renders selected or first variant price instead of overall product pricing (optional)
     - show_badges: {Boolean} Renders 'Sale' and 'Sold Out' tags if the product matches the condition (optional)
     - price_class: {String} Adds a price class to the price element (optional)
+    - show_sale_percentage: {Boolean} Show the sale percentage of discoutn. Default: true
 
     Usage:
     {% render 'price', product: product %}
@@ -84,6 +85,12 @@
   {%- if show_badges -%}
     <span class="badge price__badge-sale color-{{ settings.sale_badge_color_scheme }}">
       {{ 'products.product.on_sale' | t }}
+      {% if show_sale_percentage %}
+        {% liquid 
+          assign discount = product.compare_at_price_max | minus: product.price | times: 100 | divided_by: product.compare_at_price_max
+          echo discount | append: '%' | prepend: ' '
+        %}
+      {% endif %}
     </span>
 
     <span class="badge price__badge-sold-out color-{{ settings.sold_out_badge_color_scheme }}">

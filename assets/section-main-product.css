@@ -368,11 +368,6 @@ a.product__text {
   margin-bottom: 0.5rem;
 }
 
-.product .price--sold-out .price__badge-sold-out {
-  background: transparent;
-  color: rgb(var(--color-base-text));
-  border-color: transparent;
-}
 
 .product .price--sold-out .price__badge-sale {
   display: none;
@@ -383,9 +378,6 @@ a.product__text {
     max-width: 60rem;
   }
 
-  .product__info-container .price--on-sale .price-item--regular {
-    font-size: 1.6rem;
-  }
 
   .product__info-container > *:first-child {
     margin-top: 0;

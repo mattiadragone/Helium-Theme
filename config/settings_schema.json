@@ -1240,6 +1240,12 @@
     "name": "t:settings_schema.badges.name",
     "settings": [
       {
+        "type": "checkbox",
+        "id": "show_sale_percentage",
+        "default": true,
+        "label": "t:settings_schema.bages.settings.show_sale_percentage.label"
+      },
+      {
         "type": "select",
         "id": "badge_position",
         "options": [
