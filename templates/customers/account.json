@@ -3,7 +3,7 @@
     "1663413961b70d1b58": {
       "type": "custom-liquid",
       "settings": {
-        "custom_liquid": "<div class=\"customer account text-center\">\n<p>{%for tag in customer.tags %}\n{{tag | upcase | split: 'SPENDER:' }}\n{%endfor%}<\/p>\n<p>Loyalty: {{ customer.metafields.loyalty.program }} POINTS<\/p><\/div>",
+        "custom_liquid": "<div class=\"customer account text-center\">\n<p>{%for tag in customer.tags %}\n{{tag | upcase | split: 'SPENDER:' }}\n{%endfor%}</p>\n<p>Loyalty: {{ customer.metafields.loyalty.program }} POINTS</p></div>",
         "color_scheme": "background-2",
         "padding_top": 40,
         "padding_bottom": 52

@@ -6,12 +6,12 @@
         "166332120029956086-0": {
           "type": "slide",
           "settings": {
-            "image": "shopify:\/\/shop_images\/2C3ABC1E-DAE9-414C-AE44-A4EFB01F2925.jpg",
+            "image": "shopify://shop_images/2C3ABC1E-DAE9-414C-AE44-A4EFB01F2925.jpg",
             "heading": "Un verde drappeggio",
             "heading_size": "h1",
             "subheading": "Tell your brand's story through images",
             "button_label": "SCOPRI",
-            "link": "shopify:\/\/collections\/plisse",
+            "link": "shopify://collections/plisse",
             "button_style_secondary": true,
             "box_align": "top-left",
             "show_text_box": false,
@@ -106,7 +106,7 @@
           "type": "column",
           "settings": {
             "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
             "link_label": "",
             "link": ""
           }
@@ -147,7 +147,7 @@
         "16634433212188e641-1": {
           "type": "text",
           "settings": {
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
             "text_style": "body"
           }
         },
@@ -165,7 +165,7 @@
         "16634433212188e641-2"
       ],
       "settings": {
-        "image": "shopify:\/\/shop_images\/EF9E3007-3AAE-4350-B9C9-A145D0EF4F75.jpg",
+        "image": "shopify://shop_images/EF9E3007-3AAE-4350-B9C9-A145D0EF4F75.jpg",
         "height": "large",
         "desktop_image_width": "medium",
         "layout": "image_first",
