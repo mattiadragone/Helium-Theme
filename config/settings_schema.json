@@ -1469,6 +1469,22 @@
     ]
   },
   {
+    "name": "t:settings_schema.gift_wrap.name",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_gift_wrap",
+        "label": "Enable gift wrapping in Cart Drawer",
+        "default": true
+      },
+      {
+        "type": "product",
+        "id": "gift_wrapping",
+        "label": "Select product"
+      }
+    ]
+  },
+  {
     "name": "t:settings_schema.cart.name",
     "settings": [
       {

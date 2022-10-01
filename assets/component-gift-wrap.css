@@ -1,0 +1,19 @@
+.gift-wrap {
+    display: flex;
+    padding: 1rem;
+    align-items: center;
+    background: rgba(var(--color-foreground),.03);
+    padding: 1.5rem;
+    margin: 0 0 1.5rem 0;
+  }
+  .gift-wrap__icon {
+    display: flex;
+    margin: 0.5rem 1.5rem 0.5rem 0;
+  }
+  .gift-wrap__product {
+    display: flex;
+    flex-direction: column;
+  }
+  .gift-wrap__button {
+    margin-left: auto;
+  }
