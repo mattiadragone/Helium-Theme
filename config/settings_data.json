@@ -118,6 +118,7 @@
     "predictive_search_show_vendor": false,
     "predictive_search_show_price": true,
     "currency_code_enabled": true,
+    "gift_wrapping": "gift-wrap",
     "cart_type": "drawer",
     "show_cart_note": true,
     "sections": {
@@ -170,7 +171,7 @@
             "type": "link_list",
             "settings": {
               "heading": "",
-              "menu": "policies"
+              "menu": ""
             }
           },
           "1ce2cf7d-33fc-49b0-b92c-e85f1897ec38": {
@@ -218,7 +219,7 @@
     ],
     "blocks": {
       "5240453401355084846": {
-        "type": "shopify://apps/subsecond-prefetch-checkout/blocks/app-embed/6d4e6112-20fa-44c2-a527-bc68aa6e3c1b",
+        "type": "shopify:\/\/apps\/subsecond-prefetch-checkout\/blocks\/app-embed\/6d4e6112-20fa-44c2-a527-bc68aa6e3c1b",
         "disabled": false,
         "settings": {
         }
@@ -397,7 +398,7 @@
               "type": "text",
               "settings": {
                 "heading": "Our mission",
-                "subtext": "<p>Share contact information, store details, and brand content with your customers.</p>"
+                "subtext": "<p>Share contact information, store details, and brand content with your customers.<\/p>"
               }
             }
           },
