@@ -106,12 +106,13 @@ cart-drawer:not(.is-empty) .cart-drawer__collection {
   height: 1.8rem;
   width: 1.8rem;
 }
+
 .freeShipping__wrapper {
   display: flex;
   align-items: center;
   flex-wrap: nowrap;
   width: calc(100% + 3rem);
-  background: rgba(var(--color-foreground),.03);
+  background: rgba(var(--color-foreground), .03);
   padding: .5rem 1.5rem;
   margin: 0 0 1.5rem 0;
   transform: translateX(-1.5rem);
@@ -133,26 +134,26 @@ cart-drawer:not(.is-empty) .cart-drawer__collection {
   row-gap: .4rem;
 }
 
-.freeShipping__message {
-  font-size: 70%;
-}
-
 .freeShipping__wrapper progress {
   width: 100%;
 }
+
 progress {
   border-radius: var(--inputs-radius);
-  border: 1px solid rgba(var(--color-foreground),.1);
+  border: 1px solid rgba(var(--color-foreground), .1);
   height: .7rem;
 }
+
 progress::-webkit-progress-bar {
   border-radius: var(--inputs-radius);
-  background-color: rgba(var(--color-foreground),.04);
+  background-color: rgba(var(--color-foreground), .04);
 }
+
 progress::-webkit-progress-value {
-  background-color:rgba(var(--color-foreground),1);
+  background-color: rgba(var(--color-foreground), 1);
   border-radius: var(--inputs-radius);
 }
+
 progress::-moz-progress-bar {
   /* style rules */
 }
@@ -169,16 +170,16 @@ progress::-moz-progress-bar {
   padding: 1.5rem 0;
 }
 
-cart-drawer-items.is-empty + .drawer__footer {
+cart-drawer-items.is-empty+.drawer__footer {
   display: none;
 }
 
-.drawer__footer > details {
+.drawer__footer>details {
   margin-top: -1.5rem;
   border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.2);
 }
 
-.drawer__footer > details[open] {
+.drawer__footer>details[open] {
   padding-bottom: 1.5rem;
 }
 
@@ -189,7 +190,7 @@ cart-drawer-items.is-empty + .drawer__footer {
   padding: 1.5rem 0;
 }
 
-.drawer__footer > details + .cart-drawer__footer {
+.drawer__footer>details+.cart-drawer__footer {
   padding-top: 1.5rem;
 }
 
@@ -227,7 +228,8 @@ cart-drawer {
   flex-grow: 1;
 }
 
-.cart-drawer .cart-items, .cart-drawer tbody {
+.cart-drawer .cart-items,
+.cart-drawer tbody {
   display: block;
   width: 100%;
 }
@@ -258,7 +260,7 @@ cart-drawer-items {
 
 .cart-drawer .cart-item {
   display: grid;
-  grid-template: repeat(2,auto) / repeat(4,1fr);
+  grid-template: repeat(2, auto) / repeat(4, 1fr);
   gap: 1.5rem;
   margin-bottom: 0;
 }
@@ -312,7 +314,7 @@ cart-drawer-items {
   padding-top: 2rem;
 }
 
-.cart-drawer .cart-item > td + td {
+.cart-drawer .cart-item>td+td {
   padding-left: 1rem;
 }
 
@@ -328,7 +330,7 @@ cart-drawer-items {
   justify-content: flex-end;
 }
 
-.cart-drawer.cart-drawer .cart-item__price-wrapper > *:only-child {
+.cart-drawer.cart-drawer .cart-item__price-wrapper>*:only-child {
   margin-top: 0;
 }
 
@@ -353,7 +355,7 @@ cart-drawer-items {
   }
 }
 
-.cart-drawer__footer > * + * {
+.cart-drawer__footer>*+* {
   margin-top: 1rem;
 }
 
@@ -397,27 +399,27 @@ cart-drawer-items {
   justify-content: flex-start;
 }
 
-.drawer__footer #dynamic-checkout-cart ul > li {
-	flex-basis: calc(50% - 0.5rem) !important;
+.drawer__footer #dynamic-checkout-cart ul>li {
+  flex-basis: calc(50% - 0.5rem) !important;
   margin: 0 !important;
 }
 
-.drawer__footer #dynamic-checkout-cart ul > li:only-child {
+.drawer__footer #dynamic-checkout-cart ul>li:only-child {
   flex-basis: 100% !important;
   margin-right: 0.5rem !important;
 }
 
 @media screen and (min-width: 750px) {
-  .drawer__footer #dynamic-checkout-cart ul > li {
+  .drawer__footer #dynamic-checkout-cart ul>li {
     flex-basis: calc(100% / 3 - 0.5rem) !important;
     margin: 0 !important;
   }
 
-  .drawer__footer #dynamic-checkout-cart ul > li:first-child:nth-last-child(2),
-  .drawer__footer #dynamic-checkout-cart ul > li:first-child:nth-last-child(2) ~ li,
-  .drawer__footer #dynamic-checkout-cart ul > li:first-child:nth-last-child(4),
-  .drawer__footer #dynamic-checkout-cart ul > li:first-child:nth-last-child(4) ~ li {
-	  flex-basis: calc(50% - 0.5rem) !important;
+  .drawer__footer #dynamic-checkout-cart ul>li:first-child:nth-last-child(2),
+  .drawer__footer #dynamic-checkout-cart ul>li:first-child:nth-last-child(2)~li,
+  .drawer__footer #dynamic-checkout-cart ul>li:first-child:nth-last-child(4),
+  .drawer__footer #dynamic-checkout-cart ul>li:first-child:nth-last-child(4)~li {
+    flex-basis: calc(50% - 0.5rem) !important;
   }
 }
 

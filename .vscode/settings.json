@@ -1,0 +1,5 @@
+{
+	"editor.formatOnSave": true,
+	"css.lint.float": "error",
+	"editor.tabSize": 2
+}

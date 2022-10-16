@@ -7,7 +7,7 @@
   display: grid;
 }
 
-.collage__item > * {
+.collage__item>* {
   width: 100%;
 }
 
