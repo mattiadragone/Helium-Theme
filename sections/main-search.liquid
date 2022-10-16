@@ -217,7 +217,13 @@
                           show_vendor: section.settings.show_vendor,
                           show_rating: section.settings.show_rating,
                           lazy_load: lazy_load,
-                          show_sale_percentage: settings.show_sale_percentage
+                          show_sale_percentage: settings.show_sale_percentage,
+                          show_swatch: section.settings.show_swatch,
+                          vrnt: section.settings.variant_swatch,
+                          metafield: 'metafield',
+                          txt: 'text',
+                          img: 'image',
+                          option_name: section.settings.variant_name
                         %}
                       {%- when 'article' -%}
                         {% render 'article-card',

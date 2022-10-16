@@ -1,0 +1,135 @@
+.list-variant {
+    display: flex;
+    position: relative;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    transition: all 300ms ease-in-out;
+    width: 100%;
+    z-index: 1;
+    overflow-y: visible;
+  }
+  .list-variant.text {
+    overflow-x: auto;
+  }
+  
+  .list-variant:hover li {
+      opacity: 0.4;
+  }
+
+  .list-variant li a {
+    text-decoration: none;
+  }
+  
+  .list-variant li:hover {
+    opacity: 1;
+  }
+  
+  .variant-pillow__wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: flex-start;
+    align-items: center;
+    border: 0.1rem solid rgba(var(--color-foreground), 0.2);
+    padding: 0.3rem;
+    border-radius: 100px;
+    margin: 0.5rem;
+    transition: all var(--duration-long) ease;
+  }
+  .list-variant li:first-of-type .variant-pillow__wrapper {
+    margin-left: 0;
+  }
+  
+  .variant-pillow__wrapper label {
+    text-decoration: none;
+    padding: 0.3rem 0.7rem;
+    white-space: nowrap;
+  }
+  .variant-pillow__wrapper a label  {
+    cursor: auto;
+    text-decoration: none;
+  }
+  .list-variant .link {
+    text-decoration: none;
+  }
+  
+  .variant-pillow__image {
+    display: flex;
+  }
+
+  .variant-pillow__wrapper.sold-out img,
+  .variant-pillow__wrapper.sold-out span {
+    opacity: 0.2;
+    position: relative;
+  }
+  .variant-pillow__wrapper.sold-out {
+    position: relative;
+    border: 0.1rem solid rgba(var(--color-foreground), 0.04);
+  }
+  .variant-pillow__wrapper.sold-out::after {
+    content: '/';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+.variant-pillow__wrapper.metafield.sold-out::after {
+  content: none;
+}
+
+
+  .variant-pillow__wrapper.sold-out:hover {
+    cursor: not-allowed;
+  }
+  
+  .list-variant a:hover .variant-pillow__wrapper:not(.sold-out) {
+    border: 0.1rem solid rgb(var(--color-foreground));
+  }
+  
+  .variant-pillow__image img {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 100px;
+  }
+  .variant-pillow__toltip .badge {
+    padding: 0.2rem 0.3rem;
+  }
+  
+  .variant-pillow__toltip {
+    position: absolute;
+    background-color: rgb(var(--color-foreground));
+    color: rgb(var(--color-background));
+    padding: 0.5rem 1rem;
+    border-radius: 100px;
+    text-transform:uppercase;
+    transform: translateY(-15px);
+    opacity: 0;
+    transition: all var(--duration-long) ease;
+  }
+  
+  .list-variant a:hover .variant-pillow__toltip {
+    opacity: 1;
+    transform: translateY(-30px);
+  }
+ .list-variant a:hover {
+    cursor: pointer;
+  }
+.list-variant a label:hover {
+  cursor: pointer;
+}
+
+  ul.list-variant.metafield {
+    overflow: visible;
+
+  }
+
+  .variant-pillow__wrapper.icon > span {
+    height: 1rem;
+    width: 1rem;
+    border-radius: 100%;
+    }

@@ -716,6 +716,12 @@
         "show_secondary_image": {
           "label": "Show second image on hover"
         },
+        "show_swatch": {
+          "title": "Swatch Variant",
+          "label": "Show swatch variant",
+          "type": "Type",
+          "name": "Variant name"
+        },
         "show_vendor": {
           "label": "Show vendor"
         },

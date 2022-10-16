@@ -202,6 +202,17 @@
               </p>
             {%- endif -%}
 
+            {% render 'swatch-color', 
+              card_product: card_product,
+              show_swatch: show_swatch,
+              vrnt: vrnt,
+              metafield: metafield,
+              has_content: has_content,
+              txt: txt,
+              img: img,
+              option_name: option_name
+              %}
+
             {% render 'price', product: card_product, price_class: '' %}
           </div>
         </div>
