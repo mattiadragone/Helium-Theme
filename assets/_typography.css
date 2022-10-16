@@ -226,6 +226,10 @@ a:not([href]) {
     cursor: not-allowed;
 }
 
+.disclosure__link {
+    font-size: var(--text-sm);
+}
+
 .caption-large,
 .customer .field input,
 .customer select,

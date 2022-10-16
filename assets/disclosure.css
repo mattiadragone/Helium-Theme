@@ -45,6 +45,7 @@
 }
 
 .disclosure__link {
+  font-size: var(--text-sm);
   display: block;
   padding: 0.5rem 2.2rem;
   text-decoration: none;
