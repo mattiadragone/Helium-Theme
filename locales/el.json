@@ -257,7 +257,9 @@
       "login": {
         "title": "Έχετε λογαριασμό;",
         "paragraph_html": "<a href=\"{{ link }}\" class=\"link underlined-link\">Συνδεθείτε</a> για ταχύτερη ολοκλήρωση των αγορών σας."
-      }
+      },
+      "shipping_treeshold_text": "TODO",
+      "shipping_free_text": "TODO"
     },
     "footer": {
       "payment": "Μέθοδοι πληρωμής"

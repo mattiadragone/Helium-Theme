@@ -257,7 +257,9 @@
       "login": {
         "title": "Hesabınız var mı?",
         "paragraph_html": "Daha hızlı ödeme yapmak için <a href=\"{{ link }}\" class=\"link underlined-link\">oturum açın</a>."
-      }
+      },
+      "shipping_treeshold_text": "TODO",
+      "shipping_free_text": "TODO"
     },
     "footer": {
       "payment": "Ödeme yöntemleri"

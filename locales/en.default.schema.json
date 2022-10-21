@@ -321,6 +321,18 @@
         "show_vendor": {
           "label": "Show vendor"
         },
+        "freeShipping_bar": {
+          "header": "Progress free shipping bar",
+          "allow": {
+            "label": "Show progress shipping bar"
+          },
+          "icon": {
+            "label": "Show truck icon"
+          },
+          "treeshold_value": {
+            "label": "Value for enjoy free shipping. Format: 5000 (example) "
+          }
+        },
         "show_cart_note": {
           "label": "Enable cart note"
         },
