@@ -1,21 +1,79 @@
+{% style %}
+ :root {
+    --progress-bar-radius: {{ radius }}px;
+ }
+ .freeShipping__wrapper {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  padding: 1rem 1.5rem;
+  margin: 0 0 1.5rem 0;
+  border-radius: var(--progress-bar-radius);
+}
+
+.freeShipping__icon {
+  display: flex;
+  padding: 0.8rem;
+  margin: 0.5rem 1.5rem 0.5rem 0;
+  fill: rgba(var(--color-foreground),.75);
+  border: 1px solid rgba(var(--color-foreground),.75);
+  border-radius: 100%;
+
+}
+
+.freeShipping__progress {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  row-gap: .4rem;
+}
+
+.freeShipping__message {
+  font-size: 70%;
+}
+
+.freeShipping__wrapper progress {
+  width: 100%;
+}
+progress {
+  border-radius: var(--progress-bar-radius);
+  border: 1px solid rgba(var(--color-foreground),.1);
+  height: .7rem;
+}
+progress::-webkit-progress-bar {
+  border-radius: var(--progress-bar-radius);
+  background-color: rgba(var(--color-foreground),.04);
+}
+progress::-webkit-progress-value {
+  background-color:rgba(var(--color-foreground),1);
+  border-radius: var(--progress-bar-radius);
+}
+progress::-moz-progress-bar {
+  /* style rules */
+}
+{% endstyle%}
 {% unless cart == empty %} 
-    <div class="freeShipping__wrapper">
+    <div class="freeShipping__wrapper color-{{ color_scheme }} gradient content-container isolate">
         {% liquid 
-        assign shipping_value = 5000
-        assign cart_total = cart.total_price
-        assign shipping_value_left = shipping_value | minus: cart_total
-        assign percentage_value = cart_total | times: 100 | divided_by: shipping_value
+            assign cart_total = cart.total_price
+            assign shipping_value_left = shipping_value | minus: cart_total
+            assign percentage_value = cart_total | times: 100 | divided_by: shipping_value
         %}
-        <div class="freeShipping__icon icon--boxed">
-            {% render 'icon-accordion' icon: 'truck' %}
-        </div>
+        {% if show_icon %}
+            <div class="freeShipping__icon icon--boxed">
+                {% render 'icon-accordion' icon: 'truck' %}
+            </div>
+        {% endif %}
         <div class="freeShipping__progress">
         <span class="freeShipping__message">
-            {% if shipping_value_left < 0 %}
-            Complimenti spedizione gratuita.
-            {% else %}
-            Ti mancano ancora <b>{{ shipping_value_left | money }}</b> per la spedizione gratuita.
-            {% endif %}
+            {% liquid
+                if shipping_value_left < 0
+                    echo 'sections.cart.shipping_free_text' | t
+                else
+                    assign shipping_value_left_money = shipping_value_left | money 
+                    echo 'sections.cart.shipping_treeshold_text' | t: value: shipping_value_left_money
+                endif 
+            %}
         </span>
         <progress 
             {% if shipping_value_left < 0 %}

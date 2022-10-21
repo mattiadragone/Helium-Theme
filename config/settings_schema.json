@@ -1498,15 +1498,75 @@
         "default": false
       },
       {
-        "type": "header",
-        "content": "t:settings_schema.cart.settings.cart_drawer.header"
-      },
-      {
         "type": "collection",
         "id": "cart_drawer_collection",
         "label": "t:settings_schema.cart.settings.cart_drawer.collection.label",
         "info": "t:settings_schema.cart.settings.cart_drawer.collection.info"
+      },
+      {
+        "type": "header",
+        "content": "t:settings_schema.cart.settings.cart_drawer.header"
+      },
+      {
+        "type": "header",
+        "content": "t:settings_schema.cart.settings.freeShipping_bar.header"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_freeShipping_bar",
+        "label": "t:settings_schema.cart.settings.freeShipping_bar.allow.label",
+        "default": true
+      },{
+        "type": "text",
+        "id": "freeShipping_bar_treeshold",
+        "label": "t:settings_schema.cart.settings.freeShipping_bar.treeshold_value.label",
+        "default": "5000"
+      },
+      {
+        "type": "checkbox",
+        "id": "freeShipping_bar_icon",
+        "label": "t:settings_schema.cart.settings.freeShipping_bar.icon.label",
+        "default": true
+      },
+      {
+        "type": "select",
+        "id": "freeShipping_bar_color_scheme",
+        "options": [
+          {
+            "value": "accent-1",
+            "label": "t:sections.all.colors.accent_1.label"
+          },
+          {
+            "value": "accent-2",
+            "label": "t:sections.all.colors.accent_2.label"
+          },
+          {
+            "value": "background-1",
+            "label": "t:sections.all.colors.background_1.label"
+          },
+          {
+            "value": "background-2",
+            "label": "t:sections.all.colors.background_2.label"
+          },
+          {
+            "value": "inverse",
+            "label": "t:sections.all.colors.inverse.label"
+          }
+        ],
+        "default": "background-1",
+        "label": "t:sections.all.colors.label"
+      },
+      {
+        "type": "range",
+        "id": "freeShipping_bar_radius",
+        "min": 0,
+        "max": 40,
+        "step": 2,
+        "unit": "px",
+        "label": "t:settings_schema.global.settings.corner_radius.label",
+        "default": 40
       }
+      
     ]
   }
 ]
