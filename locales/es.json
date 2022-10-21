@@ -264,7 +264,9 @@
       "login": {
         "title": "¿Tienes una cuenta?",
         "paragraph_html": "<a href=\"{{ link }}\" class=\"link underlined-link\">Inicia sesión<\/a> para finalizar tus compras con mayor rapidez."
-      }
+      },
+      "shipping_treeshold_text": "Estás a {{ value }} de recibir envío gratis",
+      "shipping_free_text": "¡Disfruta de tu envío gratis!"
     },
     "footer": {
       "payment": "Formas de pago"
