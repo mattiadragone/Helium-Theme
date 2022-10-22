@@ -257,7 +257,9 @@
       "login": {
         "title": "계정이 있습니까?",
         "paragraph_html": "더 빠르게 결제하려면 <a href=\"{{ link }}\" class=\"link underlined-link\">로그인</a>하십시오."
-      }
+      },
+      "shipping_treeshold_text": "TODO",
+      "shipping_free_text": "TODO"
     },
     "footer": {
       "payment": "결제 방법"

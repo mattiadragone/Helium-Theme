@@ -257,7 +257,9 @@
       "login": {
         "title": "Már van fiókod?",
         "paragraph_html": "<a href=\"{{ link }}\" class=\"link underlined-link\">Jelentkezz be</a> a gyorsabb fizetéshez."
-      }
+      },
+      "shipping_treeshold_text": "TODO",
+      "shipping_free_text": "TODO"
     },
     "footer": {
       "payment": "Fizetési módok"

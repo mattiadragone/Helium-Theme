@@ -257,7 +257,9 @@
       "login": {
         "title": "Har du ett konto?",
         "paragraph_html": "<a href=\"{{ link }}\" class=\"link underlined-link\">Logga in</a> för att gå till kassan snabbare."
-      }
+      },
+      "shipping_treeshold_text": "TODO",
+      "shipping_free_text": "TODO"
     },
     "footer": {
       "payment": "Betalningsmetoder"

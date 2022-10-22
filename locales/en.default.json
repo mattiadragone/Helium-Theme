@@ -246,6 +246,8 @@
       "taxes_included_but_shipping_at_checkout": "Tax included and shipping calculated at checkout",
       "taxes_included_and_shipping_policy_html": "Tax included. <a href=\"{{ link }}\">Shipping</a> calculated at checkout.",
       "taxes_and_shipping_at_checkout": "Taxes and shipping calculated at checkout",
+      "shipping_treeshold_text": "You’re {{ value }} away from free shipping",
+      "shipping_free_text": "Enjoy your free shipping!",
       "headings": {
         "product": "Product",
         "price": "Price",

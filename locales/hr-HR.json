@@ -264,7 +264,9 @@
       "login": {
         "title": "Imate li račun?",
         "paragraph_html": "<a href=\"{{ link }}\" class=\"link underlined-link\">Prijavite se</a> za bržu provjeru."
-      }
+      },
+      "shipping_treeshold_text": "TODO",
+      "shipping_free_text": "TODO"
     },
     "footer": {
       "payment": "Načini plaćanja"

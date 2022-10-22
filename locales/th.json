@@ -257,7 +257,9 @@
       "login": {
         "title": "มีบัญชีผู้ใช้อยู่แล้วใช่หรือไม่",
         "paragraph_html": "<a href=\"{{ link }}\" class=\"link underlined-link\">เข้าสู่ระบบ</a>เพื่อชำระเงินให้รวดเร็วยิ่งขึ้น"
-      }
+      },
+      "shipping_treeshold_text": "TODO",
+      "shipping_free_text": "TODO"
     },
     "footer": {
       "payment": "วิธีการชำระเงิน"

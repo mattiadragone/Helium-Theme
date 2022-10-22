@@ -271,7 +271,9 @@
       "login": {
         "title": "Turite paskyrą?",
         "paragraph_html": "<a href=\"{{ link }}\" class=\"link underlined-link\">Prisijunkite</a> ir atsiskaitysite greičiau."
-      }
+      },
+      "shipping_treeshold_text": "TODO",
+      "shipping_free_text": "TODO"
     },
     "footer": {
       "payment": "Mokėjimo būdai"

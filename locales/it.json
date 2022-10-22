@@ -264,7 +264,9 @@
       "login": {
         "title": "Hai un account?",
         "paragraph_html": "<a href=\"{{ link }}\" class=\"link underlined-link\">Accedi</a> per un check-out più veloce."
-      }
+      },
+      "shipping_treeshold_text": "Ti Mancano {{ value }} per ottenere la spedizione gratuita",
+      "shipping_free_text": "Hai ottenuto la spedizione gratuita!"
     },
     "footer": {
       "payment": "Metodi di pagamento"

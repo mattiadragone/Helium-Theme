@@ -257,7 +257,9 @@
       "login": {
         "title": "Имате профил?",
         "paragraph_html": "<a href=\"{{ link }}\" class=\"link underlined-link\">Влезте</a> за по-бързо преминаване към плащане."
-      }
+      },
+      "shipping_treeshold_text": "TODO",
+      "shipping_free_text": "TODO"
     },
     "footer": {
       "payment": "Начини на плащане"
