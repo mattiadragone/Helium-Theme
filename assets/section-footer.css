@@ -120,9 +120,8 @@
 .footer-block--newsletter {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  align-items: flex-end;
-  margin-top: 3rem;
+  align-items: flex-start;
+  flex-direction: column;
 }
 
 .footer-block--newsletter:only-child {
@@ -169,6 +168,7 @@
 
 .footer-block__newsletter {
   text-align: center;
+  width: 100%;
 }
 
 .newsletter-form__field-wrapper {

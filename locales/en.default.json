@@ -58,7 +58,8 @@
   "newsletter": {
     "label": "Email",
     "success": "Thanks for subscribing",
-    "button_label": "Subscribe"
+    "button_label": "Subscribe",
+    "privacy_policy_html": "I accept the <a class=\"link link--text\" href=\"{{ link }}\" target=\"_blank\">Privacy policy<\/a> and agree to receive personalized communications"
   },
   "accessibility": {
     "skip_to_text": "Skip to content",
