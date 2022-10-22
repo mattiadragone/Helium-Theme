@@ -21,10 +21,6 @@
   margin-left: 2rem;
 }
 
-.totals__subtotal-value {
-  font-size: 1.8rem;
-}
-
 .cart__ctas + .totals {
   margin-top: 2rem;
 }
