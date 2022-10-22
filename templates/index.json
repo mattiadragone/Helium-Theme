@@ -132,35 +132,45 @@
     "1663321420af078e75": {
       "type": "multicolumn",
       "blocks": {
+        "ec75aec2-6df3-4fb2-bb72-287827b4de3a": {
+          "type": "column",
+          "settings": {
+            "title": "Pagamenti Sicuri",
+            "text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. <\/p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
         "16633214207da599fb-0": {
           "type": "column",
           "settings": {
-            "title": "Collezione Plissé",
-            "text": "",
-            "link_label": "Acquista ora",
+            "title": "Spedizione Gratuita",
+            "text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. <\/p>",
+            "link_label": "",
             "link": "#"
           }
         },
         "16633214207da599fb-1": {
           "type": "column",
           "settings": {
-            "title": "Rituali quotidiani",
-            "text": "",
-            "link_label": "Acquista ora",
+            "title": "Reso Gratuito",
+            "text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. <\/p>",
+            "link_label": "",
             "link": "#"
           }
         },
         "d05d7785-2da2-49b9-b1b1-947eb9e8f44e": {
           "type": "column",
           "settings": {
-            "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+            "title": "Gift Wrapping",
+            "text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. <\/p>",
             "link_label": "",
             "link": ""
           }
         }
       },
       "block_order": [
+        "ec75aec2-6df3-4fb2-bb72-287827b4de3a",
         "16633214207da599fb-0",
         "16633214207da599fb-1",
         "d05d7785-2da2-49b9-b1b1-947eb9e8f44e"
@@ -170,58 +180,14 @@
         "heading_size": "h1",
         "image_width": "full",
         "image_ratio": "square",
-        "columns_desktop": 2,
+        "columns_desktop": 4,
         "column_alignment": "left",
         "background_style": "none",
         "button_label": "",
         "button_link": "#",
-        "color_scheme": "background-1",
+        "color_scheme": "background-2",
         "columns_mobile": "1",
         "swipe_on_mobile": true,
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "1663443321b98e2d86": {
-      "type": "image-with-text",
-      "blocks": {
-        "16634433212188e641-0": {
-          "type": "heading",
-          "settings": {
-            "heading": "Image with text",
-            "heading_size": "h1"
-          }
-        },
-        "16634433212188e641-1": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
-            "text_style": "body"
-          }
-        },
-        "16634433212188e641-2": {
-          "type": "button",
-          "settings": {
-            "button_label": "Button label",
-            "button_link": ""
-          }
-        }
-      },
-      "block_order": [
-        "16634433212188e641-0",
-        "16634433212188e641-1",
-        "16634433212188e641-2"
-      ],
-      "settings": {
-        "image": "shopify:\/\/shop_images\/EF9E3007-3AAE-4350-B9C9-A145D0EF4F75.jpg",
-        "height": "large",
-        "desktop_image_width": "medium",
-        "layout": "image_first",
-        "desktop_content_position": "top",
-        "desktop_content_alignment": "left",
-        "content_layout": "overlap",
-        "color_scheme": "background-1",
-        "mobile_content_alignment": "left",
         "padding_top": 36,
         "padding_bottom": 36
       }
@@ -231,7 +197,6 @@
     "166332120001514ae3",
     "40211245-2dfb-4715-99dd-5e8bc22eb28e",
     "featured_collection",
-    "1663321420af078e75",
-    "1663443321b98e2d86"
+    "1663321420af078e75"
   ]
 }

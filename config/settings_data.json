@@ -120,6 +120,7 @@
     "currency_code_enabled": true,
     "cart_type": "drawer",
     "show_cart_note": true,
+    "freeShipping_bar_color_scheme": "accent-2",
     "freeShipping_bar_radius": 0,
     "sections": {
       "announcement-bar": {
@@ -195,7 +196,7 @@
           "enable_country_selector": true,
           "enable_language_selector": true,
           "payment_enable": true,
-          "margin_top": 48,
+          "margin_top": 0,
           "padding_top": 32,
           "padding_bottom": 0
         }
