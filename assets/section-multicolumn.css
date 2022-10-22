@@ -226,3 +226,7 @@
     display: list-item;
   }
 }
+
+.multicolumn-card__icon {
+  fill: rgb(var(--color-foreground));
+}
