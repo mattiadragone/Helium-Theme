@@ -6,12 +6,12 @@
         "166332120029956086-0": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/2C3ABC1E-DAE9-414C-AE44-A4EFB01F2925.jpg",
+            "image": "shopify:\/\/shop_images\/2C3ABC1E-DAE9-414C-AE44-A4EFB01F2925.jpg",
             "heading": "Un verde drappeggio",
             "heading_size": "h1",
             "subheading": "Tell your brand's story through images",
             "button_label": "SCOPRI",
-            "link": "shopify://collections/plisse",
+            "link": "shopify:\/\/collections\/plisse",
             "button_style_secondary": true,
             "box_align": "top-left",
             "show_text_box": false,
@@ -52,6 +52,54 @@
         "change_slides_speed": 5,
         "show_text_below": true,
         "accessibility_info": "Slideshow about our brand"
+      }
+    },
+    "40211245-2dfb-4715-99dd-5e8bc22eb28e": {
+      "type": "collection-list",
+      "blocks": {
+        "template--16017633050809__40211245-2dfb-4715-99dd-5e8bc22eb28e-1666452527286f6133-0": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "candles"
+          }
+        },
+        "template--16017633050809__40211245-2dfb-4715-99dd-5e8bc22eb28e-1666452527286f6133-1": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "accessories"
+          }
+        },
+        "template--16017633050809__40211245-2dfb-4715-99dd-5e8bc22eb28e-1666452527286f6133-2": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "books"
+          }
+        },
+        "e5ba3e45-ef58-4400-a758-94d19b298974": {
+          "type": "featured_collection",
+          "disabled": true,
+          "settings": {
+            "collection": "candles"
+          }
+        }
+      },
+      "block_order": [
+        "template--16017633050809__40211245-2dfb-4715-99dd-5e8bc22eb28e-1666452527286f6133-0",
+        "template--16017633050809__40211245-2dfb-4715-99dd-5e8bc22eb28e-1666452527286f6133-1",
+        "template--16017633050809__40211245-2dfb-4715-99dd-5e8bc22eb28e-1666452527286f6133-2",
+        "e5ba3e45-ef58-4400-a758-94d19b298974"
+      ],
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_ratio": "portrait",
+        "columns_desktop": 3,
+        "color_scheme": "accent-1",
+        "show_view_all": false,
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "padding_top": 100,
+        "padding_bottom": 100
       }
     },
     "featured_collection": {
@@ -106,7 +154,7 @@
           "type": "column",
           "settings": {
             "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
             "link_label": "",
             "link": ""
           }
@@ -147,7 +195,7 @@
         "16634433212188e641-1": {
           "type": "text",
           "settings": {
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
             "text_style": "body"
           }
         },
@@ -165,7 +213,7 @@
         "16634433212188e641-2"
       ],
       "settings": {
-        "image": "shopify://shop_images/EF9E3007-3AAE-4350-B9C9-A145D0EF4F75.jpg",
+        "image": "shopify:\/\/shop_images\/EF9E3007-3AAE-4350-B9C9-A145D0EF4F75.jpg",
         "height": "large",
         "desktop_image_width": "medium",
         "layout": "image_first",
@@ -181,6 +229,7 @@
   },
   "order": [
     "166332120001514ae3",
+    "40211245-2dfb-4715-99dd-5e8bc22eb28e",
     "featured_collection",
     "1663321420af078e75",
     "1663443321b98e2d86"
