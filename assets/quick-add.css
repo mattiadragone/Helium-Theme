@@ -1,8 +1,15 @@
 .quick-add {
-  position: relative;
-  grid-row-start: 4;
-  margin: 0 0 1rem;
-  z-index: 1;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  pointer-events: auto;
+  touch-action: auto;
+  z-index: 11;
+  opacity: 0;
+  transition: all var(--duration-short);
+}
+.grid__item:hover .quick-add {
+ opacity: 1;
 }
 
 .card--card .quick-add {
