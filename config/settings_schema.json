@@ -4,8 +4,8 @@
     "theme_name": "Dawn",
     "theme_version": "7.0.0",
     "theme_author": "Shopify",
-    "theme_documentation_url": "https://help.shopify.com/manual/online-store/themes",
-    "theme_support_url": "https://support.shopify.com/"
+    "theme_documentation_url": "https:\/\/help.shopify.com\/manual\/online-store\/themes",
+    "theme_support_url": "https:\/\/support.shopify.com\/"
   },
   {
     "name": "t:settings_schema.colors.name",
@@ -1522,7 +1522,8 @@
         "id": "show_freeShipping_bar",
         "label": "t:settings_schema.cart.settings.freeShipping_bar.allow.label",
         "default": true
-      },{
+      },
+      {
         "type": "text",
         "id": "freeShipping_bar_treeshold",
         "label": "t:settings_schema.cart.settings.freeShipping_bar.treeshold_value.label",
@@ -1572,7 +1573,6 @@
         "label": "t:settings_schema.global.settings.corner_radius.label",
         "default": 40
       }
-      
     ]
   }
 ]
