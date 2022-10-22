@@ -73,21 +73,23 @@
                       widths: '275, 550, 710, 1420',
                       class: 'multicolumn-card__image'
                     }}
-                    {% render 'icon-accordion', icon: block.settings.icon %}
                   </div>
                 </div>
-              {%- else -%}
-                {% render 'icon-accordion', icon: block.settings.icon %}
               {%- endif -%}
               <div class="multicolumn-card__info">
+                {%- if block.settings.image == blank and block.settings.icon != 'none' -%}
+                  <div class="multicolumn-card__icon {{ section.settings.content_alignment }}">
+                    {% render 'icon-accordion', icon: block.settings.icon %}
+                  </div>
+                {%- endif -%}
                 {%- if block.settings.title != blank -%}
-                  <h3>{{ block.settings.title | escape }}</h3>
+                  <h3 class='{{ section.settings.content_alignment }}'>{{ block.settings.title | escape }}</h3>
                 {%- endif -%}
                 {%- if block.settings.text != blank -%}
-                  <div class="rte">{{ block.settings.text }}</div>
+                  <div class="rte {{ section.settings.content_alignment }}">{{ block.settings.text }}</div>
                 {%- endif -%}
                 {%- if block.settings.link_label != blank -%}
-                  <a class="link animate-arrow" {% if block.settings.link == blank %}role="link" aria-disabled="true"{% else %}href="{{ block.settings.link }}"{% endif %}>{{ block.settings.link_label | escape }}<span class="icon-wrap">&nbsp;{% render 'icon-arrow' %}</span></a>
+                  <a class="link animate-arrow {{ section.settings.content_alignment }}" {% if block.settings.link == blank %}role="link" aria-disabled="true"{% else %}href="{{ block.settings.link }}"{% endif %}>{{ block.settings.link_label | escape }}<span class="icon-wrap">&nbsp;{% render 'icon-arrow' %}</span></a>
                 {%- endif -%}
               </div>
             </div>
@@ -149,6 +151,26 @@
       ],
       "default": "h1",
       "label": "t:sections.all.heading_size.label"
+    },
+    {
+      "type": "select",
+      "id": "content_alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:sections.rich-text.settings.content_alignment.options__1.label"
+        },
+        {
+          "value": "center",
+          "label": "t:sections.rich-text.settings.content_alignment.options__2.label"
+        },
+        {
+          "value": "right",
+          "label": "t:sections.rich-text.settings.content_alignment.options__3.label"
+        }
+      ],
+      "default": "center",
+      "label": "t:sections.rich-text.settings.content_alignment.label"
     },
     {
       "type": "select",
