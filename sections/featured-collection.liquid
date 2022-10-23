@@ -51,7 +51,7 @@
 {% endif %}
 
 {%- endstyle -%}
-<div class="featured-collection__wrapper section-{{ section.id }}-padding{% if section.settings.full_width %} collection--full-width{% endif %}">
+<div class="featured-collection__wrapper section-{{ section.id }}-padding{% if section.settings.full_width %} collection--full-width{% endif %} color-{{ section.settings.color_scheme }}">
   {% if section.settings.allow_tabs %}
     <div class="tab collection__title title-wrapper title-wrapper--no-top-margin page-width">
       {%- for block in section.blocks -%}
@@ -85,7 +85,7 @@
         endif
       -%}
 
-      <div class="color-{{ block.settings.color_scheme }} isolate gradient {% if section.settings.full_width %} collection--full-width{% endif %} {% unless section.settings.allow_tabs %}section-{{ section.id }}-padding{% else %}tabcontent" id="{{ block.settings.title | handleize }}{% endunless %}">
+      <div class="isolate gradient {% if section.settings.full_width %} collection--full-width{% endif %} {% unless section.settings.allow_tabs %}section-{{ section.id }}-padding{% else %}tabcontent" id="{{ block.settings.title | handleize }}{% endunless %}">
         <div class="collection">
           {% unless section.settings.allow_tabs %}
             <div class="collection__title title-wrapper title-wrapper--no-top-margin {% if section.settings.full_width %} center{% else %} page-width{% endif %}{% if show_mobile_slider %} title-wrapper--self-padded-tablet-down{% endif %}{% if show_desktop_slider %} collection__title--desktop-slider{% endif %}">
@@ -161,8 +161,37 @@
     {
       "type": "checkbox",
       "id": "allow_tabs",
-      "label": "Allow tabs",
+      "label": "t:sections.featured-collection.settings.allow_tab.label",
       "default": true
+    },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "options": [
+        {
+          "value": "accent-1",
+          "label": "t:sections.all.colors.accent_1.label"
+        },
+        {
+          "value": "accent-2",
+          "label": "t:sections.all.colors.accent_2.label"
+        },
+        {
+          "value": "background-1",
+          "label": "t:sections.all.colors.background_1.label"
+        },
+        {
+          "value": "background-2",
+          "label": "t:sections.all.colors.background_2.label"
+        },
+        {
+          "value": "inverse",
+          "label": "t:sections.all.colors.inverse.label"
+        }
+      ],
+      "default": "background-1",
+      "label": "t:sections.all.colors.label",
+      "info": "t:sections.all.colors.has_cards_info"
     },
     {
       "type": "range",
@@ -207,7 +236,7 @@
     },
     {
       "type": "header",
-      "content": "t:sections.featured-collection.settings.header_mobile.content"
+      "content": "t:sections.featured-collection.settings.header_desktop.content"
     },
     {
       "type": "range",
@@ -393,35 +422,6 @@
             }
           ],
           "default": "body"
-        },
-        {
-          "type": "select",
-          "id": "color_scheme",
-          "options": [
-            {
-              "value": "accent-1",
-              "label": "t:sections.all.colors.accent_1.label"
-            },
-            {
-              "value": "accent-2",
-              "label": "t:sections.all.colors.accent_2.label"
-            },
-            {
-              "value": "background-1",
-              "label": "t:sections.all.colors.background_1.label"
-            },
-            {
-              "value": "background-2",
-              "label": "t:sections.all.colors.background_2.label"
-            },
-            {
-              "value": "inverse",
-              "label": "t:sections.all.colors.inverse.label"
-            }
-          ],
-          "default": "background-1",
-          "label": "t:sections.all.colors.label",
-          "info": "t:sections.all.colors.has_cards_info"
         }
       ]
     }

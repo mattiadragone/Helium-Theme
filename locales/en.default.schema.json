@@ -659,6 +659,9 @@
     "featured-collection": {
       "name": "Featured collection",
       "settings": {
+        "allow_tab": {
+          "label": "Allow Tabs Collections"
+        },
         "title": {
           "label": "Heading"
         },
@@ -741,6 +744,9 @@
         },
         "header_mobile": {
           "content": "Mobile Layout"
+        },
+        "header_desktop": {
+          "content": "Desktop Layout"
         },
         "columns_mobile": {
           "label": "Number of columns on mobile",

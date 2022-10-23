@@ -357,6 +357,23 @@ slider-component.slider-component-full-width {
   display: flex;
   align-items: center;
   justify-content: center;
+
+  position: absolute;
+  top: calc(50% - 5rem);
+  transform: translateY(-50%);
+  z-index: 11;
+}
+
+.slider-button--next {
+  right: 0;
+}
+
+.slider-button--prev{
+  left: 0;
+}
+
+[disabled="disabled"].slider-button {
+  opacity: 0;
 }
 
 .slider-button:not([disabled]):hover {
@@ -364,7 +381,7 @@ slider-component.slider-component-full-width {
 }
 
 .slider-button .icon {
-  height: 0.6rem;
+  height: 1.6rem;
 }
 
 .slider-button[disabled] .icon {
