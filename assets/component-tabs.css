@@ -1,0 +1,39 @@
+
+  .tab {
+    overflow: hidden;
+  }
+  .tabcontent:first-of-type {
+    display: block;
+  }
+  .tab button {
+    background: transparent;
+    opacity: .5;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+  }
+  .tab button:hover {
+    opacity: 1
+  }
+  .tab button.active {
+    opacity: 1
+  }
+  button.tablinks  {
+    padding: 0;
+  }
+
+  .tabcontent:first-child {
+    display: block
+  }
+  .tabcontent {
+    display: none;
+    animation: fadeEffect 1s;
+  }
+
+  @keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+  }
