@@ -8,7 +8,7 @@
   opacity: 0;
   transition: all var(--duration-short);
 }
-.grid__item:hover .quick-add {
+.product-card-wrapper:hover .quick-add {
  opacity: 1;
 }
 
