@@ -1,0 +1,33 @@
+{
+  "name": "helium-theme",
+  "version": "0.0.1",
+  "description": "A fork of Shopify Dawn. More features!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "login": "shopify login --store=test12345678064.myshopify.com",
+    "list theme": "shopify theme list",
+    "serve": "shopify theme serve --ignore",
+    "lint": "shopify theme check",
+    "fix": "shopify theme check -a"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mattiadragone/Helium-Theme.git"
+  },
+  "keywords": [
+    "Shopify",
+    "themes",
+    "e-commerce",
+    "shop"
+  ],
+  "author": "Mattia Dragone",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mattiadragone/Helium-Theme/issues"
+  },
+  "homepage": "https://github.com/mattiadragone/Helium-Theme#readme",
+  "engines": {
+    "node": "16.8.0"
+  }
+}

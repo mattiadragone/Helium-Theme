@@ -56,7 +56,7 @@
   {% if section.settings.allow_tabs %}
     <div class="tab collection__title title-wrapper title-wrapper--no-top-margin page-width">
       {%- for block in section.blocks -%}
-        {%- if block.settings.title != blank  -%}
+        {%- if block.settings.title != blank -%}
           <button class="tablinks title {{ block.settings.heading_size }}" {% if forloop.index == 1 %}id="defaultOpen"{% endif %} onclick="openTab(event, '{{ block.settings.title | handleize }}')">
             {{ block.settings.title | escape }} {%- if block.settings.collection.all_products_count > 0 -%}<sup class="text-smaller">({{ block.settings.collection.all_products_count }})</sup>{%- endif -%}
           </button>
@@ -280,7 +280,6 @@
       "default": false,
       "label": "t:sections.featured-collection.settings.swipe_on_mobile.label"
     },
-    
     {
       "type": "header",
       "content": "t:sections.featured-collection.settings.header.content"
@@ -360,7 +359,6 @@
       "type": "Collections",
       "name": "t:sections.rich-text.blocks.heading.name",
       "limit": 6,
-  
       "settings": [
         {
           "type": "collection",
