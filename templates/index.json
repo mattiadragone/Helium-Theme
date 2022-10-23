@@ -104,27 +104,74 @@
     },
     "featured_collection": {
       "type": "featured-collection",
+      "blocks": {
+        "b5b6b11b-762b-4393-8065-5a76af39ef9a": {
+          "type": "Collections",
+          "settings": {
+            "collection": "accessories",
+            "title": "{{ block.settings.collection.title }}",
+            "heading_size": "h2",
+            "description": "",
+            "show_description": false,
+            "description_style": "body"
+          }
+        },
+        "966c07d8-8b8c-4f46-90ae-5dfdbb53a7c4": {
+          "type": "Collections",
+          "settings": {
+            "collection": "books",
+            "title": "{{ block.settings.collection.title }}",
+            "heading_size": "h2",
+            "description": "",
+            "show_description": false,
+            "description_style": "body"
+          }
+        },
+        "da0f85e9-65d3-4acc-8464-53084a816d15": {
+          "type": "Collections",
+          "settings": {
+            "collection": "candles",
+            "title": "{{ block.settings.collection.title }}",
+            "heading_size": "h2",
+            "description": "",
+            "show_description": false,
+            "description_style": "body"
+          }
+        },
+        "5bdf357a-5363-45ca-a1bd-17e077cae18c": {
+          "type": "Collections",
+          "settings": {
+            "collection": "promotions",
+            "title": "{{ block.settings.collection.title }}",
+            "heading_size": "h2",
+            "description": "",
+            "show_description": false,
+            "description_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "b5b6b11b-762b-4393-8065-5a76af39ef9a",
+        "966c07d8-8b8c-4f46-90ae-5dfdbb53a7c4",
+        "da0f85e9-65d3-4acc-8464-53084a816d15",
+        "5bdf357a-5363-45ca-a1bd-17e077cae18c"
+      ],
       "settings": {
-        "title": "",
-        "heading_size": "h2",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "collection": "all",
+        "allow_tabs": true,
+        "color_scheme": "background-1",
         "products_to_show": 12,
-        "columns_desktop": 4,
         "full_width": false,
         "show_view_all": false,
         "view_all_style": "solid",
+        "columns_desktop": 4,
         "enable_desktop_slider": true,
-        "color_scheme": "background-1",
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
         "image_ratio": "portrait",
         "show_secondary_image": true,
         "show_vendor": false,
         "show_rating": false,
         "enable_quick_add": true,
-        "columns_mobile": "2",
-        "swipe_on_mobile": true,
         "padding_top": 28,
         "padding_bottom": 36
       }
@@ -135,6 +182,7 @@
         "ec75aec2-6df3-4fb2-bb72-287827b4de3a": {
           "type": "column",
           "settings": {
+            "icon": "check_mark",
             "title": "Pagamenti Sicuri",
             "text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. <\/p>",
             "link_label": "",
@@ -144,6 +192,7 @@
         "16633214207da599fb-0": {
           "type": "column",
           "settings": {
+            "icon": "check_mark",
             "title": "Spedizione Gratuita",
             "text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. <\/p>",
             "link_label": "",
@@ -153,6 +202,7 @@
         "16633214207da599fb-1": {
           "type": "column",
           "settings": {
+            "icon": "check_mark",
             "title": "Reso Gratuito",
             "text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. <\/p>",
             "link_label": "",
@@ -162,6 +212,7 @@
         "d05d7785-2da2-49b9-b1b1-947eb9e8f44e": {
           "type": "column",
           "settings": {
+            "icon": "check_mark",
             "title": "Gift Wrapping",
             "text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. <\/p>",
             "link_label": "",
@@ -178,6 +229,7 @@
       "settings": {
         "title": "",
         "heading_size": "h1",
+        "content_alignment": "center",
         "image_width": "full",
         "image_ratio": "square",
         "columns_desktop": 4,
