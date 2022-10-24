@@ -1,0 +1,423 @@
+$color_1: inherit;
+$color_2: rgb(var(--color-foreground));
+$background-color_1: transparent;
+
+.card-wrapper {
+	color: $color_1;
+	height: 100%;
+	position: relative;
+	text-decoration: none;
+	.card {
+		text-decoration: none;
+		text-align: var(--text-alignment);
+		.card--horizontal {
+			--text-alignment: left;
+			--image-padding: 0rem;
+			flex-direction: row;
+			align-items: flex-start;
+			gap: 1.5rem;
+			.ratio {
+				&:before {
+					padding-bottom: 0;
+				}
+			}
+		}
+	}
+	.card--card {
+		height: 100%;
+		.card--horizontal {
+			padding: 1.2rem;
+		}
+	}
+	.card__inner {
+		width: 100%;
+	}
+	.card__heading {
+		margin-top: 0;
+		margin-bottom: 0;
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+	.card__media {
+		overflow: hidden;
+		z-index: 0;
+		border-radius: calc(var(--border-radius) - var(--border-width) - var(--image-padding));
+		margin: var(--image-padding);
+		width: calc(100% - 2 * var(--image-padding));
+	}
+	.card__content {
+		display: grid;
+		grid-template-rows: minmax(0, 1fr) max-content minmax(0, 1fr);
+		padding: 1rem;
+		width: 100%;
+		flex-grow: 1;
+	}
+	.card__information {
+		grid-row-start: 2;
+		padding: 1.3rem 1rem;
+	}
+	.card__badge {
+		align-self: flex-end;
+		grid-row-start: 3;
+		justify-self: flex-start;
+		.top {
+			align-self: flex-start;
+			grid-row-start: 1;
+		}
+		.right {
+			justify-self: flex-end;
+		}
+	}
+}
+.card {
+	&:not(.ratio) {
+		display: flex;
+		flex-direction: column;
+		height: 100%;
+		>.card__content {
+			grid-template-rows: max-content minmax(0, 1fr) max-content auto;
+		}
+	}
+	.media {
+		bottom: 0;
+		position: absolute;
+		top: 0;
+		width: 100%;
+	}
+	&:not(.card--horizontal) {
+		>.card__content {
+			>.card__badge {
+				margin: 1.3rem;
+			}
+		}
+	}
+	.icon-wrap {
+		margin-left: 0.8rem;
+		white-space: nowrap;
+		transition: transform var(--duration-short) ease;
+		overflow: hidden;
+	}
+}
+.card--card.card--horizontal.card--text {
+	-moz-column-gap: 0;
+	column-gap: 0;
+}
+.card--card {
+	position: relative;
+	box-sizing: border-box;
+	border-radius: var(--border-radius);
+	border: var(--border-width) solid rgba(var(--color-foreground), var(--border-opacity));
+	&:after {
+		content: "";
+		position: absolute;
+		z-index: -1;
+		width: calc(var(--border-width) * 2 + 100%);
+		height: calc(var(--border-width) * 2 + 100%);
+		top: calc(var(--border-width) * -1);
+		left: calc(var(--border-width) * -1);
+		border-radius: var(--border-radius);
+		box-shadow: var(--shadow-horizontal-offset) var(--shadow-vertical-offset) var(--shadow-blur-radius) rgba(var(--color-shadow), var(--shadow-opacity));
+	}
+	.card__inner {
+		.card__media {
+			border-bottom-right-radius: 0;
+			border-bottom-left-radius: 0;
+		}
+	}
+	.card__heading {
+		a {
+			&::after {
+				bottom: calc(var(--border-width) * -1);
+				left: calc(var(--border-width) * -1);
+				right: calc(var(--border-width) * -1);
+				top: calc(var(--border-width) * -1);
+			}
+		}
+	}
+}
+.card--standard {
+	.card__inner {
+		position: relative;
+		box-sizing: border-box;
+		border-radius: var(--border-radius);
+		border: var(--border-width) solid rgba(var(--color-foreground), var(--border-opacity));
+		&:after {
+			content: "";
+			position: absolute;
+			z-index: -1;
+			width: calc(var(--border-width) * 2 + 100%);
+			height: calc(var(--border-width) * 2 + 100%);
+			top: calc(var(--border-width) * -1);
+			left: calc(var(--border-width) * -1);
+			border-radius: var(--border-radius);
+			box-shadow: var(--shadow-horizontal-offset) var(--shadow-vertical-offset) var(--shadow-blur-radius) rgba(var(--color-shadow), var(--shadow-opacity));
+		}
+	}
+	.card__media {
+		margin: var(--image-padding);
+	}
+	&:not(.card--horizontal) {
+		>.card__content {
+			.card__badge {
+				display: none;
+			}
+		}
+	}
+	>.card__content {
+		.card__caption {
+			display: none;
+		}
+		padding: 0;
+		.card__information {
+			padding-left: 0;
+			padding-right: 0;
+		}
+	}
+}
+.card--standard.card--text {
+	background-color: $background-color_1;
+	a {
+		&::after {
+			bottom: calc(var(--border-width) * -1);
+			left: calc(var(--border-width) * -1);
+			right: calc(var(--border-width) * -1);
+			top: calc(var(--border-width) * -1);
+		}
+	}
+	&:not(.card--horizontal) {
+		>.card__content {
+			.card__heading {
+				display: none;
+			}
+		}
+	}
+}
+.card-information {
+	text-align: var(--text-alignment);
+	width: 100%;
+	>* {
+		+ {
+			* {
+				margin-top: 0.5rem;
+			}
+		}
+		line-height: calc(1 + 0.4 / var(--font-body-scale));
+		color: $color_2;
+		&:not(.visually-hidden:first-child) {
+			+ {
+				* {
+					&:not(.rating) {
+						margin-top: 0.7rem;
+					}
+				}
+			}
+		}
+	}
+	>.price {
+		color: $color_2;
+	}
+	>.rating {
+		margin-top: 0.4rem;
+	}
+	.caption {
+		letter-spacing: 0.07rem;
+	}
+}
+.card__media {
+	bottom: 0;
+	position: absolute;
+	top: 0;
+	.media {
+		img {
+			height: 100%;
+			-o-object-fit: cover;
+			object-fit: cover;
+			-o-object-position: center center;
+			object-position: center center;
+			width: 100%;
+		}
+	}
+}
+.card--media {
+	.card__inner {
+		.card__content {
+			position: relative;
+			padding: calc(var(--image-padding) + 1rem);
+		}
+	}
+}
+.card__content--auto-margins {
+	grid-template-rows: minmax(0, auto) max-content minmax(0, auto);
+}
+.card__inner {
+	&:not(.ratio) {
+		>.card__content {
+			height: 100%;
+		}
+	}
+}
+.card--card.card--media {
+	>.card__content {
+		margin-top: calc(0rem - var(--image-padding));
+		.card__badge {
+			display: none;
+		}
+	}
+	.card__inner {
+		.card__information {
+			display: none;
+		}
+	}
+}
+.card__heading {
+	a {
+		&::after {
+			bottom: 0;
+			content: "";
+			left: 0;
+			position: absolute;
+			right: 0;
+			top: 0;
+			z-index: 1;
+		}
+		&:after {
+			outline-offset: 0.3rem;
+		}
+		&:focus {
+			&:after {
+				box-shadow: 0 0 0 0.3rem rgb(var(--color-background)), 0 0 0.5rem 0.4rem rgba(var(--color-foreground), 0.3);
+				outline: 0.2rem solid rgba(var(--color-foreground), 0.5);
+			}
+			&:not(:focus-visible) {
+				&:after {
+					box-shadow: none;
+					outline: 0;
+				}
+			}
+			box-shadow: none;
+			outline: 0;
+		}
+		&:focus-visible {
+			&:after {
+				box-shadow: 0 0 0 0.3rem rgb(var(--color-background)), 0 0 0.5rem 0.4rem rgba(var(--color-foreground), 0.3);
+				outline: 0.2rem solid rgba(var(--color-foreground), 0.5);
+			}
+		}
+	}
+}
+.card--standard.card--media {
+	.card__inner {
+		.card__information {
+			display: none;
+		}
+	}
+}
+.card--standard.card--text.article-card {
+	>.card__content {
+		.card__information {
+			display: none;
+		}
+	}
+}
+.card--card.card--text {
+	.card__inner {
+		display: none;
+	}
+}
+.card--horizontal {
+	.card__badge {
+		display: none;
+	}
+}
+.card--horizontal.card--text {
+	.card__inner {
+		display: none;
+	}
+}
+.card--extend-height {
+	height: 100%;
+}
+.card--extend-height.card--standard.card--text {
+	display: flex;
+	flex-direction: column;
+	.card__inner {
+		flex-grow: 1;
+	}
+}
+.card--extend-height.card--media {
+	display: flex;
+	flex-direction: column;
+	.card__inner {
+		flex-grow: 1;
+	}
+}
+.card-article-info {
+	margin-top: 1rem;
+}
+@media screen and (min-width: 750px) {
+	.card__information {
+		padding-bottom: 1.7rem;
+		padding-top: 1.7rem;
+	}
+}
+@media screen and (min-width: 990px) {
+	.card {
+		.media.media--hover-effect {
+			>img {
+				&:only-child {
+					transition: transform var(--duration-long) ease;
+				}
+			}
+		}
+		&:hover {
+			.media.media--hover-effect {
+				>img {
+					&:first-child {
+						&:only-child {
+							transform: scale(1.03);
+						}
+					}
+				}
+			}
+		}
+	}
+	.card-wrapper {
+		.media.media--hover-effect {
+			>img {
+				&:only-child {
+					transition: transform var(--duration-long) ease;
+				}
+			}
+		}
+		&:hover {
+			.media.media--hover-effect {
+				>img {
+					&:first-child {
+						&:only-child {
+							transform: scale(1.03);
+						}
+						&:not(:only-child) {
+							opacity: 0;
+						}
+					}
+					+ {
+						img {
+							opacity: 1;
+							transition: transform var(--duration-long) ease;
+							transform: scale(1.03);
+						}
+					}
+				}
+			}
+		}
+	}
+	.underline-links-hover {
+		&:hover {
+			a {
+				text-decoration: underline;
+				text-underline-offset: 0.3rem;
+			}
+		}
+	}
+}

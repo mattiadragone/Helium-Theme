@@ -9,7 +9,8 @@
     "list theme": "shopify theme list",
     "serve": "shopify theme serve --ignore",
     "lint": "shopify theme check",
-    "fix": "shopify theme check -a"
+    "fix": "shopify theme check -a",
+    "minify": "npx postcss assets/base.css > assets/base.min.css"
   },
   "repository": {
     "type": "git",
@@ -29,5 +30,25 @@
   "homepage": "https://github.com/mattiadragone/Helium-Theme#readme",
   "engines": {
     "node": "16.8.0"
-  }
+  },
+  "dependencies": {
+    "gulp-cli": "^2.3.0",
+    "node": "^19.0.0"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.27.10",
+    "cssnano": "^5.1.13",
+    "del": "^7.0.0",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^8.0.0",
+    "gulp-csso": "^4.0.1",
+    "gulp-dart-sass": "^1.0.2",
+    "gulp-sass": "^5.1.0",
+    "postcss": "^8.4.18",
+    "postcss-cli": "^10.0.0"
+  },
+  "browserslist": [
+    "last 2 version",
+    "not dead"
+  ]
 }
