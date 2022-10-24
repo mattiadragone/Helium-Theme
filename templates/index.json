@@ -1,12 +1,49 @@
 {
   "sections": {
+    "e92a1129-01ee-4526-add5-4548a26a6475": {
+      "type": "tooltips",
+      "blocks": {
+        "template--15151364243500__e92a1129-01ee-4526-add5-4548a26a6475-1666599661b21afa1b-0": {
+          "type": "Tooltip",
+          "settings": {
+            "title": "Tooltip title",
+            "content": "I am a tooltip, I provide additional explanatory content and showcase product features.",
+            "top": 50,
+            "left": 50
+          }
+        },
+        "be5e0032-7afc-495d-aaf5-ec104117a044": {
+          "type": "product",
+          "settings": {
+            "product": "pulcina-espresso-coffee-maker-1",
+            "top": 33,
+            "left": 38,
+            "image_ratio": "adapt",
+            "show_secondary_image": false,
+            "show_vendor": false,
+            "show_rating": false,
+            "enable_quick_add": false
+          }
+        }
+      },
+      "block_order": [
+        "template--15151364243500__e92a1129-01ee-4526-add5-4548a26a6475-1666599661b21afa1b-0",
+        "be5e0032-7afc-495d-aaf5-ec104117a044"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/breakfastpulc__1068x1264_3.jpg",
+        "tooltip_color": "#ffffff",
+        "tooltip_background_color": "#ff0000",
+        "tooltip_focus_color": "#ff0000",
+        "breakpoint": "768"
+      }
+    },
     "166332120001514ae3": {
       "type": "slideshow",
       "blocks": {
         "166332120029956086-0": {
           "type": "slide",
           "settings": {
-            "image": "shopify:\/\/shop_images\/2C3ABC1E-DAE9-414C-AE44-A4EFB01F2925.jpg",
             "heading": "Un verde drappeggio",
             "heading_size": "h1",
             "subheading": "Tell your brand's story through images",
@@ -105,26 +142,21 @@
     "featured_collection": {
       "type": "featured-collection",
       "settings": {
-        "title": "",
-        "heading_size": "h2",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "collection": "all",
+        "allow_tabs": true,
+        "color_scheme": "background-1",
         "products_to_show": 12,
-        "columns_desktop": 4,
         "full_width": false,
         "show_view_all": false,
         "view_all_style": "solid",
+        "columns_desktop": 4,
         "enable_desktop_slider": true,
-        "color_scheme": "background-1",
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
         "image_ratio": "portrait",
         "show_secondary_image": true,
         "show_vendor": false,
         "show_rating": false,
         "enable_quick_add": true,
-        "columns_mobile": "2",
-        "swipe_on_mobile": true,
         "padding_top": 28,
         "padding_bottom": 36
       }
@@ -135,6 +167,7 @@
         "ec75aec2-6df3-4fb2-bb72-287827b4de3a": {
           "type": "column",
           "settings": {
+            "icon": "check_mark",
             "title": "Pagamenti Sicuri",
             "text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. <\/p>",
             "link_label": "",
@@ -144,6 +177,7 @@
         "16633214207da599fb-0": {
           "type": "column",
           "settings": {
+            "icon": "check_mark",
             "title": "Spedizione Gratuita",
             "text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. <\/p>",
             "link_label": "",
@@ -153,6 +187,7 @@
         "16633214207da599fb-1": {
           "type": "column",
           "settings": {
+            "icon": "check_mark",
             "title": "Reso Gratuito",
             "text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. <\/p>",
             "link_label": "",
@@ -162,6 +197,7 @@
         "d05d7785-2da2-49b9-b1b1-947eb9e8f44e": {
           "type": "column",
           "settings": {
+            "icon": "check_mark",
             "title": "Gift Wrapping",
             "text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. <\/p>",
             "link_label": "",
@@ -178,6 +214,7 @@
       "settings": {
         "title": "",
         "heading_size": "h1",
+        "content_alignment": "center",
         "image_width": "full",
         "image_ratio": "square",
         "columns_desktop": 4,
@@ -194,6 +231,7 @@
     }
   },
   "order": [
+    "e92a1129-01ee-4526-add5-4548a26a6475",
     "166332120001514ae3",
     "40211245-2dfb-4715-99dd-5e8bc22eb28e",
     "featured_collection",
