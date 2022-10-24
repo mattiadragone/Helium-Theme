@@ -182,7 +182,7 @@
         "ec75aec2-6df3-4fb2-bb72-287827b4de3a": {
           "type": "column",
           "settings": {
-            "icon": "check_mark",
+            "icon": "lock",
             "title": "Pagamenti Sicuri",
             "text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. <\/p>",
             "link_label": "",
@@ -192,7 +192,7 @@
         "16633214207da599fb-0": {
           "type": "column",
           "settings": {
-            "icon": "check_mark",
+            "icon": "truck",
             "title": "Spedizione Gratuita",
             "text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. <\/p>",
             "link_label": "",
@@ -202,7 +202,7 @@
         "16633214207da599fb-1": {
           "type": "column",
           "settings": {
-            "icon": "check_mark",
+            "icon": "return",
             "title": "Reso Gratuito",
             "text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. <\/p>",
             "link_label": "",
@@ -212,7 +212,7 @@
         "d05d7785-2da2-49b9-b1b1-947eb9e8f44e": {
           "type": "column",
           "settings": {
-            "icon": "check_mark",
+            "icon": "price_tag",
             "title": "Gift Wrapping",
             "text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. <\/p>",
             "link_label": "",
