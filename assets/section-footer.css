@@ -514,3 +514,27 @@ noscript .localization-selector.link {
     }
   }
 }
+
+.footer-block.accordion {
+  margin: 0;
+  min-width: 100vw;
+  margin-left: -40px;
+}
+
+.footer-block.accordion .accordion__content {
+  padding: 0;
+}
+
+.footer-block.accordion details {
+  padding: 0 1.5rem;
+}
+
+@media screen and (min-width: 750px) { 
+  .footer-block.accordion {
+    min-width: auto;
+    margin-left: 0;
+  }
+  .footer-block.accordion  {
+    border: 0;d
+  }
+}

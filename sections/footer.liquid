@@ -14,6 +14,9 @@
 <noscript>{{ 'component-rte.css' | asset_url | stylesheet_tag }}</noscript>
 <noscript>{{ 'disclosure.css' | asset_url | stylesheet_tag }}</noscript>
 
+{{ 'component-accordion.css' | asset_url | stylesheet_tag }}
+{{ 'collapsible-content.css' | asset_url | stylesheet_tag }}
+
 {%- style -%}
   .footer {
     margin-top: {{ section.settings.margin_top | times: 0.75 | round: 0 }}px;
@@ -51,9 +54,9 @@
         -%}
         <div class="footer__blocks-wrapper grid grid--1-col grid--2-col grid--4-col-tablet {{ footer_grid_class }}">
           {%- for block in section.blocks -%}
-            <div class="footer-block grid__item{% if block.type == 'link_list' %} footer-block--menu{% endif %}" {{ block.shopify_attributes }}>
+            <div class="footer-block grid__item{% if block.type == 'link_list' %} footer-block--menu{% endif %} {% if block.settings.enable_accordion %}accordion{% endif %}" {{ block.shopify_attributes }}>
               {%- if block.settings.heading != blank -%}
-                <h2 class="footer-block__heading">{{- block.settings.heading | escape -}}</h2>
+                <h2 class="footer-block__heading {% if block.settings.enable_accordion %} small-hide{% endif %}">{{- block.settings.heading | escape -}}</h2>
               {%- endif -%}
 
               {%- case block.type -%}
@@ -63,7 +66,7 @@
                   </div>
                 {%- when 'link_list' -%}
                   {%- if block.settings.menu != blank -%}
-                    <ul class="footer-block__details-content list-unstyled">
+                    <ul class="footer-block__details-content list-unstyled small-hide">
                       {%- for link in block.settings.menu.links -%}
                         <li>
                           <a href="{{ link.url }}" class="link link--text list-menu__item list-menu__item--link{% if link.active %} list-menu__item--active{% endif %}">
@@ -72,6 +75,29 @@
                         </li>
                       {%- endfor -%}
                     </ul>
+                  {%- endif -%}
+                  {%- if block.settings.enable_accordion -%}
+                    <div class="medium-up-hide  content-container color-{{ section.settings.color_scheme }} gradient" {{ block.shopify_attributes }}>
+                      <details id="Details-{{ block.id }}-{{ section.id }}"{% if section.settings.open_first_collapsible_row and forloop.first %} open{% endif %}>
+                        <summary id="Summary-{{ block.id }}-{{ section.id }}">
+                          <h3 class="accordion__title h4">
+                            {{ block.settings.heading | default: block.settings.page.title }}
+                          </h3>
+                          {% render 'icon-caret' %}
+                        </summary>
+                        <div class="accordion__content rte" id="CollapsibleAccordion-{{ block.id }}-{{ section.id }}" role="region" aria-labelledby="Summary-{{ block.id }}-{{ section.id }}">
+                          <li>
+                              {%- for link in block.settings.menu.links -%}
+                                <li>
+                                  <a href="{{ link.url }}" class="link link--text list-menu__item list-menu__item--link{% if link.active %} list-menu__item--active{% endif %}">
+                                    {{ link.title }}
+                                  </a>
+                                </li>
+                              {%- endfor -%}
+                          </li>
+                        </div>
+                      </details>
+                    </div>
                   {%- endif -%}
                 {%- when 'image' -%}
                   <div class="footer-block__details-content footer-block-image {{ block.settings.alignment }}">
@@ -410,6 +436,12 @@
           "default": "footer",
           "label": "t:sections.footer.blocks.link_list.settings.menu.label",
           "info": "t:sections.footer.blocks.link_list.settings.menu.info"
+        },
+        {
+          "type": "checkbox",
+          "id": "enable_accordion",
+          "label": "Enable accordion on mobile",
+          "default": true
         }
       ]
     },
