@@ -58,7 +58,18 @@
       {%- for block in section.blocks -%}
         {%- if block.settings.title != blank  -%}
           <button class="tablinks title {{ block.settings.heading_size }}" {% if forloop.index == 1 %}id="defaultOpen"{% endif %} onclick="openTab(event, '{{ block.settings.title | handleize }}')">
-            {{ block.settings.title | escape }} {%- if block.settings.collection.all_products_count > 0 -%}<sup class="text-smaller">({{ block.settings.collection.all_products_count }})</sup>{%- endif -%}
+            {{ block.settings.title | escape }} 
+            {%- if block.type == 'collections' -%}
+              {%- if block.settings.collection.all_products_count > 0 -%}
+                <sup class="text-smaller">
+                  ({{ block.settings.collection.all_products_count }})
+                </sup>
+              {%- endif -%}
+            {%- elsif block.type == 'recent_viewed' %}
+              <sup class="text-smaller recently-viewed-sup">
+                ({{ block.settings.collection.all_products_count }})
+              </sup>
+            {%- endif -%}
           </button>
         {%- endif -%}
       {%- endfor -%}
@@ -100,28 +111,32 @@
           {% endunless %}
 
           <slider-component class="slider-mobile-gutter{% if section.settings.full_width %} slider-component-full-width{% endif %}{% if show_mobile_slider == false %} page-width{% endif %}{% if show_desktop_slider == false and section.settings.full_width == false %} page-width-desktop{% endif %}{% if show_desktop_slider %} slider-component-desktop{% endif %}">
-            <ul id="Slider-{{ block.id }}" class="grid product-grid contains-card contains-card--product{% if settings.card_style == 'standard' %} contains-card--standard{% endif %} grid--{{ section.settings.columns_desktop }}-col-desktop{% if block.settings.collection == blank %} grid--2-col-tablet-down{% else %} grid--{{ section.settings.columns_mobile }}-col-tablet-down{% endif %}{% if show_mobile_slider or show_desktop_slider %} slider{% if show_desktop_slider %} slider--desktop{% endif %}{% if show_mobile_slider %} slider--tablet grid--peek{% endif %}{% endif %}" role="list" aria-label="{{ 'general.slider.name' | t }}">
-              {%- for product in block.settings.collection.products limit: section.settings.products_to_show -%}
-                <li id="Slide-{{ block.id }}-{{ forloop.index }}" class="grid__item{% if show_mobile_slider or show_desktop_slider %} slider__slide{% endif %}">
-                  {% render 'card-product',
-                    card_product: product,
-                    media_aspect_ratio: section.settings.image_ratio,
-                    show_secondary_image: section.settings.show_secondary_image,
-                    show_vendor: section.settings.show_vendor,
-                    show_rating: section.settings.show_rating,
-                    show_quick_add: section.settings.enable_quick_add,
-                    section_id: section.id,
-                    show_sale_percentage: section.show_sale_percentage
-                  %}
-                </li>
-              {%- else -%}
-                {%- for i in (1..4) -%}
-                  <li class="grid__item">
-                    {% render 'card-product', show_vendor: section.settings.show_vendor %}
+            {%- if block.type == 'collections' -%}
+              <ul id="Slider-{{ block.id }}" class="grid product-grid contains-card contains-card--product{% if settings.card_style == 'standard' %} contains-card--standard{% endif %} grid--{{ section.settings.columns_desktop }}-col-desktop{% if block.settings.collection == blank %} grid--2-col-tablet-down{% else %} grid--{{ section.settings.columns_mobile }}-col-tablet-down{% endif %}{% if show_mobile_slider or show_desktop_slider %} slider{% if show_desktop_slider %} slider--desktop{% endif %}{% if show_mobile_slider %} slider--tablet grid--peek{% endif %}{% endif %} " role="list" aria-label="{{ 'general.slider.name' | t }}">
+                {%- for product in block.settings.collection.products limit: section.settings.products_to_show -%}
+                  <li id="Slide-{{ block.id }}-{{ forloop.index }}" class="grid__item{% if show_mobile_slider or show_desktop_slider %} slider__slide{% endif %}">
+                    {% render 'card-product',
+                      card_product: product,
+                      media_aspect_ratio: section.settings.image_ratio,
+                      show_secondary_image: section.settings.show_secondary_image,
+                      show_vendor: section.settings.show_vendor,
+                      show_rating: section.settings.show_rating,
+                      show_quick_add: section.settings.enable_quick_add,
+                      section_id: section.id,
+                      show_sale_percentage: section.show_sale_percentage
+                    %}
                   </li>
+                {%- else -%}
+                  {%- for i in (1..4) -%}
+                    <li class="grid__item">
+                      {% render 'card-product', show_vendor: section.settings.show_vendor %}
+                    </li>
+                  {%- endfor -%}
                 {%- endfor -%}
-              {%- endfor -%}
-            </ul>
+              </ul>
+              {%- elsif block.type == 'recent_viewed' -%}
+              <ul id="Slider-{{ block.id }}" class="recently-viewed-grid grid product-grid contains-card contains-card--product{% if settings.card_style == 'standard' %} contains-card--standard{% endif %} grid--{{ section.settings.columns_desktop }}-col-desktop{% if block.settings.collection == blank %} grid--2-col-tablet-down{% else %} grid--{{ section.settings.columns_mobile }}-col-tablet-down{% endif %}{% if show_mobile_slider or show_desktop_slider %} slider{% if show_desktop_slider %} slider--desktop{% endif %}{% if show_mobile_slider %} slider--tablet grid--peek{% endif %}{% endif %} " role="list" aria-label="{{ 'general.slider.name' | t }}"></ul>
+              {%- endif -%}
             {%- if show_mobile_slider or show_desktop_slider -%}
               <div class="slider-buttons no-js-hidden">
                 <button type="button" class="slider-button slider-button--prev" name="previous" aria-label="{{ 'general.slider.previous_slide' | t }}" aria-controls="Slider-{{ block.id }}">{% render 'icon-caret' %}</button>
@@ -152,6 +167,98 @@
   </div>
 </div>
 
+{%- for block in section.blocks -%}
+  {%- if block.type == 'recent_viewed' -%}
+    <script defer="defer">
+      function setRecentlyViewedProducts() {
+        const productData = {
+          productTitle: "{{ product.title }}",
+          productImg: "{{ product.featured_media | image_url: width: 533 }}",
+          productPrice: "{{ product.price | money }}",
+          productUrl: "{{ product.url }}",
+          productImageAltText: "{{ product.featured_media.alt | escape }}"
+        };
+        const productList = [];
+
+        let jsonResp, jsonRespArr, jsonRespArrStr;
+        const numberOfProducts = 8;
+        productList.push(productData);
+        const currProductPageTitle = productData.productTitle;
+        const productDataString = JSON.stringify(productList);
+        const localData = localStorage.getItem("recentlyViewedProduct");
+      
+        if (localData === null) {
+          localStorage.setItem("recentlyViewedProduct", productDataString);
+        } else if (localData) {
+          const oldProductData = localStorage.getItem("recentlyViewedProduct");
+          const countProductData = (oldProductData.match(/productTitle/g) || []).length;
+          const sameProduct = oldProductData.includes(currProductPageTitle);
+          console.log(countProductData)
+          var sup = document.getElementsByClassName("recently-viewed-sup");
+          sup[0].innerHTML = '(' + countProductData + ')';
+
+          if (countProductData < numberOfProducts && sameProduct == false) {
+            jsonResp = JSON.parse(oldProductData);
+            jsonRespArr = jsonResp.concat(productList);
+            jsonRespArrStr = JSON.stringify(jsonRespArr);
+            localStorage.setItem("recentlyViewedProduct", jsonRespArrStr);
+          } else if (countProductData >= numberOfProducts && sameProduct == false) {
+            jsonResp = JSON.parse(oldProductData);
+            jsonResp.shift();
+            jsonRespArr = jsonResp.concat(productList);
+            jsonRespArr = JSON.stringify(jsonRespArr);
+            localStorage.setItem("recentlyViewedProduct", jsonRespArr);
+          }
+        }
+      }
+      
+      setRecentlyViewedProducts();
+      const localViewed = localStorage.recentlyViewedProduct;
+      function getRecentlyViewedProducts() {
+        const productData = JSON.parse(localStorage.getItem("recentlyViewedProduct"));
+        const recentlyViewedHtml = [];
+        productData.map(item => {
+          recentlyViewedHtml.unshift(`
+            <li class="grid__item">
+              <div class="card-wrapper product-card-wrapper underline-links-hover">
+                <div class="recently-viewed-grid-item card
+                  card--{{ settings.card_style }}
+                  card--media
+                  {% if settings.card_style == 'card' %} color-{{ settings.card_color_scheme }} gradient{% endif %}
+                  {% if extend_height %} card--extend-height{% endif %}
+                  {% if  settings.card_style == 'card' %} ratio{% endif %}
+                  {% if horizontal_class %} card--horizontal{% endif %}">
+                  <div class="card__inner {% if settings.card_style == 'standard' %}color-{{ settings.card_color_scheme }} gradient{% endif %}{% if card_product.featured_media or settings.card_style == 'standard' %} ratio{% endif %}"
+                    style="--ratio-percent: {{ 1 | divided_by: 0.8 | times: 100 }}%;">
+                    <div class="card__media">
+                      <div class="media media--transparent media--hover-effect">
+                        <img class="recently-viewed-img" src='${item.productImg}' loading="lazy" alt="${item.productImageAltText}"/>
+                      </div>
+                    </div>
+                  </div>
+      
+                  <div class="card__content">
+                    <div class="card__information">
+                    <h3 class="card__heading{% if card_product.featured_media or settings.card_style == 'standard' %} h5{% endif %}"><a class="full-unstyled-link" href="${item.productUrl}">${item.productTitle}</a></h3>
+                    <div class="price">${item.productPrice}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+         `);
+        });
+        const newProductData = `${recentlyViewedHtml.join("")}`;
+        const fullContent = document.getElementsByClassName("recently-viewed-grid");
+        fullContent[0].innerHTML = newProductData;
+      }
+      
+      document.addEventListener("DOMContentLoaded", function (event) {
+        getRecentlyViewedProducts();
+      });
+      </script>
+  {%- endif -%}
+{%- endfor -%}
 
 {% schema %}
 {
@@ -357,8 +464,8 @@
   ],
   "blocks": [
     {
-      "type": "Collections",
-      "name": "t:sections.rich-text.blocks.heading.name",
+      "type": "collections",
+      "name": "Collections",
       "limit": 6,
   
       "settings": [
@@ -399,10 +506,63 @@
           "label": "t:sections.featured-collection.settings.description.label"
         },
         {
-          "type": "checkbox",
-          "id": "show_description",
-          "label": "t:sections.featured-collection.settings.show_description.label",
-          "default": false
+          "type": "select",
+          "id": "description_style",
+          "label": "t:sections.featured-collection.settings.description_style.label",
+          "options": [
+            {
+              "value": "body",
+              "label": "t:sections.featured-collection.settings.description_style.options__1.label"
+            },
+            {
+              "value": "subtitle",
+              "label": "t:sections.featured-collection.settings.description_style.options__2.label"
+            },
+            {
+              "value": "uppercase",
+              "label": "t:sections.featured-collection.settings.description_style.options__3.label"
+            }
+          ],
+          "default": "body"
+        }
+      ]
+    },
+    {
+      "type": "recent_viewed",
+      "name": "Recent Viewed",
+      "limit": 6,
+  
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "default": "Recent Viewed",
+          "label": "t:sections.featured-collection.settings.title.label"
+        },
+        {
+          "type": "select",
+          "id": "heading_size",
+          "options": [
+            {
+              "value": "h2",
+              "label": "t:sections.all.heading_size.options__1.label"
+            },
+            {
+              "value": "h1",
+              "label": "t:sections.all.heading_size.options__2.label"
+            },
+            {
+              "value": "h0",
+              "label": "t:sections.all.heading_size.options__3.label"
+            }
+          ],
+          "default": "h2",
+          "label": "t:sections.all.heading_size.label"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "t:sections.featured-collection.settings.description.label"
         },
         {
           "type": "select",
@@ -432,13 +592,16 @@
       "name": "t:sections.featured-collection.presets.name",
       "blocks": [
         {
-          "type": "Collections"
+          "type": "collections"
         },
         {
-          "type": "Collections"
+          "type": "recent_viewed"
         },
         {
-          "type": "Collections"
+          "type": "collections"
+        },
+        {
+          "type": "collections"
         }
       ]
     }
