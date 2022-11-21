@@ -81,7 +81,11 @@
                       <details id="Details-{{ block.id }}-{{ section.id }}"{% if section.settings.open_first_collapsible_row and forloop.first %} open{% endif %}>
                         <summary id="Summary-{{ block.id }}-{{ section.id }}">
                           <h3 class="accordion__title h4">
-                            {{ block.settings.heading | default: block.settings.page.title }}
+                            {%- if block.settings.heading != blank -%}
+                              {{ block.settings.heading | default: block.settings.page.title }}
+                            {%- else -%}
+                                {{ block.settings.menu.title }}
+                            {%- endif -%}
                           </h3>
                           {% render 'icon-caret' %}
                         </summary>
