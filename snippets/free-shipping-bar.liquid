@@ -55,10 +55,18 @@ progress::-moz-progress-bar {
 {% unless cart == empty %} 
     <div class="freeShipping__wrapper color-{{ color_scheme }} gradient content-container isolate">
         {% liquid 
-            assign cart_total = cart.total_price
+            
+            
+            for item in cart.items
+              unless item.requires_shipping 
+               assign item_no_shipped = item.final_line_price 
+              endunless
+            endfor
+            assign cart_total = cart.total_price | minus: item_no_shipped 
             assign shipping_value_left = shipping_value | minus: cart_total
             assign percentage_value = cart_total | times: 100 | divided_by: shipping_value
         %}
+        
         {% if show_icon %}
             <div class="freeShipping__icon icon--boxed">
                 {% render 'icon-accordion' icon: 'truck' %}
