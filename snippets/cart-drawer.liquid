@@ -66,6 +66,10 @@
           {% render 'icon-close' %}
         </button>
       </div>
+      {% if settings.show_free_shipping_bar %}
+        {% render 'free-shipping-bar', shipping_value: 50000, color_scheme: settings.color_scheme %}
+      {% endif %}
+
       <cart-drawer-items
         {% if cart == empty %}
           class=" is-empty"
