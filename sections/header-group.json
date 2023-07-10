@@ -5,29 +5,41 @@
     "announcement-bar": {
       "type": "announcement-bar",
       "blocks": {
-        "announcement-bar-0": {
+        "3a949d18-e404-4bb3-beda-26dd8385d070": {
           "type": "announcement",
           "settings": {
-            "text": "Welcome to our store",
-            "text_alignment": "center",
-            "color_scheme": "background-1",
+            "text": "Free Shipping over 99€",
+            "link": ""
+          }
+        },
+        "71c9a9a1-7fa3-45c8-83bb-cbb3dc29f92f": {
+          "type": "announcement",
+          "settings": {
+            "text": "Special Sale - Up to 50%",
             "link": ""
           }
         }
       },
       "block_order": [
-        "announcement-bar-0"
-      ]
+        "3a949d18-e404-4bb3-beda-26dd8385d070",
+        "71c9a9a1-7fa3-45c8-83bb-cbb3dc29f92f"
+      ],
+      "settings": {
+        "color_scheme": "",
+        "show_line_separator": true,
+        "auto_rotate": true,
+        "change_slides_speed": 5
+      }
     },
     "header": {
       "type": "header",
       "settings": {
-        "color_scheme": "background-1",
         "logo_position": "middle-left",
         "menu": "main-menu",
         "menu_type_desktop": "dropdown",
         "sticky_header_type": "on-scroll-up",
         "show_line_separator": true,
+        "color_scheme": "background-1",
         "enable_country_selector": true,
         "enable_language_selector": true,
         "mobile_logo_position": "center",
