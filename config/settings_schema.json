@@ -1,11 +1,11 @@
 [
   {
     "name": "theme_info",
-    "theme_name": "Dawn",
-    "theme_version": "9.0.0",
-    "theme_author": "Shopify",
-    "theme_documentation_url": "https://help.shopify.com/manual/online-store/themes",
-    "theme_support_url": "https://support.shopify.com/"
+    "theme_name": "Helium",
+    "theme_version": "0.0.1",
+    "theme_author": "Mattia Dragone",
+    "theme_documentation_url": "https://github.com/mattiadragone/Helium-Theme#readme",
+    "theme_support_url": "https://github.com/mattiadragone/Helium-Theme/issues"
   },
   {
     "name": "t:settings_schema.logo.name",
