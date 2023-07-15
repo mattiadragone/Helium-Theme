@@ -69,17 +69,17 @@
 
     {% if show_icon %}
       <div class="freeShipping__icon icon--boxed">
-        {% render 'icon-accordion', icon: 'truck' %}
+        {% render 'icon-accordion', icon: settings.icon %}
       </div>
     {% endif %}
     <div class="freeShipping__progress">
       <span class="freeShipping__message">
         {% liquid
           if shipping_value_left < 0
-            echo 'sections.cart.shipping_free_text' | t
+            echo free_shipping_message_unlocked
           else
             assign shipping_value_left_money = shipping_value_left | money
-            echo 'sections.cart.shipping_treeshold_text' | t: value: shipping_value_left_money
+            echo free_shipping_message_threeshold | replace: '##', shipping_value_left_money
           endif
         %}
       </span>

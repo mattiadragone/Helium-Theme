@@ -67,7 +67,7 @@
         </button>
       </div>
       {% if settings.show_free_shipping_bar %}
-        {% render 'free-shipping-bar', shipping_value: 50000, color_scheme: settings.color_scheme %}
+        {% render 'free-shipping-bar', shipping_value: 50000,show_icon: settings.show_icon, color_scheme: settings.color_scheme, free_shipping_message_threeshold: settings.free_shipping_message_threeshold, free_shipping_message_unlocked: settings.free_shipping_message_unlocked %}
       {% endif %}
 
       <cart-drawer-items
