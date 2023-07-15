@@ -4,8 +4,8 @@
     "theme_name": "Helium",
     "theme_version": "0.0.1",
     "theme_author": "Mattia Dragone",
-    "theme_documentation_url": "https://github.com/mattiadragone/Helium-Theme#readme",
-    "theme_support_url": "https://github.com/mattiadragone/Helium-Theme/issues"
+    "theme_documentation_url": "https:\/\/github.com\/mattiadragone\/Helium-Theme#readme",
+    "theme_support_url": "https:\/\/github.com\/mattiadragone\/Helium-Theme\/issues"
   },
   {
     "name": "t:settings_schema.logo.name",
