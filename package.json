@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "test",
+    "logout": "shopify auth logout",
     "serve": "shopify theme dev --port=3233 --store=helium-theme.myshopify.com",
     "lint:all": "shopify theme check",
     "lint:liquid": "shopify theme check --category liquid --category performance",
