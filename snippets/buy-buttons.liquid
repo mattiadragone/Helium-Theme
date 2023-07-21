@@ -22,8 +22,35 @@
       if block.settings.show_dynamic_checkout and gift_card_recipient_feature_active == false
         assign show_dynamic_checkout = true
       endif
-    -%}
 
+      assign use_line_items = false
+      if block.settings.use_line_items
+        assign use_line_items = true
+      endif
+
+      assign show_properties_input = false 
+      if block.settings.show_properties_input
+        assign show_properties_input = true 
+      endif
+
+      assign custom_properties = ''
+      if block.settings.custom_properties_title != blank
+        assign custom_properties_title = true
+        assign custom_properties_title = block.settings.custom_properties_title
+      endif
+
+      assign custom_properties = ''
+      if block.settings.custom_properties_value != blank
+        assign custom_properties_value = true
+        assign custom_properties_value = block.settings.custom_properties_value
+      endif
+
+      assign show_icon_properties = false
+      if block.settings.show_icon_properties
+        assign show_icon_properties = true
+        assign icon_properties = block.settings.icon_properties
+      endif
+    -%}
     <product-form class="product-form" data-hide-errors="{{ gift_card_recipient_feature_active }}">
       <div class="product-form__error-message-wrapper" role="alert" hidden>
         <svg
@@ -47,6 +74,56 @@
         novalidate: 'novalidate',
         data-type: 'add-to-cart-form'
       -%}
+        {%- if use_line_items -%}
+          {%- style -%}
+          .line-item-property:not(.hidden) {
+            margin: 1.5rem 0;
+          }
+          .line-item-property__icon {
+            margin: 1.3rem;
+            display: flex;
+            align-items: center;
+          }
+          .line-item-property__field .line-item-property__icon ~ label {
+            left: 5rem
+          }
+          .line-item-property__field .line-item-property__icon ~ input:focus ~ label {
+            left: 5rem
+          }
+          {%- endstyle -%}
+          <div class="line-item-property{% unless show_properties_input %} hidden {% endunless %}">
+            <div class="line-item-property__field field">
+              {%- if show_icon_properties -%}
+                <div class="line-item-property__icon">
+                  {% render 'icon-accordion', icon: icon_properties %}
+                </div>
+              {%- endif -%}
+              {% unless show_properties_input %}
+                <input id="{{ custom_properties_title }}" 
+                  type="hidden" 
+                  class="field__input" 
+                  name="properties[{{ custom_properties_value }}]"
+                  placeholder="{{ custom_properties_title }}"
+                  value="{{ custom_properties_value }}"
+                >
+              {% else %}
+                <input 
+                  id="{{ custom_properties_title }}" 
+                  type="text" 
+                  class="field__input" 
+                  name="properties[{{ custom_properties_title }}]"
+                  placeholder="{{ custom_properties_title }}"
+                >
+                <label 
+                  for="{{ custom_properties_title }}" 
+                  class="form__label" 
+                  placeholder="{{ custom_properties_title }}">
+                  {{ custom_properties_title }}
+                </label>
+              {% endunless %}
+            </div>
+          </div>
+        {%- endif-%}
         <input
           type="hidden"
           name="id"
