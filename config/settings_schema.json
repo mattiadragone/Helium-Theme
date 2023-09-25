@@ -1449,6 +1449,32 @@
         "default": true
       },
       {
+        "type": "select",
+        "id": "free_shipping_bar_position",
+        "options": [
+          {
+            "value": "top",
+            "label": "t:sections.image-with-text.settings.desktop_content_position.options__1.label"
+          },
+          {
+            "value": "bottom",
+            "label": "t:sections.image-with-text.settings.desktop_content_position.options__3.label"
+          }
+        ],
+        "default": "bottom",
+        "label": "Position of the Free Shipping Bar"
+      },
+      {
+        "type": "range",
+        "id": "progress_bar_radius",
+        "min": 0,
+        "max": 40,
+        "step": 2,
+        "unit": "px",
+        "label": "t:settings_schema.global.settings.corner_radius.label",
+        "default": 0
+      },
+      {
         "type": "checkbox",
         "id": "show_icon",
         "label": "Show icon",

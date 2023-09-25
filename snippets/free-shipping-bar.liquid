@@ -1,6 +1,6 @@
 {% style %}
    :root {
-      --progress-bar-radius: {{ radius }}px;
+      --progress-bar-radius: {{ settings.progress_bar_radius }}px;
    }
    .freeShipping__wrapper {
     display: flex;
@@ -22,7 +22,7 @@
   }
 
   .freeShipping__progress {
-    width: 100%;
+    width: 80%;
     display: flex;
     flex-direction: column;
     row-gap: .4rem;
@@ -78,7 +78,7 @@
           if shipping_value_left < 0
             echo free_shipping_message_unlocked
           else
-            assign shipping_value_left_money = shipping_value_left | money
+            assign shipping_value_left_money = shipping_value_left | money | prepend: '<b>' | append: '</b>'
             echo free_shipping_message_threeshold | replace: '##', shipping_value_left_money
           endif
         %}
