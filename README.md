@@ -1,6 +1,6 @@
 # Helium Theme Shopify
 
-[Getting Started](#Getting-Started) | [Features](#Features)
+[Getting Started](#GettingStarted) | [Features](#Features)
 
 Helium represents an exciting new endeavour in theme development for Shopify. This repository is dedicated to bringing forth a wave of innovative features and enhancements that will revolutionize the online shopping experience.
 
@@ -16,7 +16,7 @@ Please take a moment to explore my test store by following the link provided. [T
 If you find it enjoyable and appreciate my work, I kindly ask for your support by giving a star to the repository and sharing it with others. Your support means a lot and will help me in my endeavor. Thank you for your time and consideration!
 
 ## Features
-- **Free Shipping Bar**: Created a functionality to insert a free shipping bar in the cart drawer. How to use:  [ITA](./.github/FEATURES/01_free-shipping-bar/it_how-to-use.md) - [ENG](./.github/FEATURES/01_free-shipping-bar/en_how-to-use.md)
+- **Free Shipping Bar**: Created a functionality to insert a free shipping bar in the cart drawer. How to use:  [ITA](./.github/features/01_free-shipping-bar/it_how-to-use.md) - [ENG](./.github/features/01_free-shipping-bar/en_how-to-use.md)
 
 ## License
 
