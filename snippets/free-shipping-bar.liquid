@@ -95,5 +95,8 @@
   </div>
 {% endunless %}
 <script defer>
-  console.log('✨ Feature by Helium theme https://github.com/mattiadragone/Helium-Theme - © Mattia Dragone https://mattiadragone.com');
+  if (typeof mdCredits === 'undefined') {
+    console.log('✨ Feature by Helium theme https://github.com/mattiadragone/Helium-Theme - © Mattia Dragone https://mattiadragone.com');
+    var mdCredits = true;
+  }
 </script>
