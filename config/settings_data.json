@@ -110,6 +110,8 @@
     "cart_type": "drawer",
     "show_vendor": false,
     "show_cart_note": false,
+    "progress_bar_radius": 4,
+    "color_scheme": "accent-2",
     "cart_drawer_collection": "",
     "sections": {
       "main-password-header": {

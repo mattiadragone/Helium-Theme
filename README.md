@@ -1,6 +1,6 @@
 # Helium Theme Shopify
 
-[Features](#Features) |
+[Getting Started](#GettingStarted) | [Features](#Features)
 
 Helium represents an exciting new endeavour in theme development for Shopify. This repository is dedicated to bringing forth a wave of innovative features and enhancements that will revolutionize the online shopping experience.
 
