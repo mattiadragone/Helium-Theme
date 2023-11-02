@@ -70,6 +70,16 @@
           {% render 'icon-close' %}
         </button>
       </div>
+      {%- if settings.show_free_shipping_bar  and settings.free_shipping_bar_position == 'top' -%}
+        {% render 'free-shipping-bar', 
+          shipping_value: settings.free_shipping_treeshold,
+          show_icon: settings.show_icon,
+          color_scheme: settings.color_scheme,
+          free_shipping_message_threeshold: settings.free_shipping_message_threeshold,
+          free_shipping_message_unlocked: settings.free_shipping_message_unlocked 
+        %}
+      {%- endif -%}
+
       <cart-drawer-items
         {% if cart == empty %}
           class=" is-empty"
@@ -472,6 +482,15 @@
         <!-- Subtotals -->
 
         <div class="cart-drawer__footer" {{ block.shopify_attributes }}>
+          {%- if settings.show_free_shipping_bar  and settings.free_shipping_bar_position == 'bottom' -%}
+            {% render 'free-shipping-bar', 
+              shipping_value: settings.free_shipping_treeshold,
+              show_icon: settings.show_icon,
+              color_scheme: settings.color_scheme,
+              free_shipping_message_threeshold: settings.free_shipping_message_threeshold,
+              free_shipping_message_unlocked: settings.free_shipping_message_unlocked 
+            %}
+          {%- endif -%}
           <div>
             {%- if cart.cart_level_discount_applications.size > 0 -%}
               <ul class="discounts list-unstyled" role="list" aria-label="{{ 'customer.order.discount' | t }}">

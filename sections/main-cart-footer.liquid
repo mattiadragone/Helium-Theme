@@ -44,6 +44,14 @@
               {% render block %}
             {%- when 'subtotal' -%}
               <div class="js-contents" {{ block.shopify_attributes }}>
+<<<<<<< HEAD
+                <div class="totals">
+                  <h2 class="totals__subtotal">{{ 'sections.cart.subtotal' | t }}</h2>
+                  <p class="totals__subtotal-value"><span id='revy-cart-subtotal-price'>{{ cart.total_price | money_with_currency }}</span></p>
+                </div>
+
+=======
+>>>>>>> master
                 <div>
                   {%- if cart.cart_level_discount_applications.size > 0 -%}
                     <ul class="discounts list-unstyled" role="list" aria-label="{{ 'customer.order.discount' | t }}">
