@@ -6,7 +6,7 @@
   "scripts": {
     "test": "test",
     "logout": "shopify auth logout",
-    "serve": "shopify theme dev --port=3233 --store=helium-theme.myshopify.com",
+    "serve": "shopify theme dev --port=3233 --store=helium-theme.myshopify.com --port=3452",
     "lint:all": "shopify theme check",
     "lint:liquid": "shopify theme check --category liquid --category performance",
     "lint:json": "shopify theme check --category json",

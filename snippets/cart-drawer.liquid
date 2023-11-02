@@ -71,7 +71,7 @@
       </div>
       {%- if settings.show_free_shipping_bar  and settings.free_shipping_bar_position == 'top' -%}
         {% render 'free-shipping-bar', 
-          shipping_value: 50000,
+          shipping_value: settings.free_shipping_treeshold,
           show_icon: settings.show_icon,
           color_scheme: settings.color_scheme,
           free_shipping_message_threeshold: settings.free_shipping_message_threeshold,
@@ -496,7 +496,7 @@
         <div class="cart-drawer__footer" {{ block.shopify_attributes }}>
           {%- if settings.show_free_shipping_bar  and settings.free_shipping_bar_position == 'bottom' -%}
             {% render 'free-shipping-bar', 
-              shipping_value: 50000,
+              shipping_value: settings.free_shipping_treeshold,
               show_icon: settings.show_icon,
               color_scheme: settings.color_scheme,
               free_shipping_message_threeshold: settings.free_shipping_message_threeshold,

@@ -1449,6 +1449,13 @@
         "default": true
       },
       {
+        "type": "text",
+        "id": "free_shipping_treeshold",
+        "label": "Free Shipping Treeshold",
+        "info": "The text entered in this field should indicate the threshold for receiving free shipping.",
+        "default": "500"
+      },
+      {
         "type": "select",
         "id": "free_shipping_bar_position",
         "options": [
