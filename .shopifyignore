@@ -1,1 +1,5 @@
-features/*
+release-notes.md
+README.md
+.prettierrc.json
+.gitignore
+package.json
