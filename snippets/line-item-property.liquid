@@ -1,0 +1,83 @@
+{% comment %}
+  Renders product buy-buttons.
+  Accepts:
+  - product: {Object} product object.
+  - block: {Object} passing the block information.
+  - product_form_id: {String} product form id.
+  - section_id: {String} id of section to which this snippet belongs.
+  - show_pickup_availability: {Boolean} for the pickup availability. If true the pickup availability is rendered, false - not rendered (optional).
+
+  Usage:
+  {% render 'buy-buttons', block: block, product: product, product_form_id: product_form_id, section_id: section.id, show_pickup_availability: true %}
+{% endcomment %}
+{% liquid
+  if custom_properties_title != blank
+    assign custom_properties_title = true
+  endif
+
+  if custom_properties_value != blank
+    assign custom_properties_value = true
+  endif
+
+  if icon_properties != 'none'
+    assign show_icon_properties = true
+  endif
+%}
+{%- if custom_properties_title -%}
+  {%- style -%}
+    .line-item-property:not(.hidden) {
+      margin: 1.5rem 0;
+    }
+    .line-item-property__icon {
+      margin: 1.3rem;
+      display: flex;
+      align-items: center;
+      position: absolute;
+      z-index: 1;
+    }
+    .line-item-property__field .line-item-property__icon ~ input ~ label {
+      left: 5rem !important;
+    }
+    .line-item-property__field .line-item-property__icon ~ input:focus ~ label {
+      left: 5rem;
+    }
+    .line-item-property .field .line-item-property__icon ~ input {
+      padding-left: 5rem;
+    }
+  {%- endstyle -%}
+
+  <div class="line-item-property{% unless show_properties_input %} hidden {% endunless %}">
+    <div class="line-item-property__field field">
+      {%- if show_icon_properties -%}
+        <div class="line-item-property__icon">
+          {% render 'icon-accordion', icon: icon_properties %}
+        </div>
+      {%- endif -%}
+      {% unless show_properties_input %}
+        <input
+          id="{{ custom_properties_title }}"
+          type="hidden"
+          class="field__input"
+          name="properties[{{ custom_properties_title }}]"
+          placeholder="{{ custom_properties_title }}"
+          value="{{ custom_properties_value }}"
+        >
+      {% else %}
+        <input
+          id="{{ custom_properties_title }}"
+          type="text"
+          class="field__input"
+          name="properties[{{ custom_properties_title }}]"
+          placeholder="{{ custom_properties_title }}"
+        >
+        <label
+          for="{{ custom_properties_title }}"
+          class="form__label"
+          placeholder="{{ custom_properties_title }}"
+        >
+          {{ custom_properties_title }}
+        </label>
+      {% endunless %}
+    </div>
+  </div>
+{%- endif -%}

@@ -72,6 +72,13 @@
           {%- case block.type -%}
             {%- when '@app' -%}
               {% render block %}
+            {%- when 'line_item_property' -%}
+              {% render 'line-item-property',
+                custom_properties_title: block.settings.custom_properties_title,
+                custom_properties_value: block.settings.custom_properties_value,
+                icon_properties: block.settings.icon_properties,
+                show_properties_input: block.settings.show_properties_input,
+              %}
             {%- when 'text' -%}
               <p
                 class="product__text inline-richtext{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}"
@@ -736,22 +743,31 @@
           "default": false,
           "label": "t:sections.main-product.blocks.buy_buttons.settings.show_gift_card_recipient.label",
           "info": "t:sections.main-product.blocks.buy_buttons.settings.show_gift_card_recipient.info"
-        },
+        }
+      ]
+    }, 
+    {
+      "type": "line_item_property",
+      "name": "line_item_property",
+      "limit": 1,
+      "settings": [
         {
           "type": "header",
-          "content": "Line item properties"
+          "content": "t:sections.main-product.blocks.buy_buttons.settings.line_item_properties.name",
+          "info": "t:sections.main-product.blocks.buy_buttons.settings.line_item_properties.info"
         },
         {
           "type": "checkbox",
           "id": "use_line_items",
           "default": true,
-          "label": "Use custom line items properties"
+          "label": "t:sections.main-product.blocks.buy_buttons.settings.line_item_properties.use_line_items.label"
         },
         {
           "type": "checkbox",
-          "id": "show_icon_properties",
+          "id": "show_properties_input",
           "default": true,
-          "label": "Use icon for input"
+          "label": "t:sections.main-product.blocks.buy_buttons.settings.line_item_properties.show_properties_input.label",
+          "info": "t:sections.main-product.blocks.buy_buttons.settings.line_item_properties.show_properties_input.info"
         },
         {
           "type": "select",
@@ -934,19 +950,13 @@
               "label": "t:sections.main-product.blocks.collapsible_tab.settings.icon.options__44.label"
             }
           ],
-          "default": "check_mark",
+          "default": "none",
           "label": "t:sections.main-product.blocks.collapsible_tab.settings.icon.label"
-        },
-        {
-          "type": "checkbox",
-          "id": "show_properties_input",
-          "default": true,
-          "label": "Show custom line items properties"
         },
         {
           "type": "text",
           "id": "custom_properties_title",
-          "default": "Personalization",
+          "placeholder": "Personalization",
           "label": "Insert custom properties title"
         },
         {

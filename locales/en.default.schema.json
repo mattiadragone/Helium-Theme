@@ -1960,11 +1960,23 @@
               "info": "Using the payment methods available on your store, customers see their preferred option, like PayPal or Apple Pay. [Learn more](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)"
             },
             "show_gift_card_recipient": {
-              "label": "Show recipient information form for gift card products",
+              "content": "Show recipient information form for gift card products",
               "info": "Gift card products can optionally be sent direct to a recipient on a scheduled date along with a personal message. [Learn more](https://help.shopify.com/manual/online-store/themes/customizing-themes/add-gift-card-recipient-fields)"
+            },
+            "line_item_properties": {
+              "name": "Line item properties",
+              "info": "You can add custom line item properties to include an additional field for the product during the checkout phase. For example, it can be used to identify large products. To hide it from the customer, simply prefix the field with an underscore ('_').",
+              "use_line_items": {
+                "label": "Use custom line items properties"
+              },
+              "show_properties_input": {
+                "label": "Show custom line items properties",
+                "info": "Hiding line item input, while retaining its functionality."
+              }
             }
           }
         },
+        
         "pickup_availability": {
           "name": "Pickup availability"
         },
