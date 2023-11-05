@@ -3,3 +3,4 @@ README.md
 .prettierrc.json
 .gitignore
 package.json
+package-lock.json

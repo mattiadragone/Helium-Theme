@@ -1,0 +1,44 @@
+{% comment %}
+  Renders product swatch color for variant
+
+  Accepts:
+  - product: {Object} product object.
+  - option: {Object} current product_option object.
+  - block: {Object} block object.
+
+
+  Usage:
+  {% render 'swatch-color',
+    swatch_type: 'color',
+    have_variant_image: have_variant_image
+    image: selected_variant.image,
+    width: 40,
+    variant_title: selected_variant.title 
+  %}
+{% endcomment %}
+{%- if swatch_type == 'image' -%}
+  {%- if have_variant_image -%}
+    {{
+      image
+      | image_url: width: width
+      | image_tag:
+      sizes: sizes,
+      widths: '50, 75, 100, 150, 200',
+      alt: variant_title
+    }}
+  {%- else -%}
+    {{ value -}}
+  {%- endif -%}
+{%- else -%}
+  <div 
+    class="swatch swatch--{{ variant_title | handleize }}"
+    data-color="{{ variant_title }}"
+    aria-label="{{ variant_title }}"
+  >
+    <span 
+      class="swatch--toltip"
+    >
+      {{ variant_title }}
+    </span>
+  </div>
+{%- endif -%}

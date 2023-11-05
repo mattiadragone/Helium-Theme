@@ -23,8 +23,24 @@
   assign product_form_id = 'product-form-' | append: section.id
 -%}
 
-{%- for value in option.values -%}
+
+
+{%- for value in option.values -%}  
   {%- liquid
+    comment 
+      TO DO: swatch_color block_settings
+    endcomment
+    assign swatch_color = true 
+    if swatch_color == true
+      assign selected_variant = product.selected_variant 
+      for variant in product.variants
+        if variant.title contains value and variant.image
+          assign selected_variant = variant 
+          assign have_variant_image = true
+        endif
+      endfor
+    endif
+      
     assign option_disabled = true
 
     for option1_name in variants_option1_arr
@@ -60,7 +76,19 @@
       {% endif %}
     >
     <label for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}">
-      {{ value -}}
+      {%- if swatch_color -%}
+        {% comment %} TO DO: swatch_type block settings {% endcomment %}
+        {% render 'swatch-color',
+          swatch_type: 'color',
+          have_variant_image: have_variant_image
+          image: selected_variant.image,
+          width: 40,
+          variant_title: selected_variant.title 
+        %}
+      {%- else -%}
+        {{ value -}}
+      {%- endif -%}
+
       <span class="visually-hidden">{{ 'products.product.variant_sold_out_or_unavailable' | t }}</span>
     </label>
   {%- elsif block.settings.picker_type == 'dropdown' -%}
