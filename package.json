@@ -1,35 +1,28 @@
 {
-  "name": "helium-theme",
-  "version": "0.0.1",
-  "description": "This Shopify theme fork aims to enhance the capabilities of online stores for merchants by introducing innovative functionalities and a feature-rich experience.",
-  "main": "index.js",
+  "version": "1.0.0",
+  "description": "My webpack project",
+  "name": "my-webpack-project",
   "scripts": {
-    "test": "test",
-    "logout": "shopify auth logout",
-    "serve": "shopify theme dev --port=3233 --store=helium-theme.myshopify.com",
-    "lint:all": "shopify theme check",
-    "lint:liquid": "shopify theme check --category liquid --category performance",
-    "lint:json": "shopify theme check --category json",
-    "fix:all": "shopify theme check --auto-correct",
-    "fix:liquid": "shopify theme check --category liquid --category performance --auto-correct",
-    "fix:json": "shopify theme check --category json --auto-correct"
+    "build": "webpack --mode=production --node-env=production",
+    "build:dev": "webpack --mode=development",
+    "build:prod": "webpack --mode=production --node-env=production",
+    "watch": "webpack --watch"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mattiadragone/Helium-Theme.git"
+  "dependencies": {
+    "autoprefixer": "^10.4.16",
+    "babel": "^6.23.0",
+    "babel-loader": "^9.1.3",
+    "cssnano": "^6.0.1",
+    "mini-css-extract-plugin": "^2.7.6",
+    "postcss": "^8.4.31",
+    "postcss-loader": "^7.3.3",
+    "sass-loader": "^13.3.2"
   },
-  "keywords": [
-    "Shopify",
-    "Theme",
-    "Dawn",
-    "Fork",
-    "UX",
-    "CX"
-  ],
-  "author": "Mattia Dragone",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/mattiadragone/Helium-Theme/issues"
-  },
-  "homepage": "https://github.com/mattiadragone/Helium-Theme#readme"
+  "devDependencies": {
+    "@babel/plugin-syntax-dynamic-import": "^7.8.3",
+    "@babel/preset-env": "^7.23.3",
+    "css-loader": "^6.8.1",
+    "postcss-preset-env": "^9.3.0",
+    "sass": "^1.69.5"
+  }
 }

@@ -1,0 +1,40 @@
+{
+  "name": "helium-theme",
+  "version": "0.0.1",
+  "description": "This Shopify theme fork aims to enhance the capabilities of online stores for merchants by introducing innovative functionalities and a feature-rich experience.",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "logout": "shopify auth logout",
+    "serve": "shopify theme dev --port=3233 --store=helium-theme.myshopify.com",
+    "lint:all": "shopify theme check",
+    "lint:liquid": "shopify theme check --category liquid --category performance",
+    "lint:json": "shopify theme check --category json",
+    "fix:all": "shopify theme check --auto-correct",
+    "fix:liquid": "shopify theme check --category liquid --category performance --auto-correct",
+    "fix:json": "shopify theme check --category json --auto-correct"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mattiadragone/Helium-Theme.git"
+  },
+  "keywords": [
+    "Shopify",
+    "Theme",
+    "Dawn",
+    "Fork",
+    "UX",
+    "CX"
+  ],
+  "author": "Mattia Dragone",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mattiadragone/Helium-Theme/issues"
+  },
+  "homepage": "https://github.com/mattiadragone/Helium-Theme#readme",
+  "devDependencies": {
+    "@webpack-cli/generators": "^3.0.7",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4"
+  }
+}

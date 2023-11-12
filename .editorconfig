@@ -1,0 +1,6 @@
+# Esempio di configurazione per lo spazio delle tabulazioni a 2 spazi
+root = true
+
+[*]
+indent_style = space
+indent_size = 2
