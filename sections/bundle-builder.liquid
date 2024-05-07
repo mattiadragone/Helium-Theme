@@ -3,9 +3,10 @@
 
 {{ 'template-collection.css' | asset_url | stylesheet_tag }}
 
-
-{{ 'component-accordion.css' | asset_url | stylesheet_tag }}
-{{ 'collapsible-content.css' | asset_url | stylesheet_tag }}
+{%- if section.settings.use_collapsible_row -%}
+  {{ 'component-accordion.css' | asset_url | stylesheet_tag }}
+  {{ 'collapsible-content.css' | asset_url | stylesheet_tag }}
+{%- endif -%}
 
 {{ 'section-bundle-builder.css' | asset_url | stylesheet_tag }}
 
@@ -25,32 +26,30 @@
   }
 {%- endstyle -%}
 
+<div class="product-list--title collection__title title-wrapper page-width">
+  <h2 class="title inline-richtext {{ section.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+    {{ section.settings.title }}
+  </h2>
+  {%- if section.settings.description != blank
+    or section.settings.show_description
+  -%}
+    <div class="collection__description h5 rte{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+      {%- if section.settings.show_description -%}
+        {{ section.settings.description | strip_html }}
+      {%- endif %}
+    </div>
+  {%- endif -%}
+</div>
 
 <div class="bundle-builder color-{{ section.settings.color_scheme }} isolate gradient page-width">
   <div class="bundle-builder--left">
-  {%- comment -%}
-    <div class="product-list--title collection__title title-wrapper title-wrapper--no-top-margin">
-      <h2 class="title inline-richtext {{ section.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
-        {{ section.settings.title }}
-      </h2>
-      {%- if section.settings.description != blank
-        or section.settings.show_description
-      -%}
-        <div class="collection__description h5 rte{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
-          {%- if section.settings.show_description -%}
-            {{ section.settings.description | strip_html }}
-          {%- endif %}
-        </div>
-      {%- endif -%}
-    </div>
-  {%- endcomment -%}
-    
     {%- for block in section.blocks -%}
       <div 
         class="product-list accordion collection{% if section.settings.quick_add == 'bulk' %} collection-quick-add-bulk{% endif %} section-{{ block.id }}-padding{% if section.settings.full_width %} collection--full-width{% endif %}"
         id="collection-{{ block.id }}"
         data-id="{{ block.id }}"
         >
+        {% if section.settings.use_collapsible_row %}
          <details
           id="Details-{{ block.id }}-{{ section.id }}"
           {% if section.settings.open_first_collapsible_row and forloop.first %}
@@ -58,10 +57,14 @@
           {% endif %}
           >
           <summary id="Summary-{{ block.id }}-{{ section.id }}">
+        {% endif %}
             <div class="product-list--title">
               {%- if block.settings.collection.title != blank -%}
                 <h3 class="{{ block.settings.heading_size }} accordion__title inline-richtext{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
-                  {{ block.settings.collection.title }} <sup class="subtitle--small">({{ 'products.facets.product_count_simple' | t: count: block.settings.collection.products_count }})</sup>
+                  {{ block.settings.collection.title }} 
+                  {% if section.settings.show_product_number %}
+                    <sup class="subtitle--small">({{ 'products.facets.product_count_simple' | t: count: block.settings.collection.products_count }})</sup>
+                  {% endif %}
                 </h3>
               {%- endif -%}
               {%- if block.settings.description != blank
@@ -77,13 +80,17 @@
                 </div>
               {%- endif -%}
             </div>
+        {% if section.settings.use_collapsible_row %}
             {% render 'icon-caret' %}
           </summary>
+        {% endif %}
           
           <ul 
-            id="CollapsibleAccordion-{{ block.id }}-{{ section.id }}"
-            role="region"
-            aria-labelledby="Summary-{{ block.id }}-{{ section.id }}"
+            {% if section.settings.use_collapsible_row %}
+              id="CollapsibleAccordion-{{ block.id }}-{{ section.id }}"
+              role="region"
+              aria-labelledby="Summary-{{ block.id }}-{{ section.id }}"
+            {% endif %}
             class="product-list--products grid product-grid contains-card contains-card--product{% if settings.card_style == 'standard' %} contains-card--standard{% endif %} grid--{{ section.settings.columns_desktop }}-col-desktop grid--{{ section.settings.columns_mobile }}-col-tablet-down">
             {%- for product in block.settings.collection.products limit: 50  -%}
               <li 
@@ -98,12 +105,8 @@
                 {% endif %}
               >
                 <div class="product-list--button-container visibility-hidden" data-bundleBuilder="removeProduct">
-                  <h3>
-                    Aggiunto
-                  </h3>
                   <button class="button button--primary">
                     {% render 'icon-remove' %}
-                    Remove
                   </button>
                 </div>
                 {% render 'card-product',
@@ -123,14 +126,26 @@
     {%- endfor -%}
 
   </div>
-  <div class="bundle-builder-aside color-{{ section.settings.color_scheme_aside }}">
-    <div class="bundle-builder--aside--title h2 inline-richtext">
+  <div class="bundle-builder-aside color-{{ section.settings.color_scheme_aside }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+    <div 
+      class="bundle-builder--aside--title h2 inline-richtext{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+      {% if settings.animations_reveal_on_scroll %}
+        data-cascade
+        style="--animation-order: 1;"
+      {% endif %}
+    >
       {{ section.settings.aside_title }}
     </div>
-    <div class="bundle-builder-aside--description rte h4">
+    <div 
+      class="bundle-builder-aside--description rte h4{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+      {% if settings.animations_reveal_on_scroll %}
+        data-cascade
+        style="--animation-order: 2;"
+      {% endif %}
+    >
       {{ section.settings.aside_description }}
     </div>
-    <ul class="bundle-builder-aside--products--no-products gradient">
+    <ul class="bundle-builder-aside--products--no-products gradien">
       {% for i in (1..3) %}
         {%- liquid
           assign title_key = "title_" | append: i
@@ -138,7 +153,11 @@
           assign icon_key = "icon_" | append: i
           assign icon = section.settings[icon_key] 
         -%}
-        <li class="bundle-builder-aside--element h4">
+        <li class="bundle-builder-aside--element h4{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}" 
+          {% if settings.animations_reveal_on_scroll %}
+            data-cascade
+            style="--animation-order: {{ forloop.index }};"
+          {% endif %}>
           <div class="bundle-builder-aside--element-icon">
             {% render 'icon-accordion', icon: icon %}
           </div>
@@ -156,7 +175,7 @@
         {{ 0 | money_with_currency }}
       </p>
     </div>
-    <div class="bundle-builder-form--group">
+    <div class="bundle-builder-form--group{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
       <bundle-builder-form>
         <form method="post" action="{{ routes.cart_update_url }}" class="bundle-builder-form" data-type="add-to-cart-form">
           <input type="submit" disabled value="{{ section.settings.aside_defaultForm }}" class="product-form__submit button button--full-width button--primary" />
@@ -226,6 +245,12 @@
         "default": true
       },
       {
+        "type": "checkbox",
+        "id": "show_product_number",
+        "label": "Show number of product(s) in product list",
+        "default": true
+      },
+      {
         "type": "select",
         "id": "description_style",
         "label": "t:sections.featured-collection.settings.description_style.label",
@@ -256,23 +281,15 @@
       },
       {
         "type": "checkbox",
+        "id": "use_collapsible_row",
+        "default": true,
+        "label": "Use collapsible row"
+      },
+      {
+        "type": "checkbox",
         "id": "open_first_collapsible_row",
         "default": true,
         "label": "t:sections.collapsible_content.settings.open_first_collapsible_row.label"
-      },
-      {
-        "type": "color_scheme",
-        "id": "color_scheme",
-        "label": "t:sections.all.colors.label",
-        "info": "t:sections.all.colors.has_cards_info",
-        "default": "scheme-1"
-      },
-      {
-        "type": "color_scheme",
-        "id": "color_scheme_title",
-        "label": "Color Scheme for title section",
-        "info": "t:sections.all.colors.has_cards_info",
-        "default": "scheme-1"
       },
       {
         "type": "header",
@@ -918,53 +935,6 @@
         ],
         "default": "adapt",
         "label": "t:sections.featured-collection.settings.image_ratio.label"
-      },
-      {
-        "type": "select",
-        "id": "image_shape",
-        "options": [
-          {
-            "value": "default",
-            "label": "t:sections.all.image_shape.options__1.label"
-          },
-          {
-            "value": "arch",
-            "label": "t:sections.all.image_shape.options__2.label"
-          },
-          {
-            "value": "blob",
-            "label": "t:sections.all.image_shape.options__3.label"
-          },
-          {
-            "value": "chevronleft",
-            "label": "t:sections.all.image_shape.options__4.label"
-          },
-          {
-            "value": "chevronright",
-            "label": "t:sections.all.image_shape.options__5.label"
-          },
-          {
-            "value": "diamond",
-            "label": "t:sections.all.image_shape.options__6.label"
-          },
-          {
-            "value": "parallelogram",
-            "label": "t:sections.all.image_shape.options__7.label"
-          },
-          {
-            "value": "round",
-            "label": "t:sections.all.image_shape.options__8.label"
-          }
-        ],
-        "default": "default",
-        "label": "t:sections.all.image_shape.label",
-        "info": "t:sections.all.image_shape.info"
-      },
-      {
-        "type": "checkbox",
-        "id": "show_secondary_image",
-        "default": false,
-        "label": "t:sections.featured-collection.settings.show_secondary_image.label"
       },
       {
         "type": "checkbox",
