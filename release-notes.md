@@ -2,4 +2,5 @@ In this initial release, Helium Theme 0.1.0 has introduced a fully customizable 
 
 
 
-
+Update
+Dawn 15.2.0 provides a few fixes for known bugs and updates the styling for the new dynamic checkout buttons.
