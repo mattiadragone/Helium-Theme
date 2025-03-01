@@ -77,8 +77,18 @@
 .bundle-builder .bundle-builder--description {
   max-width: 90%;
 }
+.bundle-builder-aside--products {
+  display: flex;
+  flex-direction: row;
+}
 
-.bundle-builder-aside--product,
+.bundle-builder-aside--product {
+  display: flex;
+  flex-direction: column;
+  padding: var(--grid-desktop-vertical-spacing) 0;
+  column-gap: var(--grid-desktop-vertical-spacing);
+  justify-content: space-between;
+}
 .bundle-builder-aside--totals {
   display: flex;
   padding: var(--grid-desktop-vertical-spacing) 0;
@@ -86,6 +96,7 @@
   justify-content: space-between;
   border-bottom: 1px solid rgba(var(--color-foreground), 0.4);
 }
+
 .bundle-builder-aside--totals {
 	border: 0;
 }
@@ -113,7 +124,7 @@ form .bundle-builder-aside--product {
 }
 
 .bundle-builder-aside--product img {
-  width: 100%;
+  max-width: 10rem;
 }
 
 @media (min-width: 750px) {

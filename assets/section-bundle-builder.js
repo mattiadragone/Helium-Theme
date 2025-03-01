@@ -79,9 +79,10 @@ function handleProductClick(event) {
   const productPrice = this.getAttribute(selector.productPrice);
   const productInformation = this.querySelector(selector.productInformation).innerHTML;
   const removeProduct = this.querySelector(selector.removeProduct);
+  const productImage = this.querySelector(`[data-product-id="${productId}"] img`).getAttribute('src');
 
   if (!this.classList.contains('added')) {
-    addProductBundle(this, productId, productTitle, productPrice, productInformation, removeProduct);
+    addProductBundle(this, productId, productTitle, productImage, productPrice, productInformation, removeProduct);
   } else {
     removeProductBundle(this, productId, removeProduct);
   }
@@ -122,7 +123,7 @@ function Aside(showProducts) {
   }
 }
 
-function addProductBundle(productDiv, productId, productTitle, productPrice, productInformation,removeProduct) {
+function addProductBundle(productDiv, productId, productTitle, productImage, productPrice, productInformation,removeProduct) {
   productDiv.classList.add('added');
   productDiv.setAttribute('data-bundleBuilder-added', 'true');
   removeProduct.classList.remove('visibility-hidden');
@@ -130,7 +131,7 @@ function addProductBundle(productDiv, productId, productTitle, productPrice, pro
   addedProducts[productId] = { title: productTitle, price: productPrice };
   updateTotalPrice();
   addProductToForm(productId, productTitle, productPrice);
-  addAsideProduct(productId, productTitle, productInformation)
+  addAsideProduct(productId, productTitle, productImage, productInformation)
   updateTotal();
 }
 
@@ -141,14 +142,20 @@ function removeProductBundle(productDiv, productId, removeProduct) {
   removeAsideProduct(productId)
   updateTotal();
 }
-function addAsideProduct(productId, productTitle, productInformation) {
+function addAsideProduct(productId, productTitle, productImage, productInformation) {
   const productPreviewDiv = document.createElement('div');
   productPreviewDiv.classList.add('bundle-builder-aside--product');
-  productPreviewDiv.innerHTML = `<p>${productTitle}</p>${productInformation}`;
+
+  const imgElement = document.createElement('img');
+  imgElement.setAttribute('src', productImage);
+  productPreviewDiv.appendChild(imgElement);
+  productPreviewDiv.innerHTML += `<p>${productTitle}</p>${productInformation}`;
+  
   productPreviewDiv.id = `product-preview-${productId}`;
   const productImageView = document.querySelector('.bundle-builder-aside--products');
   productImageView.appendChild(productPreviewDiv);
 }
+
 
 function removeAsideProduct(productId) {
   delete addedProducts[productId];
